@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+find . -name __pycac* -exec rm -rf {} \;
+find . -name *main* -exec rm -rf {} \;
+git add .
