@@ -27,3 +27,9 @@ Write a function `def matrix_transpose(matrix):` that returns the transpose of a
 - You must return a new matrix
 - You can assume that `matrix` is never empty
 - You can assume all elements in the same dimension are of the same type/shape
+
+### 4. Line Up:
+Write a function `def add_arrays(arr1, arr2):` that adds two arrays element-wise:
+- You can assume that `arr1` and `arr2` are lists of ints/floats
+- You must return a new list
+- If `arr1` and `arr2` are not the same shape, return `None`
