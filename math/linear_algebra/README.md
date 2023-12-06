@@ -40,3 +40,8 @@ Write a function `def add_matrices2D(mat1, mat2):` that adds two matrices elemen
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If `mat1` and `mat2` are not the same shape, return `None`
+
+### 6. Howdy Partner:
+Write a function `def cat_arrays(arr1, arr2):` that concatenates two arrays:
+- You can assume that `arr1` and `arr2` are lists of ints/floats
+- You must return a new list
