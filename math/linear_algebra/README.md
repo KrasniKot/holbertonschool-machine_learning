@@ -59,3 +59,11 @@ Write a function `def mat_mul(mat1, mat2):` that performs matrix multiplication:
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If the two matrices cannot be multiplied, return `None`
+
+### 9. Let The Butcher Slice It:
+Complete the following source code (fond below):
+- `mat1` should be the middle two rows of `matrix`
+- `mat2` should be the middle two columns of `matrix`
+- `mat3` should be the bottom-right, square, 3x3 matrix of `matrix`
+- You are not allowed to use any loops or conditional statements
+- Your program should be exactly 10 lines
