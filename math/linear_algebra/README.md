@@ -88,10 +88,16 @@ Write a function `def np_elementwise(mat1, mat2):` that performs element-wise ad
 - You can assume that `mat1` and `mat2` are never empty
 
 ### 13. Cat's Got Your Tongue:
-Write a function def np_cat(mat1, mat2, axis=0) that concatenates two matrices along a specific axis:
+Write a function `def np_cat(mat1, mat2, axis=0)` that concatenates two matrices along a specific axis:
+- You can assume that `mat1` and `mat2` can be interpreted as `numpy.ndarray`s
+- You must return a new `numpy.ndarray`
+- You are not allowed to use any loops or conditional statements
+- You may use: `import numpy as np`
+- You can assume that `mat1` and `mat2` are never empty
 
-You can assume that mat1 and mat2 can be interpreted as numpy.ndarrays
-You must return a new numpy.ndarray
-You are not allowed to use any loops or conditional statements
-You may use: import numpy as np
-You can assume that mat1 and mat2 are never empty
+### 14. Saddle Up:
+Write a function def `np_matmul(mat1, mat2):` that performs matrix multiplication:
+- You can assume that `mat1` and `mat2` are `numpy.ndarray`s
+- You are not allowed to use any loops or conditional statements
+- You may use: `import numpy as np`
+- You can assume that `mat1` and `mat2` are never empty
