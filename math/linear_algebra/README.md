@@ -74,8 +74,24 @@ Write a function `def np_shape(matrix):` that calculates the shape of a `numpy.n
 - You are not allowed to use `try/except` statements
 - The shape should be returned as a tuple of integers
 
-### 11. 11. The Western Exchange:
+### 11. The Western Exchange:
 Write a function `def np_transpose(matrix):` that transposes matrix:
 - You can assume that `matrix` can be interpreted as a `numpy.ndarray`
 - You are not allowed to use any loops or conditional statements
 - You must return a new `numpy.ndarray`
+
+### 12. Bracing The Elements:
+Write a function `def np_elementwise(mat1, mat2):` that performs element-wise addition, subtraction, multiplication, and division:
+- You can assume that `mat1` and `mat2` can be interpreted as `numpy.ndarrays`
+- You should return a tuple containing the element-wise sum, difference, product, and quotient, respectively
+- You are not allowed to use any loops or conditional statements
+- You can assume that `mat1` and `mat2` are never empty
+
+### 13. Cat's Got Your Tongue:
+Write a function def np_cat(mat1, mat2, axis=0) that concatenates two matrices along a specific axis:
+
+You can assume that mat1 and mat2 can be interpreted as numpy.ndarrays
+You must return a new numpy.ndarray
+You are not allowed to use any loops or conditional statements
+You may use: import numpy as np
+You can assume that mat1 and mat2 are never empty
