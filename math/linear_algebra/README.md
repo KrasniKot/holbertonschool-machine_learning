@@ -101,3 +101,10 @@ Write a function def `np_matmul(mat1, mat2):` that performs matrix multiplicatio
 - You are not allowed to use any loops or conditional statements
 - You may use: `import numpy as np`
 - You can assume that `mat1` and `mat2` are never empty
+
+### 15. Slice Like A Ninja
+Write a function `def np_slice(matrix, axes={}):` that slices a matrix along specific axes:
+- You can assume that `matrix` is a `numpy.ndarray`
+- You must return a new `numpy.ndarray`
+- `axes` is a dictionary where the key is an axis to slice along and the `value` is a tuple representing the slice to make along that axis
+- You can assume that axes represents a valid slice
