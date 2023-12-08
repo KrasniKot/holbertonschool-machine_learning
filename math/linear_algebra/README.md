@@ -108,3 +108,11 @@ Write a function `def np_slice(matrix, axes={}):` that slices a matrix along spe
 - You must return a new `numpy.ndarray`
 - `axes` is a dictionary where the key is an axis to slice along and the `value` is a tuple representing the slice to make along that axis
 - You can assume that axes represents a valid slice
+
+### 16. The Whole Barn:
+Write a function `def add_matrices(mat1, mat2):` that adds two matrices:
+- You can assume that `mat1` and `mat2` are matrices containing `ints/floats`
+- You can assume all elements in the same dimension are of the same type/shape
+- You must return a new matrix
+- If matrices are not the same shape, return `None`
+- You can assume that `mat1` and `mat2` will never be empty
