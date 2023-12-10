@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """ This module contains:
         * shape(): Gets the shape of a matrix
-        * add_matrixes(): Performs the additions of two matrices"""
+        * add_matrixes(): Performs the additions of two matrices
+"""
+
 
 def shape(matrix: list) -> list:
     """ Calculates the shape of a matrix """
