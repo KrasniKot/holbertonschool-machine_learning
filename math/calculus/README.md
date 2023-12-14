@@ -15,3 +15,24 @@
 2. 36i - 20
 3. 90 - 8k
 4. 36i - 8k
+
+### 2. Pi is for Product:
+![image not available](https://latex.codecogs.com/gif.latex?\prod_{i&space;=&space;1}^{m}&space;i)
+1. (m - 1)!
+2. 0
+3. (m + 1)!
+4. m!
+
+### 3. The Greeks pronounce it pEE:
+![image not available](https://latex.codecogs.com/gif.latex?\prod_{i&space;=&space;0}^{10}&space;i)
+1. 10!
+2. 9!
+3. 100
+4. 0
+
+### 4. Hello, derivatives!:
+![image not available](https://latex.codecogs.com/gif.latex?\frac{dy}{dx}) where ![image not available](https://latex.codecogs.com/gif.latex?y&space;=&space;x^4&space;+&space;3x^3&space;-&space;5x&space;+&space;1)
+1. ![image not available](https://latex.codecogs.com/gif.latex?3x^3&space;+&space;6x^2&space;-4)
+2. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;6x^2&space;-&space;5)
+3. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;5)
+4. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;4)
