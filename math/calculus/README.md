@@ -1,4 +1,4 @@
-# Calculus
+alculus
 
 ## Tasks
 
@@ -50,3 +50,10 @@
 2. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x^2})
 3. ![image not available](https://latex.codecogs.com/gif.latex?\frac{2}{x^2})
 4. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x})
+
+### 7. Partial truths are often more insidious than total falsehoods:
+![image not available](https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial&space;y}&space;f(x,&space;y)) where ![image not available](https://latex.codecogs.com/gif.latex?f(x,&space;y)&space;=&space;e^{xy}) and ![image not available](https://latex.codecogs.com/gif.latex?\frac{\partial&space;x}{\partial&space;y}=\frac{\partial&space;y}{\partial&space;x}=0)
+1. ![](https://latex.codecogs.com/gif.latex?e^{xy})
+2. ![](https://latex.codecogs.com/gif.latex?ye^{xy})
+3. ![](https://latex.codecogs.com/gif.latex?xe^{xy})
+4. ![](https://latex.codecogs.com/gif.latex?e^{x})
