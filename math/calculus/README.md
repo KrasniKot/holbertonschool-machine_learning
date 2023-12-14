@@ -36,3 +36,17 @@
 2. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;6x^2&space;-&space;5)
 3. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;5)
 4. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;4)
+
+### 5. A log on the fire:
+![image not available](https://latex.codecogs.com/gif.latex?\frac{d&space;(xln(x))}{dx})
+1. ![image not available](https://latex.codecogs.com/gif.latex?ln(x))
+2. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x}%20+%201)
+3. ![image not available](https://latex.codecogs.com/gif.latex?ln(x)%20+%201)
+4. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x})
+
+### 6. It is difficult to free fools from the chains they revere:
+![image not available](https://latex.codecogs.com/gif.latex?\frac{d&space;(ln(x^2))}{dx})
+1. ![image not available](https://latex.codecogs.com/gif.latex?\frac{2}{x})
+2. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x^2})
+3. ![image not available](https://latex.codecogs.com/gif.latex?\frac{2}{x^2})
+4. ![image not available](https://latex.codecogs.com/gif.latex?\frac{1}{x})
