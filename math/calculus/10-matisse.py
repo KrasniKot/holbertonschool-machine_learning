@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ This module contains poly_derivate() """
 
+
 def poly_derivative(poly):
     """ Derivates a polynomial """
     if poly and type(poly) is list:
