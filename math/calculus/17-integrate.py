@@ -6,4 +6,6 @@ def poly_integral(poly):
     if type(poly) is not list or any(type(coeff) not in (int, float) for coeff in poly):
         return None
 
-    return [0] + [int(coeff / (i + 1)) for i, coeff in enumerate(poly)]
+    integral = [C] + [int(coeff / (i + 1)) if coeff != 0 else 0 for i, coeff in enumerate(poly)]
+
+    return integral
