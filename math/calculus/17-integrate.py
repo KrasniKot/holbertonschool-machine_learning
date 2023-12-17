@@ -4,11 +4,9 @@
 
 def poly_integral(poly, C=0):
     """ Calculates the integral of a list of coefficients """
-    if type(poly) is list or any(type(c) in (int, float) for c in poly):
-        
+    if type(poly) is list and all(type(c) in (int, float) for c in poly):
         integral = [C] + [
-            c / (i + 1) if c != 0 else 0
+            c // (i + 1) if c % (i + 1) == 0 else c / (i + 1)
             for i, c in enumerate(poly)
-            ]
-            
+        ]
         return integral
