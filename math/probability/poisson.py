@@ -36,4 +36,4 @@ class Poisson():
     def __f(k):
         """ Calculates k! """
         k = int(k)
-        return 1 if k == 0 or k == 1 else k * self.__f(k - 1)
+        return 1 if k == 0 or k == 1 else k * Poisson.__f(k - 1)
