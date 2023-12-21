@@ -25,12 +25,12 @@ class Poisson():
     def pmf(self, k):
         """ Calculates the PMF for a certain number of occurrences """
         k = int(k)
-        return (E ** -self.lambtha * self.lambtha ** k) / self.__f(k)
+        return (self.E ** -self.lambtha * self.lambtha ** k) / self.__f(k)
 
     def cdf(self, k):
         """ Calculates the CDF for a certain number of occurrences """
         k = int(k)
-        return sum([lambtha ** i / self.__f(k) * E ** -self.lambtha for i in range(k + 1)])
+        return sum([lambtha ** i / self.__f(k) * self.E ** -self.lambtha for i in range(k + 1)])
 
     @staticmethod
     def __f(k):
