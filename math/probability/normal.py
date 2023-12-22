@@ -5,6 +5,9 @@
 class Normal():
     """ Defines a Normal distribution """
 
+    pi = 3.1415926536
+    e = 2.7182818285
+
     def __init__(self, data=None, mean=0., stddev=1.):
         """ Initializes a Normal """
         if data is None:
@@ -22,10 +25,15 @@ class Normal():
                                for x in data) / len(data)) ** 0.5
 
     def z_score(self, x):
-        """ Finds the Z for a given X """
+        """ Calculatee the Z for a given X """
         return (x - self.mean) / self.stddev
 
     def x_value(self, z):
-        """ Finds the X for a given Z"""
+        """ Calculates the X for a given Z"""
         return z * self.stddev + self.mean
 
+    def pdf(self, x):
+        """ Calculates the PDF for a given X """
+        c = 1 / (self.stddev * ((2 * Normal.pi) ** 0.5))
+        et = ((x - self.mean) ** 2) / (2 * (self.stddev ** 2))
+        return c * Normal.e ** (-et)
