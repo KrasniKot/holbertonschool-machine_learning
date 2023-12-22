@@ -35,7 +35,9 @@ class Poisson():
         a certain number of occurrences
         """
         k = int(k)
-        return sum([self.lambtha ** i / self.__f(i) * self.E ** -self.lambtha for i in range(k + 1)])
+        return sum([
+            self.lambtha ** i / self.__f(i) * self.E **
+            -self.lambtha for i in range(k + 1)])
 
     @staticmethod
     def __f(k):
