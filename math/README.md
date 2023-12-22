@@ -40,3 +40,16 @@ This directory contains the Machine Learning math projects
 - What is an indefinite integral?
 - What is a definite integral?
 - What is a double integral?
+
+### Probability:
+- What is probability?
+- Basic probability notation
+- What is independence? What is disjoint?
+- What is a union? intersection?
+- What are the general addition and multiplication rules?
+- What is a probability distribution?
+- What is a probability distribution function? probability mass function?
+- What is a cumulative distribution function?
+- What is a percentile?
+- What is mean, standard deviation, and variance?
+- Common probability distributions
