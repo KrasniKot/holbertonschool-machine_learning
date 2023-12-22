@@ -25,10 +25,15 @@ class Poisson():
     def pmf(self, k):
         """ Calculates the PMF for a certain number of occurrences """
         k = int(k)
+        if k < 0:
+            return 0
         return (self.E ** -self.lambtha * self.lambtha ** k) / self.__f(k)
 
     def cdf(self, k):
-        """ Calculates the CDF for a certain number of occurrences """
+        """
+        Calculates the CDF for
+        a certain number of occurrences
+        """
         k = int(k)
         return sum([self.lambtha ** i / self.__f(i) * self.E ** -self.lambtha for i in range(k + 1)])
 
