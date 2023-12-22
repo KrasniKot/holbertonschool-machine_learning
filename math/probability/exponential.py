@@ -5,6 +5,8 @@
 class Exponential():
     """ Defines an Exponential distribution """
 
+    E = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """ Initializes an Exponential """
         if data is None:
@@ -18,3 +20,11 @@ class Exponential():
                 raise ValueError("data must contain multiple values")
             else:
                 self.lambtha = (1 / (sum(data) / len(data)))
+
+    def pdf(self, k):
+        """ Calculates the PMF for a given time period """
+        k = int(k)
+        if k < 0:
+            return 0
+
+        return (self.lambtha * self.E) ** (-self.lambtha * k)
