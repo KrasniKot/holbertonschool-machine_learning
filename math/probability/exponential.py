@@ -23,14 +23,12 @@ class Exponential():
 
     def pdf(self, k):
         """ Calculates the PMF for a given time period """
-        k = int(k)
         if k < 0:
             return 0
-        return self.lambtha * self.E ** (-self.lambtha * k)
+        return self.lambtha * Exponential.E ** (-self.lambtha* k)
 
     def cdf(self, k):
         """ Calculates the CDF for a given time period """
-        k = int(k)
         if k < 0:
             return 0
-        return 1 - self.E ** -self.lambtha * k
+        return 1 - self.E ** (-self.lambtha * k
