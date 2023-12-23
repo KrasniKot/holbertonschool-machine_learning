@@ -37,3 +37,12 @@ class Normal():
         c = 1 / (self.stddev * ((2 * Normal.pi) ** 0.5))
         et = ((x - self.mean) ** 2) / (2 * (self.stddev ** 2))
         return c * Normal.e ** (-et)
+
+    def cdf(self, x):
+        xa = (x - self.mean) / ((2 ** 0.5) * self.stddev)
+        errof = (
+            ((4 / self.pi) ** 0.5) * (
+                xa - (xa ** 3) / 3 + (xa ** 5) / 10 - (xa ** 7) / 42 + (xa ** 9) / 216
+            )
+        )
+        return cdf = (1 + errof) / 2
