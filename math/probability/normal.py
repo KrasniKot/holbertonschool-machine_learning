@@ -39,10 +39,13 @@ class Normal():
         return c * Normal.e ** (-et)
 
     def cdf(self, x):
+        """ Calculates the CdF for a given X """
         x = (x - self.mean) / ((2 ** 0.5) * self.stddev)
         erf = (
             ((4 / self.pi) ** 0.5) * (
-                x - (x ** 3) / 3 + (x ** 5) / 10 - (x ** 7) / 42 + (x ** 9) / 216
+                x - (x
+                     ** 3) / 3 + (x
+                                  ** 5) / 10 - (x ** 7) / 42 + (x ** 9) / 216
             )
         )
         return (1 + erf) / 2
