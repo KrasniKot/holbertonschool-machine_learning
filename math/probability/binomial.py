@@ -30,3 +30,17 @@ class Binomial():
 
         self.n = n
         self.p = p
+
+def pmf(self, k):
+    """ Calculates the PMF for a given k """
+    k = int(k)
+    if k < 0:
+        return 0
+    return (self.__f(self.n) / (self.__f(k) * self.__f(self.n - k))) * \
+           (self.p ** k) * ((1 - self.p) ** (self.n - k))
+
+@staticmethod
+def __f(k):
+    """ Calculates k! """
+    k = int(k)
+    return 1 if k == 0 or k == 1 else k * Binomial.__f(k - 1)
