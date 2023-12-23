@@ -7,4 +7,26 @@ class Binomial():
 
     def __init__(self, data=None, n=1, p=0.5):
         """ Initializes a Binomial """
-        pass
+        self.n = int(n)
+        self.p = float(p)
+
+        if data is None:
+            if self.n < 1:
+                raise ValueError("n must be a positive value")
+            elif self.p <= 0 or self.p >= 1:
+                raise ValueError("p must be greater than 0 and less than 1")
+
+        else:
+            if type(data) is not list:
+                raise TypeError("data must be a list")
+            elif len(data) < 2:
+                raise ValueError("data must contain multiple values")
+
+            mean = sum(data) / len(data)
+            variance = sum((x - mean) ** 2 for x in data) / len(data)
+            p = 1 - variance / mean
+            n = int(round(mean / p))
+            p = float(mean / n)
+
+        self.n = n
+        self.p = p
