@@ -39,6 +39,19 @@ class Binomial():
         return (self.__f(self.n) / (self.__f(k) * self.__f(self.n - k))) * \
                (self.p ** k) * ((1 - self.p) ** (self.n - k))
 
+    def cdf(self, k):
+        """ Calculates the CDF for a given k """
+        k = int(k)
+        if k < 0:
+            return 0
+    
+        cp = 0
+        for i in range(k + 1):
+            c = self.__f(self.n) / (self.__f(i) * self.__f(self.n - i))
+            cp += c * (self.p ** i) * ((1 - self.p) ** (self.n - i))
+    
+        return cp
+
     @staticmethod
     def __f(k):
         """ Calculates k! """
