@@ -39,10 +39,10 @@ class Normal():
         return c * Normal.e ** (-et)
 
     def cdf(self, x):
-        xa = (x - self.mean) / ((2 ** 0.5) * self.stddev)
-        errof = (
+        x = (x - self.mean) / ((2 ** 0.5) * self.stddev)
+        erf = (
             ((4 / self.pi) ** 0.5) * (
-                xa - (xa ** 3) / 3 + (xa ** 5) / 10 - (xa ** 7) / 42 + (xa ** 9) / 216
+                x - (x ** 3) / 3 + (x ** 5) / 10 - (x ** 7) / 42 + (x ** 9) / 216
             )
         )
-        return cdf = (1 + errof) / 2
+        return (1 + erf) / 2
