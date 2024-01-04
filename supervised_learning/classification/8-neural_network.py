@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ This module contains the class NeuralNetwork which performs binary classification """
 
+import numpy as np
+
 
 class NeuralNetwork():
     """ Defines a Neural Network """
