@@ -3,3 +3,4 @@ This repository contains the projects made during the Machine Learning spe at Ho
 
 ## Projects:
 - [X] `./math/` Here are contained the math projects
+- [X] `./supervised_learning` This directory contains supervised learning projects
