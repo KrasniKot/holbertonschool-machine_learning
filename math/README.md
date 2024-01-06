@@ -53,3 +53,7 @@ This directory contains the Machine Learning math projects
 - What is a percentile?
 - What is mean, standard deviation, and variance?
 - Common probability distributions
+
+### Supervised Learning:
+This directory contains the following projects:
+- [X] Classification
