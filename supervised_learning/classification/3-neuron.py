@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!usr/bin/env python3
 """
 This module contains the class Neuron
 which performs binary classification
@@ -37,3 +37,24 @@ class Neuron():
     def A(self):
         """ Returns __A """
         return self.__A
+
+    def forward_prop(self, X):
+      """ Calculates the forward propagation of the neuron
+              X: Matrix with shape (nx, m);
+                  nx: number of input features
+                  m: number of examples
+      """
+      Z = self.W.T @ X + self.b
+      self.__A = 1 / (1 + np.exp(-Z))
+      return self.__A
+
+
+    def cost(self, Y, A):
+        """ Calculates the binary cross-entropy cost.
+            - Y: Matrix with shape (1, m) containing true labels.
+            - A: Matrix with shape (1, m) containing the activated output for each example
+                - m: number of examples
+        """
+        m = Y.shape[1]
+        c = (-1/m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))
+        return c

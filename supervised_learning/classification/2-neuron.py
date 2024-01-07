@@ -1,4 +1,4 @@
-#!/usr/bin/env/python3
+#!/usr/bin/env python3
 """
 This module contains the class Neuron
 which performs binary classification
