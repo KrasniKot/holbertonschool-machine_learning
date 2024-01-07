@@ -36,3 +36,25 @@ Write a class `Neuron` that defines a single neuron performing binary classifica
 	* `A` is a numpy.ndarray with shape (`1`, `m`) containing the activated output of the neuron for each example
 	* To avoid division by zero errors, please use `1.0000001 - A` instead of `1 - A`
 	* Returns the cost
+
+### 4. Evaluate Neuron:
+* Add the public method `def evaluate(self, X, Y):`
+  * Evaluates the neuron’s predictions
+  * `X` is a `numpy.ndarray` with shape (`nx`, `m`) that contains the input data
+    * `nx` is the number of input features to the neuron
+    * `m` is the number of examples
+  * `Y` is a `numpy.ndarray` with shape (`1`, `m`) that contains the correct labels for the input data
+  * Returns the neuron’s prediction and the cost of the network, respectively
+    * The prediction should be a `numpy.ndarray` with shape (`1`, `m`) containing the predicted labels for each example
+    * The label values should be 1 if the output of the network is >= 0.5 and 0 otherwise
+
+### 5. Neuron Gradient Descent:
+* Add the public method `def gradient_descent(self, X, Y, A, alpha=0.05):`
+  * Calculates one pass of gradient descent on the neuron
+  * `X` is a `numpy.ndarray` with shape (`nx`, `m`) that contains the input data
+    * `nx` is the number of input features to the neuron
+    * `m` is the number of examples
+  * `Y` is a `numpy.ndarray` with shape (`1`, `m`) that contains the correct labels for the input data
+  * `A` is a `numpy.ndarray` with shape (`1`, `m`) containing the activated output of the neuron for each example
+  * `alpha` is the learning rate
+  * Updates the private attributes `__W` and `__b`

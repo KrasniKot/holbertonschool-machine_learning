@@ -19,7 +19,7 @@ class Neuron():
         if nx < 1:
             raise ValueError("nx must be a positive integer")
 
-        self.__W = np.random.normal(size=(nx, 1))
+        self.__W = np.random.normal(size=(1, nx))
         self.__b = 0
         self.__A = 0
 
@@ -44,6 +44,6 @@ class Neuron():
                     nx: number of input features
                     m: number of examples
         """
-        Z = self.W.T @ X + self.b
+        Z = self.W @ X + self.b
         self.__A = 1 / (1 + np.exp(-Z))
         return self.__A

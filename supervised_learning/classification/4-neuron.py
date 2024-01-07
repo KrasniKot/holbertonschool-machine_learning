@@ -48,29 +48,25 @@ class Neuron():
         self.__A = 1 / (1 + np.exp(-Z))
         return self.__A
 
-
     def cost(self, Y, A):
         """ Calculates the binary cross-entropy cost.
             - Y: Matrix with shape (1, m) containing true labels.
-            - A: Matrix with shape (1, m) containing the activated output for each example
+            - A: Matrix with shape (1, m) containing the activated outputs
                 - m: number of examples
         """
         m = Y.shape[1]
         c = (-1/m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))
         return c
 
-#!/usr/bin/env python3
+    def evaluate(self, X, Y):
+        """ Evaluates the neuron prediction and loss
+                - X: numpy.ndarray with shape (nx, m) containing the input data.
+                - Y: numpy.ndarray with shape (1, m) containing true labels.
+        """
+        m = X.shape[1]
 
-import numpy as np
+        A = self.forward_prop(X)
+        L = np.where(A >= 0.5, 1, 0)
+        c = self.cost(Y, A)
 
-Neuron = __import__('3-neuron').Neuron
-
-lib_train = np.load('../data/Binary_Train.npz')
-X_3D, Y = lib_train['X'], lib_train['Y']
-X = X_3D.reshape((X_3D.shape[0], -1)).T
-
-np.random.seed(0)
-neuron = Neuron(X.shape[0])
-A = neuron.forward_prop(X)
-cost = neuron.cost(Y, A)
-print(cost)
+        return L, c
