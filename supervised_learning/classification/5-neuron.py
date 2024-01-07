@@ -79,11 +79,11 @@ class Neuron():
             - A: numpy.ndarray with shape (1, m) containing activated output.
                 m: number of examples
         """
-        m = X.shape[1]
+        m = Y.shape[1]
 
         dz = A - Y
         dw = np.matmul(X, dz.T) / m
         db = np.sum(dz) / m
 
-        self.__W -= alpha * dw.T
+        self.__W -= (alpha * dw).T
         self.__b -= alpha * db
