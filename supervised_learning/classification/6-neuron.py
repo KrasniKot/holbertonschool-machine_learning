@@ -70,3 +70,45 @@ class Neuron():
         c = self.cost(Y, A)
 
         return L, c
+
+    def gradient_descent(self, X, Y, A, alpha=0.5):
+        """ Perfomrs one step of gradient descent to update W and b
+            - X: numpy.ndarray with shape (nx, m) containing input data.
+                nx: number of input features
+            - Y: numpy.ndarray with shape (1, m) containing true labels.
+            - A: numpy.ndarray with shape (1, m) containing activated output.
+                m: number of examples
+        """
+        m = X.shape[1]
+
+        dz = A - Y
+        dw = (X @ dz.T) / m
+        db = np.sum(dz) / m
+
+        self.__W -= alpha * dw.T
+        self.__b -= alpha * db
+
+    def train(self, X, Y, iterations=5000, alpha=0.05):
+        """ Trains the neuron and then returns the evaluation.
+            - X: numpy.ndarray with shape (nx, m) containing the input data.
+                - nx: the number of input features to the neuron.
+            - Y: numpy.ndarray with shape (1, m) contaning the correct labels
+                - m: number of examples.
+            - iterations: number of iterations to train over.
+            - alpha: learning rate.
+        """
+        if type(iterations) is not int:
+            raise TypeError("iterations must be an integer")
+        if iterations < 1:
+            raise ValueError("iterations must be a positive integer")
+
+        if type(alpha) is not float:
+            raise TypeError("alpha must be an integer")
+        if alpha <= 0:
+            raise ValueError("aplha must be positive")
+
+        for i in range(iterations):
+            self.forward_prop(X)
+            self.gradient_descent(X, Y, self.__A, alpha)
+
+        return self.evaluate(X, Y)

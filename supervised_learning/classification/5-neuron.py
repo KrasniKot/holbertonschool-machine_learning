@@ -51,9 +51,39 @@ class Neuron():
     def cost(self, Y, A):
         """ Calculates the binary cross-entropy cost.
             - Y: Matrix with shape (1, m) containing true labels.
-            - A: Matrix with shape (1, m) containing the activated output
+            - A: Matrix with shape (1, m) containing the activated outputs
                 - m: number of examples
         """
         m = Y.shape[1]
-        c = (-1/m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        c = (-1/m) * np.sum(Y * np.log(A) + (1-Y) * np.log(1.0000001-A))
         return c
+
+    def evaluate(self, X, Y):
+        """ Evaluates the neuron prediction and loss
+                - X: numpy.ndarray with shape (nx, m) containing the inputs.
+                - Y: numpy.ndarray with shape (1, m) containing true labels.
+        """
+        m = X.shape[1]
+
+        A = self.forward_prop(X)
+        L = np.where(A >= 0.5, 1, 0)
+        c = self.cost(Y, A)
+
+        return L, c
+
+    def gradient_descent(self, X, Y, A, alpha=0.5):
+        """ Perfomrs one step of gradient descent to update W and b
+            - X: numpy.ndarray with shape (nx, m) containing input data.
+                nx: number of input features
+            - Y: numpy.ndarray with shape (1, m) containing true labels.
+            - A: numpy.ndarray with shape (1, m) containing activated output.
+                m: number of examples
+        """
+        m = X.shape[1]
+
+        dz = A - Y
+        dw = (X @ dz.T) / m
+        db = np.sum(dz) / m
+
+        self.__W -= alpha * dw.T
+        self.__b -= alpha * db
