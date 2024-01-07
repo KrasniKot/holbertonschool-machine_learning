@@ -103,9 +103,9 @@ class Neuron():
             raise ValueError("iterations must be a positive integer")
 
         if type(alpha) is not float:
-            raise TypeError("alpha must be an integer")
+            raise TypeError("alpha must be a float")
         if alpha <= 0:
-            raise ValueError("aplha must be positive")
+            raise ValueError("alpha must be positive")
 
         for i in range(iterations):
             self.forward_prop(X)

@@ -72,7 +72,7 @@ class Neuron():
 
         return L, c
 
-    def gradient_descent(self, X, Y, A, alpha=0.5):
+    def gradient_descent(self, X, Y, A, alpha=0.05):
         """ Perfomrs one step of gradient descent to update W and b
             - X: numpy.ndarray with shape (nx, m) containing input data.
                 nx: number of input features
@@ -112,12 +112,12 @@ class Neuron():
         if type(alpha) is not float:
             raise TypeError("alpha must be an float")
         if alpha <= 0:
-            raise ValueError("aplha must be positive")
+            raise ValueError("alpha must be positive")
 
         if type(step) is not int:
             raise TypeError("step must be an integer")
         if step <= 0 or step > iterations:
-            raise ValueError("step mst be positive and <= iterations")
+            raise ValueError("step must be positive and <= iterations")
 
         cs = []
         iters = []
@@ -127,11 +127,11 @@ class Neuron():
             c = self.cost(Y, self.__A)
             self.gradient_descent(X, Y, self.__A, alpha)
 
-           if verbose and step and i % step == 0:
-               print("Cost after {} iterations: {}".format(i, c))
+            if verbose and step and i % step == 0:
+                print("Cost after {} iterations: {}".format(i, c))
 
-           cs.append(c)
-           iters.append(i)
+            cs.append(c)
+            iters.append(i)
 
         if graph:
             plt.plot(iters, c, '-b')
