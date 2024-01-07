@@ -71,7 +71,7 @@ class Neuron():
 
         return L, c
 
-    def gradient_descent(self, X, Y, A, alpha=0.5):
+    def gradient_descent(self, X, Y, A, alpha=0.05):
         """ Perfomrs one step of gradient descent to update W and b
             - X: numpy.ndarray with shape (nx, m) containing input data.
                 nx: number of input features
