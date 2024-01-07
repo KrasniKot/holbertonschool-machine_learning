@@ -1,4 +1,4 @@
-#!usr/bin/env/python3
+#!/usr/bin/env/python3
 """
 This module contains the class Neuron
 which performs binary classification
@@ -44,6 +44,6 @@ class Neuron():
                     nx: number of input features
                     m: number of examples
         """
-        Z = np.dot(self.W.T, X) + self.b
+        Z = self.W.T @ X + self.b
         self.__A = 1 / (1 + np.exp(-Z))
         return self.__A
