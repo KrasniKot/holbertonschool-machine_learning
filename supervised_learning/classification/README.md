@@ -127,3 +127,21 @@ Write a class `NeuralNetwork` that defines a neural network with one hidden laye
 
 ### 9 Privatize NeuralNetwork:
 Privatize all instanace attributes and set getters for each one of them.
+
+### 10. NeuralNetwork Forward Propagation:
+* Add the public method `def forward_prop(self, X):`
+  * Calculates the forward propagation of the neural network
+  * `X` is a numpy.ndarray with shape (nx, m) that contains the input data
+    * `nx` is the number of input features to the neuron
+    * `m` is the number of examples
+  * Updates the private attributes `__A1` and `__A2`
+  * The neurons should use a sigmoid activation function
+  * Returns the private attributes `__A1` and `__A2`, respectively
+
+### 11. NeuralNetwork Cost:
+* Add the public method `def cost(self, Y, A):`
+  * Calculates the cost of the model using logistic regression
+  * `Y` is a `numpy.ndarray` with shape (`1`, `m`) that contains the correct labels for the input data
+  * `A` is a `numpy.ndarray` with shape (`1`, `m`) containing the activated output of the neuron for each example
+  * To avoid division by zero errors, please use `1.0000001 - A` instead of `1 - A`
+  * Returns the cost

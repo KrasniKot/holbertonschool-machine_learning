@@ -72,7 +72,7 @@ class NeuralNetwork:
         if X.shape[0] != self.W1.shape[1]:
             raise ValueError("Invalid number of features in X")
 
-        sigmoid = lambda z: 1 / (1 + np.exp(-z))
+        def sigmoid(z): 1 / (1 + np.exp(-z))
 
         self.__A1 = sigmoid(self.__W1 @ X + self.__b1)
         self.__A2 = sigmoid(self.__W2 @ self.__A1 + self.__b2)
@@ -81,10 +81,12 @@ class NeuralNetwork:
 
     def cost(self, Y, A):
         """ Calculates the cost of the model
-                - Y: numpy.ndarray with shape (1, m) containing the correct output.
-                - A: A is a numpy.ndarray with shape (1, m) containing the activated output.
+                - Y: numpy.ndarray with shape (1, m)
+                    containing the correct output.
+                - A: A is a numpy.ndarray with shape (1, m)
+                    containing the activated output.
                     - m: number of examples.
         """
 
         m = Y.shape[1]
-        return  (-1/m) * np.sum(Y * np.log(A) + (1-Y)  * np.log(1.0000001-A))
+        return (-1/m) * np.sum(Y * np.log(A) + (1-Y) * np.log(1.0000001-A))
