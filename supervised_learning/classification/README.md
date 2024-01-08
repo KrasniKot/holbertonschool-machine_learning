@@ -124,3 +124,6 @@ Write a class `NeuralNetwork` that defines a neural network with one hidden laye
     * `W2`: The weights vector for the output neuron. Upon instantiation, it should be initialized using a random normal distribution.
     * `b2`: The bias for the output neuron. Upon instantiation, it should be initialized to 0.
     * `A2`: The activated output for the output neuron (prediction). Upon instantiation, it should be initialized to 0.
+
+### 9 Privatize NeuralNetwork:
+Privatize all instanace attributes and set getters for each one of them.
