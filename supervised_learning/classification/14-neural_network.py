@@ -128,3 +128,27 @@ class NeuralNetwork:
         self.__W1 -= alpha * dW1
         self.__b1 -= alpha * db1
 
+    def train(self, X, Y, iterations=5000, alpha=0.05):
+        """ Trains the Neural Network
+            - X: numpy.ndarray with shape (nx, m)
+                    containing the input features.
+            - Y: numpy.ndarray with shape (1, m)
+                    containing the correct output.
+            - iterations: number of iterations to optimize the parameters
+            - alpha: learning rate.
+        """
+        if type(iterations) is not int:
+            raise TypeError("iterations must be an integer")
+        if iterations < 0:
+            raise ValueError("iterations must be a positive integer")
+
+        if type(alpha) is not float:
+            raise TypeError("alpha must be a float")
+        if alpha < 0:
+            raise ValueError("alpha must be positive")
+
+        for i in range(iterations):
+            self.forward_prop(X)
+            self.gradient_descent(X, Y, self.__A1, self.__A2, alpha)
+
+        return self.evaluate(X, Y)
