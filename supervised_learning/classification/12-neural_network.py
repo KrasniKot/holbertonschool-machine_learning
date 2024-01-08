@@ -93,8 +93,10 @@ class NeuralNetwork:
 
     def evaluate(self, X, Y):
         """ Evaluates cost and A of the model
-                - X: numpy.ndarray with shape (nx, m) containing the input features.
-                - Y: numpy.ndarray with shape (1, m) containing the correct output.
+                - X: numpy.ndarray with shape (nx, m)
+                    containing the input features.
+                - Y: numpy.ndarray with shape (1, m)
+                    containing the correct output.
         """
         self.forward_prop(X)
         c = self.cost(Y, self.__A2)

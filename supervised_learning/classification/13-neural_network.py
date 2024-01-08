@@ -104,8 +104,10 @@ class NeuralNetwork:
 
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         """  Calculates one pass of gradient descent on the Neural Network
-                - X: numpy.ndarray with shape (nx, m) containing the input features.
-                - Y: numpy.ndarray with shape (1, m) containing the correct output.
+                - X: numpy.ndarray with shape (nx, m)
+                    containing the input features.
+                - Y: numpy.ndarray with shape (1, m)
+                    containing the correct output.
                 - A1: output of the hidden layer.
                 - A2: predicted output.
                 - alpha: learning rate.
