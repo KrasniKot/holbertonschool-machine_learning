@@ -218,3 +218,9 @@ Privatize all instanace attributes and set getters for each one of them.
       * The weights of the network should be initialized using the He et al. method and saved in the weights dictionary using the key W{l} where {l} is the hidden layer the weight belongs to
       * The biases of the network should be initialized to 0’s and saved in the weights dictionary using the key b{l} where {l} is the hidden layer the bias belongs to
     * You are allowed to use one loop
+
+### 17. Privatize DeepNeuralNetwork:
+Privatize all instanace attributes and set getters for each one of them.
+
+### 18. DeepNeuralNetwork Forward Propagation:
+
