@@ -31,11 +31,10 @@ class DeepNeuralNetwork:
 
             if type(layers[la]) is not int or layers[la] < 1:
                 raise ValueError("layers must be a list of positive integers")
-            
+
             inodes = nx if la == 0 else layers[la - 1]
 
             self.weights["W" + str(la + 1)] = np.random.randn(
                     layers[la], inodes) * np.sqrt(2 / inodes)
 
             self.weights["b" + str(la + 1)] = np.zeros((layers[la], 1))
-
