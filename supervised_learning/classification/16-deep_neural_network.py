@@ -30,7 +30,7 @@ class DeepNeuralNetwork:
         for la in range(self.L):
 
             if type(layers[la]) is not int or layers[la] < 1:
-                raise ValueError("layers must be a list of positive integers")
+                raise TypeError("layers must be a list of positive integers")
 
             inodes = nx if la == 0 else layers[la - 1]
 

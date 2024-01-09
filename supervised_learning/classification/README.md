@@ -223,4 +223,22 @@ Privatize all instanace attributes and set getters for each one of them.
 Privatize all instanace attributes and set getters for each one of them.
 
 ### 18. DeepNeuralNetwork Forward Propagation:
+* Add the public method `def forward_prop(self, X):`
+  * Calculates the forward propagation of the neural network
+  * `X` is a `numpy.ndarray` with shape (`nx`, `m`) that contains the input data
+    * `nx` is the number of input features to the neuron
+    * `m` is the number of examples
+  * Updates the private attribute `__cache:`
+    * The activated outputs of each layer should be saved in the `__cache` dictionary using the key `A{l}` where `{l}` is the hidden layer the activated output belongs to
+    * `X` should be saved to the cache dictionary using the key `A0`
+  * All neurons should use a sigmoid activation function
+  * You are allowed to use one loop
+  * Returns the output of the neural network and the cache, respectively
 
+### 19. DeepNeuralNetwork Cost:
+* Add the public method `def cost(self, Y, A):`
+  * Calculates the cost of the model using logistic regression
+  * `Y` is a `numpy.ndarray` with shape (`1`, `m`) that contains the correct labels for the input data
+  * `A` is a `numpy.ndarray` with shape (`1`, `m`) containing the activated output of the neuron for each example
+  * To avoid division by zero errors, please use `1.0000001 - A` instead of `1 - A`
+  * Returns the cost
