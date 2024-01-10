@@ -282,6 +282,12 @@ Privatize all instanace attributes and set getters for each one of them.
 
 ### 23. Upgrade Train DeepNeuralNetwork:
 ### 24. One-Hot Encode:
+Write a function `def one_hot_encode(Y, classes):` that converts a numeric label vector into a one-hot matrix:
+* `Y` is a `numpy.ndarray` with shape (`m`,) containing numeric class labels
+* `m` is the number of examples
+* `classes` is the maximum number of classes found in `Y`
+* Returns: a one-hot encoding of `Y` with shape (`classes`, `m`), or `None` on failure
+
 ### 25. One-Hot Decode:
 ### 26. Persistence is Key:
 ### 27. Update DeepNeuralNetwork:
