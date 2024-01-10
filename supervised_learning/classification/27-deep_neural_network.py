@@ -55,18 +55,27 @@ class DeepNeuralNetwork:
         """ Returns weights """
         return self.__weights
 
+    def __smax(z):
+        """ Performs the softmax calculation
+            - z: numpy.ndarray with shape (nx, m) that contains the input data
+        """
+        a = np.exp(z - np.max(z))
+        return a / a.sum(axis=0)
+
     def forward_prop(self, X):
         """ Calculates the forward propagation of the Neural Network
             - X: numpy.ndarray with shape (nx, m) containing the input data.
         """
         self.__cache["A0"] = X
 
-        for i in range(1, self.__L + 1):
+        for i in range(1, self.__L ):
             ws = self.__weights["W" + str(i)]
             bs = self.__weights["b" + str(i)]
             A = self.__cache["A" + str(i - 1)]
             Z = ws @ A + bs
-            A = 1 / (1 + np.exp(-Z))
+
+            A = 1 / (1 + np.exp(-Z)) if i < self.__L - 1 else self.__smax(Z)
+
             self.__cache["A" + str(i)] = A
 
         return A, self.__cache
@@ -78,9 +87,7 @@ class DeepNeuralNetwork:
                 - m: number of examples.
         """
 
-        m = Y.shape[1]
-        C = (-1/m) * np.sum(Y * np.log(A) + (1-Y) * (np.log(1.0000001-A)))
-        return C
+        return -np.sum(Y * np.log(A)) / Y.shape[1]
 
     def evaluate(self, X, Y):
         """ Evaluates the neuron prediction and loss
@@ -91,7 +98,7 @@ class DeepNeuralNetwork:
         m = X.shape[1]
         A = self.forward_prop(X)[0]
 
-        return np.where(A >= 0.5, 1, 0), self.cost(Y, A)
+        return np.where(A == np.max(A, axis=0), 1, 0), self.cost(Y, A)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
         """ Performs the gradient descent calculation
