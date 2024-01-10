@@ -55,6 +55,7 @@ class DeepNeuralNetwork:
         """ Returns weights """
         return self.__weights
 
+    @staticmethod
     def __smax(z):
         """ Performs the softmax calculation
             - z: numpy.ndarray with shape (nx, m) that contains the input data
@@ -68,7 +69,7 @@ class DeepNeuralNetwork:
         """
         self.__cache["A0"] = X
 
-        for i in range(1, self.__L ):
+        for i in range(1, self.__L):
             ws = self.__weights["W" + str(i)]
             bs = self.__weights["b" + str(i)]
             A = self.__cache["A" + str(i - 1)]
