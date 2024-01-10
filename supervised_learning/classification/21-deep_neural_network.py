@@ -88,17 +88,26 @@ class DeepNeuralNetwork:
                 - m: number of examples.
         """
         m = X.shape[1]
-
         A = self.forward_prop(X)[0]
-        L = np.where(A >= 0.5, 1, 0)
-        c = self.cost(Y, A)
 
-        return L, c
+        return np.where(A >= 0.5, 1, 0), self.cost(Y, A)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
         """ Performs the gradient descent calculation
             - Y: numpy.ndarray with shape (1, m) containing true labels.
+                - m: number of examples.
             - cache: dictionary containing all the dnn intermediary values.
             - alpha: the learning rate.
         """
+        m = Y.shape[1]
+        dz = self.__cache["A" + str(self.__L)] - Y
 
+        for i in range(self.__L, 0, -1):
+            dw = (1/m) * (dz @ self.__cache["A" + str(i - 1)].T)
+            db = (1/m) * np.sum(dz, axis=1, keepdims=True)
+            dz = (self.__weights["W" + str(i)].T @ dz) * (
+                    self.__cache["A" + str(i - 1)] * (
+                        1 - self.__cache["A" + str(i - 1)]))
+
+            self.__weights["W" + str(i)] -= alpha * dw
+            self.__weights["b" + str(i)] -= alpha * db
