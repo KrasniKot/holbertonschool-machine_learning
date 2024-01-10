@@ -10,6 +10,7 @@ def one_hot_encode(Y, classes):
         - classes: is the maximum number of classes found in Y.
     """
     try:
-        return np.eye(classes)[Y].T
+        if type(Y) is np.ndarray:
+            return np.eye(classes)[Y].T
     except Exception:
         return None
