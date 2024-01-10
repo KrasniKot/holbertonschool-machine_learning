@@ -199,8 +199,7 @@ Privatize all instanace attributes and set getters for each one of them.
   * You are allowed to use one loop
   * Returns the evaluation of the training data after iterations of training have occurred
 
-###
-
+### 15. Upgrade Train NeuralNetwork:
 ### 16. DeepNeuralNetwork:
 * class constructor: `def __init__(self, nx, layers):`
   * `nx` is the number of input features
@@ -280,3 +279,10 @@ Privatize all instanace attributes and set getters for each one of them.
  * Updates the private attributes `__weights` and `__cache`
  * You are allowed to use one loop
  * Returns the evaluation of the training data after `iterations` of training have occurred
+
+### 23. Upgrade Train DeepNeuralNetwork:
+### 24. One-Hot Encode:
+### 25. One-Hot Decode:
+### 26. Persistence is Key:
+### 27. Update DeepNeuralNetwork:
+### 28. All the Activations:

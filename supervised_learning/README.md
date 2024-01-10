@@ -11,10 +11,10 @@ Supervised learning projects are contained in this directory
 * What is a weight?  
 * What is a bias?  
 * What are activation functions?  
- * Sigmoid?  
- * Tanh?  
- * Relu?  
- * Softmax?  
+  * Sigmoid?  
+  * Tanh?  
+  * Relu?  
+  * Softmax?  
 * What is a layer?  
 * What is a hidden layer?  
 * What is Logistic Regression?  
