@@ -122,7 +122,7 @@ class DeepNeuralNetwork:
         for i in range(self.__L, 0, -1):
             A = self.__cache["A" + str(i)]
 
-            dw = (1/m) * (dz @ self.__cache["A" + str(i - 1)].T)
+            dw = (1/m) * (dz @ A.T)
             db = (1/m) * np.sum(dz, axis=1, keepdims=True)
 
             if i == self.__L:
