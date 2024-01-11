@@ -133,7 +133,7 @@ class DeepNeuralNetwork:
                 elif self.__activation == "tanh":
                     c = 1 - (A ** 2)
 
-                dz = (weights_c["W" + str(i + 1)].T @ dz) * c
+                dz = (self.__weights["W" + str(i + 1)].T @ dz) * c
 
             self.__weights["W" + str(i)] -= alpha * dw
             self.__weights["b" + str(i)] -= alpha * db
