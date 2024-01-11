@@ -59,8 +59,7 @@ class DeepNeuralNetwork:
         """ Returns weights """
         return self.__weights
 
-    @staticmethod
-    def __smax(z):
+    def __smax(self, z):
         """ Performs the softmax calculation
             - z: numpy.ndarray with shape (nx, m) that contains the input data
         """
@@ -72,23 +71,24 @@ class DeepNeuralNetwork:
             - X: numpy.ndarray with shape (nx, m) containing the input data.
         """
         self.__cache['A0'] = X
-        act = self.__activation
 
         for i in range(self.__L):
-            W, b = self.__weights[
-                    "W" + str(i + 1)], self.__weights["b" + str(i + 1)]
-            prev, A = self.__cache[
-                    "A" + str(i)], "A" + str(i + 1)
+            A = "A" + str(i + 1)
+            W = self.__weights["W" + str(i + 1)]
+            b = self.__weights["b" + str(i + 1)]
+            prev = self.__cache[str(i)]
 
-            Z = np.matmul(W, prev) + b
+            z = np.matmul(W, prev) + b
 
             if i < self.__L - 1:
-                self.__cache[A] = 1 / (1 + np.exp(
-                    -Z)) if act == 'sig' else np.tanh(Z)
+                if self.__activation == 'sig':
+                    self.__cache[A] = 1 / (1 + np.exp(-z))
+                else:
+                    self.__cache[A] = np.tanh(z)
             else:
-                self.__cache[A] = self.__smax(Z)
+                self.__cache[A] = self.__smax(z)
 
-        return self.__cache[A], self.__cache
+        return (self.__cache[A], self.__cache)
 
     def cost(self, Y, A):
         """Calculates the cost of the model using binary cross-entropy.
@@ -118,7 +118,6 @@ class DeepNeuralNetwork:
             - alpha: the learning rate.
         """
         m = Y.shape[1]
-        wc = self.__weights.copy()
 
         for i in range(self.__L, 0, -1):
             A = cache["A" + str(i)]
@@ -131,7 +130,7 @@ class DeepNeuralNetwork:
                 elif self.__activation == "tanh":
                     c = 1 - (A ** 2)
 
-                dz = (wc["W" + str(i + 1)].T @ dz) * c
+                dz = (self.__weights["W" + str(i + 1)].T @ dz) * c
 
             dw = (dz @ cache["A" + str(i - 1)].T) / m
             db = np.sum(dz, axis=1, keepdims=True) / m
