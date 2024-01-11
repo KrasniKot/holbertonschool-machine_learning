@@ -74,9 +74,10 @@ class DeepNeuralNetwork:
 
         for i in range(self.__L):
             A = "A" + str(i + 1)
+            prevk = "A{}".format(i)
             W = self.__weights["W" + str(i + 1)]
             b = self.__weights["b" + str(i + 1)]
-            prev = self.__cache[A + str(i)]
+            prev = self.__cache[prevk]
 
             z = np.matmul(W, prev) + b
 
