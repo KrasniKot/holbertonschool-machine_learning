@@ -117,13 +117,9 @@ class DeepNeuralNetwork:
             - alpha: the learning rate.
         """
         m = Y.shape[1]
-        dz = self.__cache["A" + str(self.__L)] - Y
 
         for i in range(self.__L, 0, -1):
-            A = self.__cache["A" + str(i)]
-
-            dw = (1/m) * (dz @ A.T)
-            db = (1/m) * np.sum(dz, axis=1, keepdims=True)
+            A = cache["A" + str(i)]
 
             if i == self.__L:
                 dz = A - Y
@@ -134,6 +130,9 @@ class DeepNeuralNetwork:
                     c = 1 - (A ** 2)
 
                 dz = (self.__weights["W" + str(i + 1)].T @ dz) * c
+
+            dw = (1/m) * (dz @ cache["A" + str(i - 1)].T)
+            db = (1/m) * np.sum(dz, axis=1, keepdims=True)
 
             self.__weights["W" + str(i)] -= alpha * dw
             self.__weights["b" + str(i)] -= alpha * db
