@@ -71,23 +71,24 @@ class DeepNeuralNetwork:
         """ Calculates the forward propagation of the Neural Network
             - X: numpy.ndarray with shape (nx, m) containing the input data.
         """
-        self.__cache["A0"] = X
+        self.__cache['A0'] = X
         act = self.__activation
 
-        for i in range(1, self.__L + 1):
-            ws = self.__weights["W" + str(i)]
-            bs = self.__weights["b" + str(i)]
-            A = self.__cache["A" + str(i - 1)]
-            Z = ws @ A + bs
+        for i in range(self.__L):
+            W, b = self.__weights[
+                    "W" + str(i + 1)], self.__weights["b" + str(i + 1)]
+            prev, A = self.__cache[
+                    "A" + str(i)], "A" + str(i + 1)
 
-            if i < self.__L:
-                A = 1 / (1 + np.exp(-Z)) if act == "sig" else np.tanh(Z)
+            Z = np.matmul(W, prev) + b
+
+            if i < self.__L - 1:
+                self.__cache[A] = 1 / (1 + np.exp(
+                    -Z)) if act == 'sig' else np.tanh(Z)
             else:
-                A = self.__smax(Z)
+                self.__cache[A] = self.__smax(Z)
 
-            self.__cache["A" + str(i)] = A
-
-        return A, self.__cache
+        return self.__cache[A], self.__cache
 
     def cost(self, Y, A):
         """Calculates the cost of the model using binary cross-entropy.
