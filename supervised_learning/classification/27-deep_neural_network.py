@@ -69,13 +69,16 @@ class DeepNeuralNetwork:
         """
         self.__cache["A0"] = X
 
-        for i in range(1, self.__L):
+        for i in range(1, self.__L + 1):
             ws = self.__weights["W" + str(i)]
             bs = self.__weights["b" + str(i)]
             A = self.__cache["A" + str(i - 1)]
             Z = ws @ A + bs
 
-            A = 1 / (1 + np.exp(-Z)) if i < self.__L - 1 else self.__smax(Z)
+            if i < self.__L:
+                A = 1 / (1 + np.exp(-Z))
+            else:
+                A = self.__softmax(Z)
 
             self.__cache["A" + str(i)] = A
 
