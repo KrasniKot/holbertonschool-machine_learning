@@ -78,7 +78,7 @@ class DeepNeuralNetwork:
             if i < self.__L:
                 A = 1 / (1 + np.exp(-Z))
             else:
-                A = self.__softmax(Z)
+                A = self.__smax(Z)
 
             self.__cache["A" + str(i)] = A
 
