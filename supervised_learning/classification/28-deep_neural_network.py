@@ -132,8 +132,8 @@ class DeepNeuralNetwork:
 
                 dz = (self.__weights["W" + str(i + 1)].T @ dz) * c
 
-            dw = (1/m) * (dz @ cache["A" + str(i - 1)].T)
-            db = (1/m) * np.sum(dz, axis=1, keepdims=True)
+            dw = (dz @ cache["A" + str(i - 1)].T) / m
+            db = np.sum(dz, axis=1, keepdims=True) / m
 
             self.__weights["W" + str(i)] -= alpha * dw
             self.__weights["b" + str(i)] -= alpha * db
