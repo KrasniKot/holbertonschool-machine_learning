@@ -118,6 +118,7 @@ class DeepNeuralNetwork:
             - alpha: the learning rate.
         """
         m = Y.shape[1]
+        wc = self.__weights.copy()
 
         for i in range(self.__L, 0, -1):
             A = cache["A" + str(i)]
@@ -130,7 +131,7 @@ class DeepNeuralNetwork:
                 elif self.__activation == "tanh":
                     c = 1 - (A ** 2)
 
-                dz = (self.__weights["W" + str(i + 1)].T @ dz) * c
+                dz = (wc["W" + str(i + 1)].T @ dz) * c
 
             dw = (dz @ cache["A" + str(i - 1)].T) / m
             db = np.sum(dz, axis=1, keepdims=True) / m
