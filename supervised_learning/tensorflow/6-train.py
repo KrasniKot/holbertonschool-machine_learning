@@ -57,6 +57,6 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
             if i < iterations:
                 sess.run(top, feed_dict={x: X_train, y: Y_train})
 
-        mdlpath = saver.save(sess, save_path)
+        mdlpath = save.save(sess, save_path)
 
     return mdlpath
