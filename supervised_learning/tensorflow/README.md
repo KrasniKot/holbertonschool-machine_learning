@@ -39,3 +39,12 @@ Write the function `def calculate_loss(y, y_pred):` that calculates the softmax 
 * `y` is a placeholder for the labels of the input data
 * `y_pred` is a tensor containing the network’s predictions
 * Returns: a tensor containing the loss of the prediction
+
+### 5. Train_Op:
+Write the function `def create_train_op(loss, alpha):` that creates the training operation for the network:
+* `loss` is the loss of the network’s prediction
+* `alpha` is the learning rate
+* Returns: an operation that trains the network using gradient descent
+
+### 6. Train:
+### 7. 7. Evaluate:

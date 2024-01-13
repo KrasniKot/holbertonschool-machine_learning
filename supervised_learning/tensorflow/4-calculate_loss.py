@@ -11,4 +11,4 @@ def calculate_loss(y, y_pred):
         - y: placeholder for the labels of the input data (expected result).
         - y_pred: tensor containing the network’s predictions.
     """
-    return ts.loss.softmax_cross_entropy(onehot_labels=y, logits=y_pred)
+    return tf.loss.softmax_cross_entropy(onehot_labels=y, logits=y_pred)
