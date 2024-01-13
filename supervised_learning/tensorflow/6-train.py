@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ This module trains and saves the nn classifier """
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 create_placeholders = __import__('0-create_placeholders').create_placeholders
 forward_prop = __import__('2-forward_prop').forward_prop
