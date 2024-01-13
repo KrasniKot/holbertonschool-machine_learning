@@ -3,7 +3,7 @@
     which creates a layer
 """
 
-import import tensorflow as tf
+import tensorflow as tf
 
 
 def create_layer(prev, n, activation):
@@ -13,7 +13,7 @@ def create_layer(prev, n, activation):
          - activation: activation function that the layer should use
     """
     i = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    layer = tf.layer.Dens(
+    layer = tf.layer.Dense(
             units=n,
             activation=activation,
             kernel_initializer=i,

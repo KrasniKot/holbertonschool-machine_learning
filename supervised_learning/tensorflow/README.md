@@ -33,3 +33,9 @@ Write the function `def calculate_accuracy(y, y_pred):` that calculates the accu
 * `y_pred` is a tensor containing the network’s predictions
 * Returns: a tensor containing the decimal accuracy of the prediction
 * hint: accuracy = correct_predictions / all_predictions
+
+### 4. Loss:
+Write the function `def calculate_loss(y, y_pred):` that calculates the softmax cross-entropy loss of a prediction:
+* `y` is a placeholder for the labels of the input data
+* `y_pred` is a tensor containing the network’s predictions
+* Returns: a tensor containing the loss of the prediction
