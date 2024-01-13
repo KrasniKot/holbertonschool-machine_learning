@@ -23,7 +23,7 @@ def evaluate(X, Y, save_path):
         acc = tf.get_collection("accuracy")[0]
         loss = tf.get_collection("loss")[0]
 
-        A = sess.run(y_pred, feed_dict={x: X, y: Y})
+        A = sess.run(a, feed_dict={x: X, y: Y})
         cost = sess.run(loss, feed_dict={x: X, y: Y})
         acc = sess.run(acc, feed_dict={x: X, y: Y})
 
