@@ -134,7 +134,7 @@ class Neuron():
             iters.append(i)
 
         if graph:
-            plt.plot(iters, c, '-b')
+            plt.plot(iters, cs, '-b')
             plt.xlabel('Iteration')
             plt.ylabel('Cost')
             plt.title('Training Cost')
