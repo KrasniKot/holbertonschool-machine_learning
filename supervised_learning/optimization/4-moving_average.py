@@ -18,6 +18,6 @@ def moving_average(data, beta):
 
     for i in range(len(data)):
         ws = ((ws * beta) + ((1 - beta) * data[i]))
-        mvav.append(v / (1 - (beta ** (i + 1))))
+        mvav.append(ws / (1 - (beta ** (i + 1))))
 
     return mvav
