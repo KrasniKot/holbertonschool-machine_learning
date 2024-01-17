@@ -34,12 +34,12 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         # Get needed tensors
         x = tf.get_collection("x")[0]
         y = tf.get_collection("y")[0]
-        accuarcy = tf.get_collection("accuarcy")[0]
+        accuracy = tf.get_collection("accuracy")[0]
         loss = tf.get_collection("loss")[0]
         train_op = tf.get_collection("train_op")[0]
 
-        m = Y_train[0]
-        bpe = range(0, m, batch_size)
+        m = Y_train.shape[0]  # Corrected line
+        batches_per_epoch = range(0, m, batch_size)
 
         for epoch in range(epochs):
             X_train, Y_train = shuffle_data(X_train, Y_train)
