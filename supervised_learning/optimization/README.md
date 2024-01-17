@@ -71,6 +71,12 @@ Write the function `def train_mini_batch(X_train, Y_train, X_valid, Y_valid, bat
   * Advice: the function `range` can help you to handle this loop inside your dataset by using `batch_size` as step value
 
 ### 4. Moving Average:
+Write the function `def moving_average(data, beta):` that calculates the weighted moving average of a data set:
+* `data` is the list of data to calculate the moving average of
+* `beta` is the weight used for the moving average
+* Your moving average calculation should use bias correction
+* Returns: a list containing the moving averages of `data`
+
 ### 5. Momentum:
 ### 6. Momentum Upgraded:
 ### 7. RMSProp:
