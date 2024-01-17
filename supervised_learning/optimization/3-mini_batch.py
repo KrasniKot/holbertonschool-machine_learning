@@ -34,9 +34,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         # Get needed tensors
         x = tf.get_collection("x")[0]
         y = tf.get_collection("y")[0]
-        acc = tf.get_collection("acc")[0]
+        accuarcy = tf.get_collection("acc")[0]
         loss = tf.get_collection("loss")[0]
-        tr_op = tf.get_collection("train_op")[0]
+        train_op = tf.get_collection("train_op")[0]
 
         bpe = range(0, m, batch_size)
 
@@ -68,3 +68,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     print(f'\tStep {step}:')
                     print(f'\t\tCost: {step_cost}')
                     print(f'\t\tAccuracy: {step_accuracy}')
+
+        saver.save(sess, save_path)
+
+    return save_path
