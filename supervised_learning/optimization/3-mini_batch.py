@@ -26,50 +26,46 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         - load_path: path from which to load the model,
         - save_path path where the model should be saved after training to,
     """
-    with tf.Session() as sess:
-        # Get model and restore session
+    with tf.Session() as session:
         saver = tf.train.import_meta_graph(load_path + '.meta')
-        saver.restore(sess, load_path)
+        saver.restore(session, load_path)
+        
+        # Access placeholders and ops
+        x = tf.get_collection('x')[0]
+        y = tf.get_collection('y')[0]
+        accuracy = tf.get_collection('accuracy')[0]
+        loss = tf.get_collection('loss')[0]
+        train_op = tf.get_collection('train_op')[0]
 
-        # Get needed tensors
-        x = tf.get_collection("x")[0]
-        y = tf.get_collection("y")[0]
-        accuracy = tf.get_collection("accuracy")[0]
-        loss = tf.get_collection("loss")[0]
-        train_op = tf.get_collection("train_op")[0]
-
-        m = Y_train.shape[0]  # Corrected line
-        batches_per_epoch = range(0, m, batch_size)
+        # Number of steps per epoch
+        steps_per_epoch = X_train.shape[0] // batch_size
 
         for epoch in range(epochs):
+
             X_train, Y_train = shuffle_data(X_train, Y_train)
 
-            train_cost, train_accuracy = sess.run(
-                    [loss, accuracy], feed_dict={x: X_train, y: Y_train})
-            print(f'After {epoch + 1} epochs:')
-            print(f'\tTraining Cost: {train_cost}')
-            print(f'\tTraining Accuracy: {train_accuracy}')
-
-            # Validation
-            valid_cost, valid_accuracy = sess.run(
-                    [loss, accuracy], feed_dict={x: X_valid, y: Y_valid})
-            print(f'\tValidation Cost: {valid_cost}')
-            print(f'\tValidation Accuracy: {valid_accuracy}')
-
-            for step in batches_per_epoch:
+            for step in range(steps_per_epoch):
                 # Get mini-batch
-                X_batch = X_train[step: step + batch_size]
-                Y_batch = Y_train[step: step + batch_size]
+                start = step * batch_size
+                end = start + batch_size
+                X_batch = X_train[start:end]
+                Y_batch = Y_train[start:end]
 
-                _, step_cost, step_accuracy = sess.run(
-                        [train_op, loss, accuracy], feed_dict={
-                            x: X_batch, y: Y_batch})
+                # Train the model
+                feed_dict = {x: X_batch, y: Y_batch}
+                session.run(train_op, feed_dict)
 
-                if step % 100 == 0:
-                    print(f'\tStep {step}:')
-                    print(f'\t\tCost: {step_cost}')
-                    print(f'\t\tAccuracy: {step_accuracy}')
+            # Print statistics
+            train_accuracy = session.run(accuracy, feed_dict={x: X_train, y: Y_train})
+            train_loss = session.run(loss, feed_dict={x: X_train, y: Y_train})
+            valid_accuracy = session.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
+            valid_loss = session.run(loss, feed_dict={x: X_valid, y: Y_valid})
 
-        saver.save(sess, save_path)
+            print(f'Epoch {epoch + 1}/{epochs}')
+            print(f'Training - Loss: {train_loss}, Accuracy: {train_accuracy}')
+            print(f'Validation - Loss: {valid_loss}, Accuracy: {valid_accuracy}')
+
+        # Save the model
+        saver.save(session, save_path)
 
     return save_path
