@@ -62,8 +62,8 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                 sess.run(trop, feed_dict)
 
                 if i % 100 == 0:
-                    bcost = session.run(loss, feed_dict)
-                    bacc = session.run(acc, feed_dict)
+                    bcost = sess.run(loss, feed_dict)
+                    bacc = sess.run(acc, feed_dict)
                     print(f'\tStep {i}:')
                     print(f'\t\tCost: {bcost}')
                     print(f'\t\tAccuracy: {bacc}')
