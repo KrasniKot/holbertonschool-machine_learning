@@ -55,21 +55,22 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             sts = 0
             ends = batch_size
 
-            for i in range(round(len(X_train) / batch_size) + 2):
-                feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
-                sess.run(trop, feed_dict)
+            if epoch != epochs:
+                for i in range(round(len(X_train) / batch_size) + 2):
+                    feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
+                    sess.run(trop, feed_dict)
 
-                if i % 100 == 0:
-                    bcost = sess.run(loss, feed_dict)
-                    bacc = sess.run(acc, feed_dict)
-                    print(f'\tStep {i}:')
-                    print(f'\t\tCost: {bcost}')
-                    print(f'\t\tAccuracy: {bacc}')
+                    if i % 100 == 0:
+                        bcost = sess.run(loss, feed_dict)
+                        bacc = sess.run(acc, feed_dict)
+                        print(f'\tStep {i}:')
+                        print(f'\t\tCost: {bcost}')
+                        print(f'\t\tAccuracy: {bacc}')
 
-                sts = sts + batch_size
-                if (m - sts) < batch_size:
-                    ends = ends + (m - sts)
-                else:
-                    ends = ends + batch_size
+                    sts = sts + batch_size
+                    if (m - sts) < batch_size:
+                        ends = ends + (m - sts)
+                    else:
+                        ends = ends + batch_size
 
         return (saver.save(sess, save_path))
