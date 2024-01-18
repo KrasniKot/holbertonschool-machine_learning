@@ -87,6 +87,12 @@ Write the function `def update_variables_momentum(alpha, beta1, var, grad, v):` 
 * Returns: the updated variable and the new moment, respectively
 
 ### 6. Momentum Upgraded:
+Write the function `def create_momentum_op(loss, alpha, beta1):` that creates the training operation for a neural network in tensorflow using the gradient descent with momentum optimization algorithm:
+* `loss` is the loss of the network
+* `alpha` is the learning rate
+* `beta1` is the momentum weight
+* Returns: the momentum optimization operation
+
 ### 7. RMSProp:
 ### 8. RMSProp Upgraded:
 ### 9. Adam:
