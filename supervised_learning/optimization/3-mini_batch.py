@@ -44,7 +44,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             vcost, vacc = sess.run(
                     [loss, acc], feed_dict={x: X_valid, y: Y_valid})
 
-            print(f'After {epochs} epochs:')
+            print(f'After {epoch} epochs:')
             print(f'\tTraining Cost: {tcost}')
             print(f'\tTraining Accuracy: {tacc}')
             print(f'\tValidation Cost: {vcost}')
@@ -57,16 +57,11 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
 
             Xt, Yt = shuffle_data(X_train, Y_train)
 
-            if m % batch_size == 0:
-                bpe = m // batch_size
-            else:
-                bpe = (m // batch_size) + 1
-
-            for i in range(bpe):
+            for i in range(round(len(X_train) / batch_size) + 2):
                 feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
                 sess.run(trop, feed_dict)
 
-                if step % 100 == 0:
+                if i % 100 == 0:
                     bcost = session.run(loss, feed_dict)
                     bacc = session.run(acc, feed_dict)
                     print(f'\tStep {i}:')
