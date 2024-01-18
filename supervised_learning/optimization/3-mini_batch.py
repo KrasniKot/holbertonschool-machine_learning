@@ -28,48 +28,52 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
     """
     m = X_train.shape[0]
 
-    with tf.Session() as sess:
+    with tf.Session() as session:
         saver = tf.train.import_meta_graph(load_path + '.meta')
-        saver.restore(sess, load_path)
+        saver.restore(session, load_path)
 
         x = tf.get_collection('x')[0]
         y = tf.get_collection('y')[0]
-        acc = tf.get_collection('accuracy')[0]
+        accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
-        trop = tf.get_collection('train_op')[0]
+        train_op = tf.get_collection('train_op')[0]
 
         for epoch in range(epochs + 1):
-            tcost, tacc = sess.run(
-                    [loss, acc], feed_dict={x: X_train, y: Y_train})
-            vcost, vacc = sess.run(
-                    [loss, acc], feed_dict={x: X_valid, y: Y_valid})
+            feed_dict = {x: X_train, y: Y_train}
+            t_accur = session.run(accuracy, feed_dict)
+            t_loss = session.run(loss, feed_dict)
+            vaccur = session.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
+            v_loss = session.run(loss, feed_dict={x: X_valid, y: Y_valid})
 
-            print(f'After {epoch} epochs:')
-            print(f'\tTraining Cost: {tcost}')
-            print(f'\tTraining Accuracy: {tacc}')
-            print(f'\tValidation Cost: {vcost}')
-            print(f'\tValidation Accuracy: {vacc}')
+            print('After {} epochs:'.format(epoch))
+            print('\tTraining Cost: {}'.format(t_loss))
+            print('\tTraining Accuracy: {}'.format(t_accur))
+            print('\tValidation Cost: {}'.format(v_loss))
+            print('\tValidation Accuracy: {}'.format(vaccur))
 
             if epoch != epochs:
-                sts = 0
-                ends = batch_size
-                Xt, Yt = shuffle_data(X_train, Y_train)
+                start = 0
+                end = batch_size
 
-                for i in range(round(len(X_train) / batch_size) + 2):
-                    feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
-                    sess.run(trop, feed_dict)
+                X_trainS, Y_trainS = shuffle_data(X_train, Y_train)
+
+                for i in range(1, round(len(X_train) / batch_size) + 2):
+                    train_batch = X_trainS[start:end]
+                    train_label = Y_trainS[start:end]
+                    feed_dict = {x: train_batch, y: train_label}
+                    b_train = session.run(train_op, feed_dict)
 
                     if i % 100 == 0:
-                        bcost = sess.run(loss, feed_dict)
-                        bacc = sess.run(acc, feed_dict)
-                        print(f'\tStep {i}:')
-                        print(f'\t\tCost: {bcost}')
-                        print(f'\t\tAccuracy: {bacc}')
+                        b_cost = session.run(loss, feed_dict)
+                        b_accuracy = session.run(accuracy, feed_dict)
+                        print('\tStep {}:'.format(i))
+                        print('\t\tCost: {}'.format(b_cost))
+                        print('\t\tAccuracy: {}'.format(b_accuracy))
 
-                    sts = sts + batch_size
-                    if (m - sts) < batch_size:
-                        ends = ends + (m - sts)
+                    start = start + batch_size
+                    if (m - start) < batch_size:
+                        end = end + (m - start)
                     else:
-                        ends = ends + batch_size
+                        end = end + batch_size
 
-        return (saver.save(sess, save_path))
+        return saver.save(session, save_path)

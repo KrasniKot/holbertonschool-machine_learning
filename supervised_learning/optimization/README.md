@@ -104,6 +104,13 @@ Write the function `def update_variables_RMSProp(alpha, beta2, epsilon, var, gra
 * Returns: the updated variable and the new moment, respectively
 
 ### 8. RMSProp Upgraded:
+Write the function `def create_RMSProp_op(loss, alpha, beta2, epsilon):` that creates the training operation for a neural network in tensorflow using the RMSProp optimization algorithm:
+- `loss` is the loss of the network
+- `alpha` is the learning rate
+- `beta2` is the RMSProp weight
+- `epsilon` is a small number to avoid division by zero
+- Returns: the RMSProp optimization operation
+
 ### 9. Adam:
 ### 10. Adam Upgraded:
 ### 11. Learning Rate Decay:
