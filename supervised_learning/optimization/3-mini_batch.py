@@ -50,12 +50,11 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             print(f'\tValidation Cost: {vcost}')
             print(f'\tValidation Accuracy: {vacc}')
 
-            Xt, Yt = shuffle_data(X_train, Y_train)
-
-            sts = 0
-            ends = batch_size
-
             if epoch != epochs:
+                sts = 0
+                ends = batch_size
+                Xt, Yt = shuffle_data(X_train, Y_train)
+
                 for i in range(round(len(X_train) / batch_size) + 2):
                     feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
                     sess.run(trop, feed_dict)
