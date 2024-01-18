@@ -18,12 +18,12 @@ def create_batch_norm_layer(prev, n, activation):
             on the output of the layer.
     """
     init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    dense_layer = tf.layers.Dense(units=n, kernel_initializer=init, name='layer')
-    y = dense_layer(prev)
+    layer = tf.layers.Dense(units=n, kernel_initializer=init, name='layer')
+    y = layer(prev)
 
     mean, var = tf.nn.moments(y, axes=[0])
-    gamma = tf.Variable(tf.constant(1.0, shape=[n]), trainable=True)
-    beta = tf.Variable(tf.constant(0.0, shape=[n]), trainable=True)
-    norma = tf.nn.batch_normalization(y, mean, var, beta, gamma, 1e-8)
+    ga = tf.Variable(tf.constant(1.0, shape=[n]), trainable=True, name='gamma')
+    be = tf.Variable(tf.constant(0.0, shape=[n]), trainable=True, name='beta')
+    norma = tf.nn.batch_normalization(y, mean, var, be, ga, 1e-8)
 
     return activation(norma)

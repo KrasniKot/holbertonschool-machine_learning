@@ -14,7 +14,7 @@ def batch_norm(Z, gamma, beta, epsilon):
         - Z: np.ndarray to be normalized,
         - gamma: np.ndarray of shape (1, n),
             scales used for batch normalization,
-        - beta: numpy.ndarray of shape (1, n), 
+        - beta: numpy.ndarray of shape (1, n),
             offsets used for batch normalization,
         - epsilon: small number to avoid division by zero.
     """
