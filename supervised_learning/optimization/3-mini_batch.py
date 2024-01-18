@@ -65,9 +65,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     if i % 100 == 0:
                         b_cost = session.run(loss, feed_dict)
                         b_accuracy = session.run(accuracy, feed_dict)
-                        print('\tStep {}:'.format(i))
-                        print('\t\tCost: {}'.format(b_cost))
-                        print('\t\tAccuracy: {}'.format(b_accuracy))
+                        print(f'\tStep {i}:')
+                        print(f'\t\tCost: {b_cost}')
+                        print(f'\t\tAccuracy: {b_accuracy}')
 
                     start = start + batch_size
                     if (m - start) < batch_size:
