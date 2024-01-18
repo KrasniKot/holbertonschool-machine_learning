@@ -17,13 +17,17 @@ def create_batch_norm_layer(prev, n, activation):
         - activation: activation function to be used,
             on the output of the layer.
     """
-    init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    layer = tf.layers.Dense(units=n, kernel_initializer=init, name='layer')
-    y = layer(prev)
+    i = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    layer = tf.layers.Dense(
+        n,
+        activation=activation,
+        name="layer",
+        kernal_initializer=i)
 
-    mean, var = tf.nn.moments(y, axes=[0])
-    ga = tf.Variable(tf.constant(1.0, shape=[n]), trainable=True, name='gamma')
-    be = tf.Variable(tf.constant(0.0, shape=[n]), trainable=True, name='beta')
-    norma = tf.nn.batch_normalization(y, mean, var, be, ga, 1e-8)
+    x = layer[prev]
+    gamma = tf.Variable(tf.constant(
+        1, shape=(1, n), trainable=True, name="gamma"))
+    beta = tf.Variable(tf.constant(
+        0, shape=(1, n), trainable=True, name="gamma"))
 
-    return activation(norma)
+    return tf.nn.batch_normalization(x, mean, variance, beta, gamma, 1e-8)
