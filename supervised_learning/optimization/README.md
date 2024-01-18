@@ -94,6 +94,15 @@ Write the function `def create_momentum_op(loss, alpha, beta1):` that creates th
 * Returns: the momentum optimization operation
 
 ### 7. RMSProp:
+Write the function `def update_variables_RMSProp(alpha, beta2, epsilon, var, grad, s):` that updates a variable using the RMSProp optimization algorithm:
+* `alpha` is the learning rate
+* `beta2` is the RMSProp weight
+* `epsilon` is a small number to avoid division by zero
+* `var is a `numpy.ndarray` containing the variable to be updated
+* `grad` is a `numpy.ndarray` containing the gradient of `var`
+* `s` is the previous second moment of `var`
+* Returns: the updated variable and the new moment, respectively
+
 ### 8. RMSProp Upgraded:
 ### 9. Adam:
 ### 10. Adam Upgraded:
