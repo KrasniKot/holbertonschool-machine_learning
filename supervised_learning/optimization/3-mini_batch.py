@@ -50,6 +50,33 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             print(f'\tValidation Cost: {vcost}')
             print(f'\tValidation Accuracy: {vacc}')
 
-            X_train_s, Y_train_s = shuffle_data(X_train, Y_train)
+            Xt, Yt = shuffle_data(X_train, Y_train)
+
+            sts = 0
+            ends = batch_size
+
+            Xt, Yt = shuffle_data(X_train, Y_train)
+
+            if m % batch_size == 0:
+                bpe = m // batch_size
+            else:
+                bpe = (m // batch_size) + 1
+
+            for i in range(bpe):
+                feed_dict = {x: Xt[sts:ends], y: Yt[sts:ends]}
+                sess.run(trop, feed_dict)
+
+                if step % 100 == 0:
+                    bcost = session.run(loss, feed_dict)
+                    bacc = session.run(acc, feed_dict)
+                    print(f'\tStep {i}:')
+                    print(f'\t\tCost: {bcost}')
+                    print(f'\t\tAccuracy: {bacc}')
+
+                sts = sts + batch_size
+                if (m - sts) < batch_size:
+                    ends = ends + (m - sts)
+                else:
+                    ends = ends + batch_size
 
         return (saver.save(sess, save_path))
