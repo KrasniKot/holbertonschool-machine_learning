@@ -33,41 +33,38 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         saver.restore(session, load_path)
 
         x, y = tf.get_collection('x')[0], tf.get_collection('y')[0]
-        accuracy = tf.get_collection('accuracy')[0]
+        acc = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
-        train_op = tf.get_collection('train_op')[0]
+        trop = tf.get_collection('train_op')[0]
 
         for epoch in range(epochs + 1):
             feed_dict = {x: X_train, y: Y_train}
-            t_accur = session.run(accuracy, feed_dict)
-            t_loss = session.run(loss, feed_dict)
-            vaccur = session.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
-            v_loss = session.run(loss, feed_dict={x: X_valid, y: Y_valid})
+            tacc, toss = session.run([acc, loss], feed_dict)
+            vacc, voss = session.run(
+                    [acc, loss], feed_dict={x: X_valid, y: Y_valid})
 
             print(f'After {epoch} epochs:')
-            print(f'\tTraining Cost: {t_loss}')
-            print(f'\tTraining Accuracy: {t_accur}')
-            print(f'\tValidation Cost: {v_loss}')
-            print(f'\tValidation Accuracy: {vaccur}')
+            print(f'\tTraining Cost: {toss}')
+            print(f'\tTraining Accuracy: {tacc}')
+            print(f'\tValidation Cost: {voss}')
+            print(f'\tValidation Accuracy: {vacc}')
 
             if epoch != epochs:
                 start = 0
                 end = batch_size
 
-                X_trainS, Y_trainS = shuffle_data(X_train, Y_train)
+                Xt, Yt = shuffle_data(X_train, Y_train)
 
                 for i in range(1, round(len(X_train) / batch_size) + 2):
-                    train_batch = X_trainS[start:end]
-                    train_label = Y_trainS[start:end]
-                    feed_dict = {x: train_batch, y: train_label}
-                    b_train = session.run(train_op, feed_dict)
+                    feed_dict = {x: Xt[start:end], y: Yt[start:end]}
+                    b_train = session.run(trop, feed_dict)
 
                     if i % 100 == 0:
-                        b_cost = session.run(loss, feed_dict)
-                        b_accuracy = session.run(accuracy, feed_dict)
+                        bcost, bacc = session.run([loss, acc], feed_dict)
+
                         print(f'\tStep {i}:')
-                        print(f'\t\tCost: {b_cost}')
-                        print(f'\t\tAccuracy: {b_accuracy}')
+                        print(f'\t\tCost: {bcost}')
+                        print(f'\t\tAccuracy: {bacc}')
 
                     start = start + batch_size
                     if (m - start) < batch_size:
