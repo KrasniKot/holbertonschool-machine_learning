@@ -17,9 +17,6 @@ def create_batch_norm_layer(prev, n, activation):
         - activation: activation function to be used,
             on the output of the layer.
     """
-import tensorflow.compat.v1 as tf
-
-def create_batch_norm_layer(prev, n, activation):
     dl = tf.keras.layers.Dense(
             units=n,
             kernel_initializer=tf.keras.initializers.VarianceScaling(
