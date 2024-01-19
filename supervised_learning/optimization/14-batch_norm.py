@@ -22,12 +22,12 @@ def create_batch_norm_layer(prev, n, activation):
             kernel_initializer=tf.keras.initializers.VarianceScaling(
                 mode='fan_avg'))
 
-    mean, variance = tf.nn.moments(dl(prev), axes=[1])
+    mean, variance = tf.nn.moments(dl(prev), axes=[0])
 
     gamma = tf.Variable(tf.ones([n]))
     beta = tf.Variable(tf.zeros([n]))
 
-    x_batch_norm = tf.nn.batch_normalization(
+    nbatch = tf.nn.batch_normalization(
             x, mean, variance, beta, gamma, 1e-8)
 
-    return activation(x_batch_norm)
+    return activation(nbatch)
