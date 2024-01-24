@@ -16,6 +16,6 @@ def sensitivity(confusion):
             column indices represent the predicted labels.
     """
 
-    # since sens = tp / fn ∧ fn = sum(conf., axis=0) - tp,
-    # ∴ sens ≡ tp / sum(conf., axis=0)
-    return np.diag(confusion) / np.sum(confusion, axis=0)
+    # since sens = tp / fn ∧ fn = sum(conf., axis=1) - tp,
+    # ∴ sens ≡ tp / sum(conf., axis=1)
+    return np.diag(confusion) / np.sum(confusion, axis=1)
