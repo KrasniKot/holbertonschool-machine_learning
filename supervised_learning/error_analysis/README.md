@@ -57,7 +57,8 @@ Approaches:
 
 ### 6. Compare and Contrast:
 Given the following training and validation confusion matrices and the fact that human level performance has an error of ~14%, determine what the most important issue is and write the lettered answer in the file `6-compare_and_contrast`
-
+![Confusion matrix 1](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/11/03c511c109a790a30bbe.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20240125%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20240125T221800Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=3d412c0eeb9a5d39c2fa98d2eb825e975874f1fac2fcf531e8045c5cf3366be0)
+![Confusion Matrix 1](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/11/8f5d5fdab6420a22471b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20240125%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20240125T221800Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=458462c2d36d0e22475fdfa11ba4b7a8a57a8ab6a0029a66af1382327fbae364)
 Most important issue:
 
 - [x] A. High Bias
