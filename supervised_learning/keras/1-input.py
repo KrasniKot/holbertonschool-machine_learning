@@ -33,4 +33,4 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
             x = K.layers.Dropout(1 - keep_prob)(x)
 
 
-    return K.Model(inputs=inputs, outputs=x)
+    return K.Model(inputs=inpt, outputs=x)
