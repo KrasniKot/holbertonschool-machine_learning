@@ -47,6 +47,10 @@ shuffle is a boolean that determines whether to shuffle the batches every epoch.
 Returns: the History object generated after training the model
 
 ### 5. Validate:
+Based on 4-train.py, update the function def train_model(network, data, labels, batch_size, epochs, validation_data=None, verbose=True, shuffle=False): to also analyze validaiton data:
+
+validation_data is the data to validate the model with, if not None
+
 ### 6. Early Stopping:
 ### 7. Learning Rate Decay:
 ### 8. Save Only the Best:
