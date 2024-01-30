@@ -7,7 +7,7 @@
         - tensorflow.
 """
 
-import tensorflow.Keras as K
+import tensorflow.keras as K
 
 
 def train_model(network, data, labels, batch_size, epochs,
