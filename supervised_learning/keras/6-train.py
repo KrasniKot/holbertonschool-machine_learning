@@ -28,8 +28,8 @@ def train_model(network, data, labels, batch_size, epochs,
     callbacks = []
 
     if early_stopping:
-        estpng = EarlyStopping(monitor='val_loss', patience=patience)
-        callbacks.append(estpng)
+        estg = K.callbacks.EarlyStopping(monitor='val_loss', patience=patience)
+        callbacks.append(estg)
 
     return network.fit(x=data, y=labels, batch_size=batch_size, epochs=epochs,
                        verbose=verbose, shuffle=shuffle,
