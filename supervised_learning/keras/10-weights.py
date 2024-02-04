@@ -19,7 +19,7 @@ def save_weights(network, filename, save_format='h5'):
         - filename: file path where the weights shoud be saved to,
         - save_format: format in which the weights should be saved.
     """
-    network.save_weights(filepath, overwrite=True)
+    network.save_weights(filename, save_format=save_format)
 
 
 def load_weights(network, filename):
@@ -27,4 +27,4 @@ def load_weights(network, filename):
         - network: model whose weights should be loaded,
         - filename: file path where the weights shoud be loaded from.
     """
-    network.load_weights(filepath)
+    network.load_weights(filename)
