@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" This module contains convolve_grayscale_valid()
+""" This module contains convolve_grayscale_same()
     that performs same convolution on grayscale images:
 
     requires:
@@ -9,7 +9,7 @@
 import numpy as np
 
 
-def convolve_grayscale_padding(images, kernel):
+def convolve_grayscale_same(images, kernel):
     """ Performs same convolution on grayscale images:
         - images: np.ndarray with shape (m, h, w) containing grayscale images,
             - m: number of images;

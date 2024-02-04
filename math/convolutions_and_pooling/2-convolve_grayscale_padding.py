@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" This module contains convolve_grayscale_valid()
+""" This module contains convolve_grayscale_padding()
     that performs convolution on grayscale images with custom padding:
 
     requires:
