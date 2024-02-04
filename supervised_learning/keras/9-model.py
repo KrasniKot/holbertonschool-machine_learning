@@ -24,4 +24,4 @@ def load_model(filename):
     """ Loads a model.
         - filename: file path where the model should be loaded from.
     """
-    return k.saving.load_model(filename)
+    return k.models.load_model(filename)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ This module handles model's configuration saving and loading:
-   
+
     contians:
         - save_config: saves model's config;
         - load_config: loads model's config.
