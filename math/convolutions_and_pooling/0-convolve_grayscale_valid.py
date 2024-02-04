@@ -4,7 +4,6 @@
 
     requires:
         - numpy.
-
 """
 
 import numpy as np
