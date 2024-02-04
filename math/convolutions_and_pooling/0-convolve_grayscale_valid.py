@@ -28,11 +28,11 @@ def convolve_grayscale_valid(images, kernel):
     oh = h - kh + 1
     ow = w - kw + 1
 
-    oc = np.zeros([m, oh, ow])
+    co = np.zeros([m, oh, ow])
 
     for x in range(oh):
         for y in range(ow):
-            image = images[, x:x+kh, y:y+kw]
+            image = images[:, x:kh+x, y:kw+y]
             oc[:, x, y] = np.multiply(image, kernel).sum(axis=(1, 2))
 
-    return oc
+    return co
