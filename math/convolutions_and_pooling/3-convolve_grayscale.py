@@ -23,9 +23,6 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
             - sh: stride for the height of the image;
             - sw: stride for the width of the image.
     """
-import numpy as np
-
-def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     m = images.shape[0]
     ih = images.shape[1]
     iw = images.shape[2]
