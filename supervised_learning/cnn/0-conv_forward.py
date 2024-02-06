@@ -51,9 +51,9 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
                   pad_width=((0, 0), (padh, padh), (padw, padw), (0, 0)),
                   mode='constant', constant_values=0)
 
-    for h in range(nh):  # loop over the output vertical axis
-        for w in range(nw):  # loop over the output horizontal axis
-            for c in range(c_new):  # loop over the output channels
+    for h in range(oh):  # loop over the output vertical axis
+        for w in range(ow):  # loop over the output horizontal axis
+            for c in range(och):  # loop over the output channels
 
                 # get the current kernel position
                 x = h * sh
