@@ -33,42 +33,37 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                    indicating the type of padding used.
         - stride: tuple of (sh, sw), contains the strides for the convolution.
     """
-    # Extracting dimensions
     m, oh, ow, och = dZ.shape
     m, prvh, prvw, prvc = A_prev.shape
     kh, kw, _, _ = W.shape
     sh, sw = stride
+    db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
 
-    # Initializing gradients
-    prvda = np.zeros_like(A_prev)
-    dw = np.zeros_like(W)
-    db = np.zeros_like(b)
+    if padding is "valid":
+        ph = pw = 0
+    else:
+        ph = (((prvh - 1) * sh) + kh - prvh) // 2 + 1
+        pw = (((prvw - 1) * sw) + kw - prvw) // 2 + 1
 
-    # Calculating padding width and height
-    if padding == "same":
-        padh = ((prvh - 1) * sh - prvh + kh) // 2
-        padw = ((prvw - 1) * sw - prvw + kw) // 2
-    elif padding == "valid":
-        padh = padw = 0
+    pdd = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
+                 "constant", constant_values=0)
 
-    # Padding A_prev
-    prvapad = np.pad(A_prev, ((0, 0), (padh, padh), (padw, padw), (0, 0)),
-                     mode='constant')
+    dA_prev = np.zeros((m, prvh + (2 * ph), prvw + (2 * pw), prvc))
+    dW = np.zeros((kh, kw, prvc, och))
 
-    # Backpropagation
-    for i in range(m):
-        for h in range(oh):
-            for w in range(ow):
-                for k in range(och):
-                    # Appling stride
-                    x = h*sh
-                    y = w*sh
+    for ex in range(m):
+        for kernel_index in range(och):
+            for h in range(oh):
+                for w in range(ow):
+                    i = h * sh
+                    j = w * sw
 
-                    # Calculating gradients
-                    prvda[i, x: x+kh, y: y+kw, :] += W[:, :, :, k] *\
-                        dZ[i, h, w, k]
-                    dw[:, :, :, k] += prvapad[i, x: x+kh, y: y+kw, :] *\
-                        dZ[i, h, w, k]
-                    db[:, :, :, k] += dZ[i, h, w, k]
+                    dA_prev[ex, i: i + kh, j: j + kw, :] += (
+                        dZ[ex, h, w, kernel_index] * W[:, :, :, kernel_index])
+                    dW[:, :, :, kernel_index] += (
+                        pdd[ex, i: i + kh, j: j + kw, :] *
+                        dZ[ex, h, w, kernel_index])
 
-    return prvda, dw, db
+    if padding is "same":
+        dA_prev = dA_prev[:, ph:-ph, pw:-pw, :]
+    return dA_prev, dW, db

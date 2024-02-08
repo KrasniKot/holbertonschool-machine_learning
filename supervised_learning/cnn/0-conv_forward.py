@@ -63,7 +63,7 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
                 aslice = Apad[:, x:x+kh, y:y+kw, :]
 
                 # get the slice convolved
-                Z[:, h, w, c] = np.sum(aslice * W[:, :, :, c])
+                Z[:, h, w, c] = (aslice * W[:, :, :, c]).sum(axis=(1, 2, 3))
 
     Z = Z + b  # add bias
 
