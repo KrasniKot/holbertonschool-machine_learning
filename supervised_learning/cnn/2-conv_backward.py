@@ -39,7 +39,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     sh, sw = stride
     db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
 
-    if padding is "valid":
+    if padding == "valid":
         ph = pw = 0
     else:
         ph = (((prvh - 1) * sh) + kh - prvh) // 2 + 1
@@ -49,21 +49,21 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                  "constant", constant_values=0)
 
     dA_prev = np.zeros((m, prvh + (2 * ph), prvw + (2 * pw), prvc))
-    dW = np.zeros((kh, kw, prvc, och))
+    dw = np.zeros((kh, kw, prvc, och))
 
-    for ex in range(m):
-        for kernel_index in range(och):
+    for i in range(m):
+        for c in range(och):
             for h in range(oh):
                 for w in range(ow):
-                    i = h * sh
-                    j = w * sw
+                    x = h * sh
+                    y = w * sw
 
-                    dA_prev[ex, i: i + kh, j: j + kw, :] += (
-                        dZ[ex, h, w, kernel_index] * W[:, :, :, kernel_index])
-                    dW[:, :, :, kernel_index] += (
-                        pdd[ex, i: i + kh, j: j + kw, :] *
-                        dZ[ex, h, w, kernel_index])
+                    dA_prev[i, x: x + kh, y: y + kw, :] += (
+                        dZ[i, h, w, c] * W[:, :, :, c])
+                    dw[:, :, :, c] += (
+                        pdd[i, x: x + kh, y: y + kw, :] *
+                        dZ[i, h, w, c])
 
     if padding is "same":
         dA_prev = dA_prev[:, ph:-ph, pw:-pw, :]
-    return dA_prev, dW, db
+    return dA_prev, dw, db
