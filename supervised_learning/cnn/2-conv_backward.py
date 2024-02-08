@@ -46,8 +46,8 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
 
     # Calculating padding width and height
     if padding == "same":
-        padh = ((h_prev - 1) * sh - h_prev + kh) // 2
-        padw = ((w_prev - 1) * sw - w_prev + kw) // 2
+        padh = ((h_prev - 1) * sh - prvh + kh) // 2
+        padw = ((w_prev - 1) * sw - prvw + kw) // 2
     elif padding == "valid":
         padh = padw = 0
 

@@ -35,17 +35,17 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     kh, kw, _, och = W.shape
     sh, sw = stride
 
-    if padding == "valid":
-        padh = padw = 0
+    if padding == 'same':
+        padh = int((((prvh - 1) * sh - prvh + kh) / 2))
+        padw = int((((prvw - 1) * sw - prvw + kw) / 2))
     else:
-        padh = int(((prvh - 1) * sh - prvh + kh) / 2)
-        padw = int(((prvw - 1) * sw - prvw + kw) / 2)
+        padh = padw = 0
 
-    # Output dimensions
-    oh = int((prvh - kh + 2 * padh) / (sh + 1))
-    ow = int((prvw - kw + 2 * padw) / (sw + 1))
+    # output dimensions
+    oh = int(((prvh + (2 * padh) - kh) / sh)) + 1
+    ow = int(((prvw + (2 * padw) - kw) / sw)) + 1
 
-    # Initialize output volume and padd the previous layer output
+    # Initialize output volume and pad the previous layer output
     Z = np.zeros([m, oh, ow, och])
     Apad = np.pad(A_prev,
                   pad_width=((0, 0), (padh, padh), (padw, padw), (0, 0)),
