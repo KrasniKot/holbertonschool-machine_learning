@@ -33,37 +33,45 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                    indicating the type of padding used.
         - stride: tuple of (sh, sw), contains the strides for the convolution.
     """
+    # Extracting dimensions
     m, oh, ow, och = dZ.shape
     m, prvh, prvw, prvc = A_prev.shape
     kh, kw, _, _ = W.shape
     sh, sw = stride
     db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
 
+    # Applying pertinent padding
     if padding == "valid":
         ph = pw = 0
     else:
         ph = (((prvh - 1) * sh) + kh - prvh) // 2 + 1
         pw = (((prvw - 1) * sw) + kw - prvw) // 2 + 1
 
+    # Padding the input
     pdd = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
                  "constant", constant_values=0)
 
+    # Setting dimensions of the output and weights derivative
     dA_prev = np.zeros((m, prvh + (2 * ph), prvw + (2 * pw), prvc))
     dw = np.zeros((kh, kw, prvc, och))
 
-    for i in range(m):
-        for c in range(och):
-            for h in range(oh):
-                for w in range(ow):
+    for i in range(m):  # Examples
+        for c in range(och):  # Channels
+            for h in range(oh):  # Heights
+                for w in range(ow):  # Width
+                    # Applying stride
                     x = h * sh
                     y = w * sw
 
+                    # Computing the convolution
                     dA_prev[i, x: x + kh, y: y + kw, :] += (
                         dZ[i, h, w, c] * W[:, :, :, c])
                     dw[:, :, :, c] += (
                         pdd[i, x: x + kh, y: y + kw, :] *
                         dZ[i, h, w, c])
 
+    # Removing padding regions so that output dimensions match
     if padding == "same":
         dA_prev = dA_prev[:, ph:-ph, pw:-pw, :]
+
     return dA_prev, dw, db
