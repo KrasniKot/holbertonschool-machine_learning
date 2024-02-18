@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ This module contains resnet50()
     that builds a RestNet-50 network as described in
-    "..."
+    "Deep Residual Learning for Image Recognition (2015)"
 
     requires:
         - tensorflow,

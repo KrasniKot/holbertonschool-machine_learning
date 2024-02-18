@@ -1,4 +1,4 @@
-#!/usr/bin/en python3
+#!/usr/bin/env python3
 """ This module contains identity_block(),
     that builds an identity block as described in
     "Deep Residual Learning for Image Recognition (2015)"
