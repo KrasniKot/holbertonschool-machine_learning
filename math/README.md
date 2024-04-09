@@ -3,7 +3,6 @@ This directory contains the Machine Learning math projects
 
 ## Projects:
 ### Linear Algebra:
-#### General learning objectives:
 - What is a vector?
 - What is a matrix?
 - What is a transpose?
