@@ -124,3 +124,4 @@ Write a function `def add_matrices(mat1, mat2):` that adds two matrices:
 - You must return a new matrix
 - If you cannot concatenate the matrices, return `None`
 - You can assume that `mat1` and `mat2` are never empty
+
