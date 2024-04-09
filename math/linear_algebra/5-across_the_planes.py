@@ -3,7 +3,10 @@
 
 
 def add_matrices2D(mat1: list, mat2: list) -> list:
-    """ Adds two matrices """
-    if (len(mat1) == len(mat2) and len(mat1[0]) == len(mat2[0])):
-        return [[mat1[r][e] + mat2[r][e] for e in range(len(mat1[0]))]
-                for r in range(len(mat1))]
+    """ Adds two matrices
+        - mat1: matrix a
+        - mat2: matrix b
+    """
+    if len(mat1) == len(mat2) and len(mat1[0]) == len(mat2[0]):
+        return [[mat1[i][j] + mat2[i][j] for i in range(len(mat1))]
+                for j in range(len(mat1[0]))]
