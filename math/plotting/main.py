@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-line = __import__('0-line').line
+bars = __import__('6-bars').bars
 
-line()
+bars()

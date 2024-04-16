@@ -31,10 +31,9 @@ def bars():
 
     plt.title("Number of Fruit per Person")
     plt.ylabel("Quantity of Fruit")
-    plt.xlabel("Person")
     plt.xticks(range(len(people)), people)
     plt.yticks(range(0, 81, 10))
     plt.legend()
 
-#    plt.savefig("stacked.png")
+    plt.savefig("stacked.png")
     plt.show()
