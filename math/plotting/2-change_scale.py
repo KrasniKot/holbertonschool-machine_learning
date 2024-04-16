@@ -9,6 +9,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def change_scale():
     """ Plots x ↦ y as a line graph """
     x = np.arange(0, 28651, 5730)
