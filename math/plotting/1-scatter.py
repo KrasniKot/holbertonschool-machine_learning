@@ -9,6 +9,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def scatter():
     """ Plots x ↦ y as a scatter plot """
     mean = [69, 0]
