@@ -12,8 +12,9 @@ import matplotlib.pyplot as plt
 def line():
     """ Plots a red line graph """
 
-    y = np.arange(0, 11) ** 3  # Creates an array of the cubes from 0 to 10
-    plt.figure(figsize=(6.4, 4.8))  # Sets the size of the array
-    plt.plot(y, color='red')  # Plots Y in red
+    y = np.arange(0, 11) ** 3  
+    plt.figure(figsize=(6.4, 4.8))
 
-    plt.show()  # Show the graph
+    plt.xlim(0, 10)
+    plt.plot(y, color='red')
+    plt.show()
