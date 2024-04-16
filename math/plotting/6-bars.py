@@ -35,5 +35,5 @@ def bars():
     plt.yticks(range(0, 81, 10))
     plt.legend()
 
-    plt.savefig("stacked.png")
+#    plt.savefig("stacked.png")
     plt.show()
