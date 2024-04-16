@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """ This module contains line()
 
-    required:
+    requires:
+        - numpy,
         - matplotlib
 """
 
@@ -17,4 +18,5 @@ def line():
 
     plt.xlim(0, 10)
     plt.plot(y, color='red')
+#    plt.savefig("plot.png")
     plt.show()
