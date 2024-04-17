@@ -42,6 +42,7 @@ def all_in_one():
     ax1 = fig.add_subplot(3, 2, 1)
     ax1.plot(y0, "red")
     ax1.set_xlim((0, 10))
+    ax1.set_yticks([0, 500, 1000])
 
     # Plot 2
     ax2 = fig.add_subplot(3, 2, 2)
@@ -61,7 +62,8 @@ def all_in_one():
 
     # Plot 4
     ax4 = fig.add_subplot(3, 2, 4)
-    ax4.set_title("Exponential Decay of Radioactive Elements", fontsize="x-small")
+    ax4.set_title("Exponential Decay of Radioactive Elements",
+                  fontsize="x-small")
     ax4.set_xlabel("Time (years)", fontsize="x-small")
     ax4.set_ylabel("Fraction Remaining", fontsize="x-small")
     ax4.set_xlim((0, 20000))
@@ -79,10 +81,10 @@ def all_in_one():
     ax5.set_xticks(range(0, 101, 10))
     ax5.set_ylim((0, 30))
     ax5.hist(student_grades,
-            bins=[10 * i for i in range(0, 11)],
-            edgecolor="black")
+             bins=[10 * i for i in range(0, 11)],
+             edgecolor="black")
 
     plt.tight_layout()
 
-#    plt.savefig("fiveplots.png")
+    plt.savefig("fiveplots.png")
     plt.show()

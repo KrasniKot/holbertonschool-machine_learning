@@ -18,5 +18,5 @@ def line():
 
     plt.xlim(0, 10)
     plt.plot(y, color='red')
-#    plt.savefig("plot.png")
+    plt.savefig("plot0.png")
     plt.show()
