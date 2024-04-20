@@ -18,6 +18,7 @@ alculus
 
 ### 2. Pi is for Product:
 ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc2.gif?raw=true)
+1. (m - 1)!
 2. 0
 3. (m + 1)!
 4. m!
