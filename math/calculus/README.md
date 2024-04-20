@@ -3,39 +3,39 @@ alculus
 ## Tasks
 
 ### 0. Sigma is for Sum:
-![image not available](https://latex.codecogs.com/gif.latex?\sum_{i=2}^{5}&space;i)
+![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc0.gif?raw=true)
 1. 3 + 4 + 5
 2. 3 + 4
 3. 2 + 3 + 4 + 5
 4. 2 + 3 + 4
 
 ### 1. The Greeks pronounce it sEEgma:
-![image not available](https://latex.codecogs.com/gif.latex?\sum_{k=1}^{4}&space;9i&space;-&space;2k)
+![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc1.gif?raw=true)
 1. 90 - 20
 2. 36i - 20
 3. 90 - 8k
 4. 36i - 8k
 
 ### 2. Pi is for Product:
-![image not available](https://latex.codecogs.com/gif.latex?\prod_{i&space;=&space;1}^{m}&space;i)
-1. (m - 1)!
+![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc2.gif?raw=true)
 2. 0
 3. (m + 1)!
 4. m!
 
 ### 3. The Greeks pronounce it pEE:
-![image not available](https://latex.codecogs.com/gif.latex?\prod_{i&space;=&space;0}^{10}&space;i)
+![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc3.gif?raw=true)
 1. 10!
 2. 9!
 3. 100
 4. 0
 
 ### 4. Hello, derivatives!:
-![image not available](https://latex.codecogs.com/gif.latex?\frac{dy}{dx}) where ![image not available](https://latex.codecogs.com/gif.latex?y&space;=&space;x^4&space;+&space;3x^3&space;-&space;5x&space;+&space;1)
-1. ![image not available](https://latex.codecogs.com/gif.latex?3x^3&space;+&space;6x^2&space;-4)
-2. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;6x^2&space;-&space;5)
-3. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;5)
-4. ![image not available](https://latex.codecogs.com/gif.latex?4x^3&space;+&space;9x^2&space;-&space;4)
+![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc4.gif?raw=true) where ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc41.gif?raw=true)
+
+1. ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc4_ans1.gif?raw=true)
+2. ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc4_ans2.gif?raw=true)
+3. ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc4_ans3.gif?raw=true)
+4. ![](https://github.com/KrasniKot/holbertonschool-machine_learning/blob/main/doc/calc/calc4_ans4.gif?raw=true)
 
 ### 5. A log on the fire:
 ![image not available](https://latex.codecogs.com/gif.latex?\frac{d&space;(xln(x))}{dx})
