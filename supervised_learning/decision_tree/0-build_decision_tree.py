@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+""" This module handles the definition and behavior of a decision_tree,
+    contains:
+
+    classes:
+        1. Node: Nodes of the tree.
+        2. Leaf: Leaves of the tree.
+        3. Decision_Tree: Decision tree.
+
+    requires:
+        - numpy.
+"""
+
+import numpy as np
+
+
+class Node:
+    """ Defines a decision tree node """
+    def __init__(self, feature=None, threshold=None, left_child=None,
+                 right_child=None, is_root=False, depth=0):
+        """ Initializes a node
+            - feature: int, feature of the dataset that is used
+                       to split the decision tree.
+            - threshold: int, threshold.
+            - left_child: node, left child.
+            - right_child: node, right child.
+            - is_root: boolean, determines whether the node is the tree root.
+            - depth: int, tree depth.
+        """
+        self.feature = feature
+        self.threshold = threshold
+        self.left_child = left_child
+        self.right_child = right_child
+        self.is_leaf = False
+        self.is_root = is_root
+        self.sub_population = None
+        self.depth = depth
+
+    def max_depth_below(self) :
+            ####### FILL IN THIS METHOD
+
+class Leaf(Node):
+    def __init__(self, value, depth=None):
+        super().__init__()
+        self.value = value
+        self.is_leaf = True
+        self.depth = depth
+
+    def max_depth_below(self) :
+        return self.depth
+
+class Decision_Tree():
+    def __init__(self, max_depth=10, min_pop=1, seed=0, split_criterion="random", root=None):
+        self.rng = np.random.default_rng(seed)
+        if root:
+            self.root = root
+        else:
+            self.root = Node(is_root=True)
+        self.explanatory = None
+        self.target = None
+        self.max_depth = max_depth
+        self.min_pop = min_pop
+        self.split_criterion = split_criterion
+        self.predict = None
+
+    def depth(self) :
+        return self.root.max_depth_below()
