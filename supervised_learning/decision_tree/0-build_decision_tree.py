@@ -36,21 +36,45 @@ class Node:
         self.sub_population = None
         self.depth = depth
 
-    def max_depth_below(self) :
-            ####### FILL IN THIS METHOD
+    def max_depth_below(self):
+        """ Computes the maximum depth of the subtree below this node """
+        if self.is_leaf:
+            return self.depth
+
+        left_depth = self.left_child.max_depth_below()
+        right_depth = self.right_child.max_depth_below()
+
+        return max(left_depth, right_depth)
+
 
 class Leaf(Node):
+    """ Defines a tree leaf """
     def __init__(self, value, depth=None):
+        """ Initializes a Leaf
+            - value: int, value it contains.
+            - depth: int, depth of it.
+        """
         super().__init__()
         self.value = value
         self.is_leaf = True
         self.depth = depth
 
-    def max_depth_below(self) :
+    def max_depth_below(self):
+        """ Maximum depth you can go """
         return self.depth
 
+
 class Decision_Tree():
-    def __init__(self, max_depth=10, min_pop=1, seed=0, split_criterion="random", root=None):
+    """ Defines a decision tree """
+    def __init__(self, max_depth=10, min_pop=1, seed=0,
+                 split_criterion="random", root=None):
+        """ Initializes a Decision Tree
+            - max_depth:
+            - min_pop:
+            - seed:
+            - split_criterion:
+            - root:
+        """
         self.rng = np.random.default_rng(seed)
         if root:
             self.root = root
@@ -63,5 +87,6 @@ class Decision_Tree():
         self.split_criterion = split_criterion
         self.predict = None
 
-    def depth(self) :
+    def depth(self):
+        """ Calculates its depth """
         return self.root.max_depth_below()
