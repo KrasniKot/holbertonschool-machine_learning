@@ -74,7 +74,8 @@ class Node:
         lines = text.split("\n")
         new_text = "    +--" + lines[0] + "\n"
         for x in lines[1:]:
-            new_text += ("    |  " + x) + "\n"
+            new_text += ("    |" + x) + "\n"
+
         return new_text
 
     def right_child_add_prefix(self, text):
@@ -82,7 +83,7 @@ class Node:
         new_text = "    +--" + lines[0] + "\n"
         for x in lines[1:]:
             new_text += ("       " + x) + "\n"
-        return new_text
+        return new_text.rstrip()
 
     def __str__(self):
         """ String representation for the class Node """
@@ -94,7 +95,7 @@ class Node:
                 f"root [feature={self.feature}, threshold={self.threshold}]\n"
             )
         elif self.is_leaf:
-            dtree += f"-> leaf [value={self.value}]\n"
+            dtree += f"-> leaf [value={self.value}]"
         else:
             dtree += (
                 f"-> node ["
