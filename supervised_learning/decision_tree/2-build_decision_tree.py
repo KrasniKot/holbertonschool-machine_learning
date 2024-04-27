@@ -71,6 +71,9 @@ class Node:
         return cleaves(self) if only_leaves else cnodes(self)
 
     def left_child_add_prefix(self, text):
+        """ Adds a prefix to left children
+                - text: text to add prefix to
+        """
         lines = text.split("\n")
         new_text = "    +--" + lines[0] + "\n"
         for x in lines[1:]:
@@ -79,6 +82,9 @@ class Node:
         return new_text
 
     def right_child_add_prefix(self, text):
+        """ Adds a prefix to right children
+                - text: text to add prefix to
+        """
         lines = text.split("\n")
         new_text = "    +--" + lines[0] + "\n"
         for x in lines[1:]:
