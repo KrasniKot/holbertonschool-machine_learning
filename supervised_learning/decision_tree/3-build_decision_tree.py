@@ -99,8 +99,6 @@ class Node:
 
     def _get_leaves_recursive(self, leaves):
         """ Helper function for recursive leaf retrieval """
-        if depth_limit <= 0:
-            return
         if self.is_leaf:
             leaves.append(self)
         else:
