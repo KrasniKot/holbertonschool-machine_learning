@@ -90,13 +90,17 @@ class Node:
         dtree = ""
 
         if self.is_root:
-            dtree += f"root [feature={self.feature}, \
-                       threshold={self.threshold}]\n"
+            dtree += (
+                f"root [feature={self.feature}, threshold={self.threshold}]\n"
+            )
         elif self.is_leaf:
             dtree += f"-> leaf [value={self.value}]\n"
         else:
-            dtree += f"-> node [feature={self.feature}, \
-                       threshold={self.threshold}]\n"
+            dtree += (
+                f"-> node ["
+                f"feature={self.feature}, "
+                f"threshold={self.threshold}]\n"
+            )
 
         if self.left_child:
             dtree += self.left_child_add_prefix(str(self.left_child))
