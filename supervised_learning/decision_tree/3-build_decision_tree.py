@@ -91,7 +91,7 @@ class Node:
             new_text += ("       " + x) + "\n"
         return new_text.rstrip()
 
-    def get_leaves_below(self, depth_limit=float('inf')):
+    def get_leaves_below(self):
         """ Gets all the leaves found deeper """
         leaves = []
         self._get_leaves_recursive(leaves)
@@ -99,7 +99,8 @@ class Node:
 
     def _get_leaves_recursive(self, leaves):
         """ Helper function for recursive leaf retrieval """
-
+        if depth_limit <= 0:
+            return
         if self.is_leaf:
             leaves.append(self)
         else:
