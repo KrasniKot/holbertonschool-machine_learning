@@ -91,23 +91,22 @@ class Node:
             new_text += ("       " + x) + "\n"
         return new_text.rstrip()
 
-    def get_leaves_below(self):
+    def get_leaves_below(self, depth_limit=float('inf')):
         """ Gets all the leaves found deeper """
         leaves = []
-        stack = [self]
-
-        while stack:
-            node = stack.pop()
-            if node.is_leaf:
-                leaves.append(node)
-            else:
-                if node.left_child:
-                    stack.append(node.left_child)
-                if node.right_child:
-                    stack.append(node.right_child)
-
+        self._get_leaves_recursive(leaves)
         return leaves
-        
+
+    def _get_leaves_recursive(self, leaves):
+        """ Helper function for recursive leaf retrieval """
+
+        if self.is_leaf:
+            leaves.append(self)
+        else:
+            if self.left_child:
+                self.left_child._get_leaves_recursive(leaves)
+            if self.right_child:
+                self.right_child._get_leaves_recursive(leaves)
 
     def __str__(self):
         """ String representation for the class Node """
