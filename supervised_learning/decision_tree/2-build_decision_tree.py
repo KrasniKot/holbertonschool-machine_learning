@@ -70,6 +70,41 @@ class Node:
 
         return cleaves(self) if only_leaves else cnodes(self)
 
+    def left_child_add_prefix(self, text):
+        lines = text.split("\n")
+        new_text = "    +--" + lines[0] + "\n"
+        for x in lines[1:]:
+            new_text += ("    |  " + x) + "\n"
+        return new_text
+
+    def right_child_add_prefix(self, text):
+        lines = text.split("\n")
+        new_text = "    +--" + lines[0] + "\n"
+        for x in lines[1:]:
+            new_text += ("         " + x) + "\n"
+        return new_text
+
+    def __str__(self):
+        """ String representation for the class Node """
+
+        dtree = ""
+
+        if self.is_root:
+            dtree += f"root [feature={self.feature}, \
+                       threshold={self.threshold}]\n"
+        elif self.is_leaf:
+            dtree += f"-> leaf [value={self.value}]\n"
+        else:
+            dtree += f"-> node [feature={self.feature}, \
+                       threshold={self.threshold}]\n"
+
+        if self.left_child:
+            dtree += self.left_child_add_prefix(str(self.left_child))
+        if self.right_child:
+            dtree += self.right_child_add_prefix(str(self.right_child))
+
+        return dtree
+
 
 class Leaf(Node):
     """ Defines a tree leaf """
@@ -86,6 +121,10 @@ class Leaf(Node):
     def max_depth_below(self):
         """ Maximum depth you can go """
         return self.depth
+
+    def __str__(self):
+        """ String representation for the class Leaf """
+        return (f"-> leaf [value={self.value}] ")
 
 
 class Decision_Tree():
@@ -120,3 +159,7 @@ class Decision_Tree():
             - only_leaves: determines whether count only leaves
         """
         return self.root.count_nodes_below(only_leaves=only_leaves)
+
+    def __str__(self):
+        """ String representation for the class Decision Tree """
+        return self.root.__str__()
