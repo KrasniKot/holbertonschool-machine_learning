@@ -2,6 +2,9 @@
 """
 This module contains the class Neuron
 which performs binary classification
+
+requires:
+    - numpy
 """
 
 import numpy as np
@@ -9,12 +12,11 @@ import numpy as np
 
 class Neuron():
     """ Defines a Neuron """
-
     def __init__(self, nx):
-        """ Initializes a neuron;
-                nx: number of input features
+        """ Initializes a neuron
+            - nx: number of input features to the neuron
         """
-        if type(nx) is not int:
+        if type(nx) != int:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
