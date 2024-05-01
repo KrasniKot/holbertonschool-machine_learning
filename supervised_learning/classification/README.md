@@ -309,4 +309,16 @@ Update the class DeepNeuralNetwork (based on `23-deep_neural_network.py`):
 ### 27. Update DeepNeuralNetwork:
 Update the class DeepNeuralNetwork to perform multiclass classification (based on `26-deep_neural_network.py`):
 * You will need to update the instance methods `forward_prop`, `cost`, and `evaluate`
-* `Y` is now a one-hot numpy.ndarray of shape `(classes`, `m`)
+* `Y` is now a one-hot numpy.ndarray of shape (`classes`, `m`)
+
+### 28. All the activations:
+Update the class `DeepNeuralNetwork` to allow different activation functions (based on ``27-deep_neural_network.py``):
+
+Update the ``__init__`` method to def ``__init__(self, nx, layers, activation='sig'):``
+- ``activation`` represents the type of activation function used in the hidden layers
+- ``sig`` represents a sigmoid activation
+- ``tanh`` represents a tanh activation
+  - if ``activation`` is not `sig` or ``tanh``, raise a `ValueError` with the exception: `activation must be 'sig' or 'tanh'`
+- Create the private attribute `__activation` and set it to the value of `activation`
+- Create a getter for the private attribute `__activation`
+- Update the `forward_prop` and `gradient_descent` instance methods to use the `__activation` function in the hidden layers

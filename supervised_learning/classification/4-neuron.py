@@ -63,8 +63,6 @@ class Neuron():
                 - X: numpy.ndarray with shape (nx, m) containing the inputs.
                 - Y: numpy.ndarray with shape (1, m) containing true labels.
         """
-        m = X.shape[1]
-
         A = self.forward_prop(X)
         L = np.where(A >= 0.5, 1, 0)
         c = self.cost(Y, A)

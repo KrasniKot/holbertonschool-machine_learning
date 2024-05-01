@@ -44,6 +44,10 @@ class Neuron():
                     nx: number of input features
                     m: number of examples
         """
-        Z = self.W @ X + self.b
+        Z = self.__W @ X + self.__b
         self.__A = 1 / (1 + np.exp(-Z))
+
         return self.__A
+
+    def cost(self, Y, A):
+        return 1 + 
