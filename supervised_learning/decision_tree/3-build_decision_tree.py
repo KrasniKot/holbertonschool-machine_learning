@@ -109,7 +109,6 @@ class Node:
 
     def __str__(self):
         """ String representation for the class Node """
-
         dtree = ""
 
         if self.is_root:
