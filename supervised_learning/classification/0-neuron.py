@@ -16,7 +16,7 @@ class Neuron():
         """ Initializes a neuron
             - nx: number of input features to the neuron
         """
-        if type(nx) != int:
+        if nx is int:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
