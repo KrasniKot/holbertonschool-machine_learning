@@ -9,6 +9,7 @@ import numpy as np
 
 per = np.random.permutation
 
+
 def shuffle_data(X, Y):
     """ Shuffles two matrices.
         - X: np.ndarray of shape (m, nx) to shuffle.
