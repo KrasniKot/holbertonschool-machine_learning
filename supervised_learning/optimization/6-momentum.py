@@ -7,7 +7,7 @@
         - tensorflow.
 """
 
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 
 def create_momentum_op(loss, alpha, beta1):

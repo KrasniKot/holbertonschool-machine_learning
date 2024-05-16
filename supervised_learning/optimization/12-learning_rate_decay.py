@@ -7,7 +7,7 @@
         - tensorflow.
 """
 
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
