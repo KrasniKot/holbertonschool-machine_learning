@@ -18,5 +18,8 @@ def create_RMSProp_op(loss, alpha, beta2, epsilon):
         - beta2: RMSProp weight,
         - epsilon: small number to prevent division by zero.
     """
-    return tf.train.RMSPropOptimizer(
-            alpha, decay=beta2, epsilon=epsilon).minimize(loss)
+    return tf.keras.optimizers.RMSprop(
+        learning_rate=alpha,
+        rho=beta2,
+        epsilon=epsilon
+    )

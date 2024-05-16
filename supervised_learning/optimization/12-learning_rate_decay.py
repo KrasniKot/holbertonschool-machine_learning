@@ -19,5 +19,9 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
         - decay_step: number of passes of gradient descent
             that should occur before alpha is decayed further.
     """
-    return tf.train.inverse_time_decay(
-            alpha, global_step, decay_step, decay_rate, staircase=True)
+    return tf.keras.optimizers.schedules.InverseTimeDecay(
+        initial_learning_rate=alpha,
+        decay_steps=decay_step,
+        decay_rate=decay_rate,
+        staircase=True
+    )

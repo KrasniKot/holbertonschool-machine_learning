@@ -19,5 +19,9 @@ def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
         - beta2: weight used for the sencond moment,
         - epsilon: small number to prevent division by 0.
     """
-    return tf.train.AdamOptimizer(
-            alpha, beta1=beta1, beta2=beta2, epsilon=epsilon).minimize(loss)
+    return tf.keras.optimizers.Adam(
+        learning_rate=alpha,
+        beta_1=beta1,
+        beta_2=beta2,
+        epsilon=epsilon
+    )

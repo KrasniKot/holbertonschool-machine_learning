@@ -16,4 +16,7 @@ def create_momentum_op(loss, alpha, beta1):
         - alpha: learning rate,
         - beta1: momentum weight
     """
-    return tf.train.MomentumOptimizer(alpha, beta1).minimize(loss)
+    return tf.keras.optimizers.SGD(
+        learning_rate=alpha,
+        momentum=beta1
+    )
