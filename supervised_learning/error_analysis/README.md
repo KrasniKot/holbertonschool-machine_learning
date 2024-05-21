@@ -48,12 +48,12 @@ Scenarios:
 
 Approaches:
 
-- [] A. Train more
-- [] B. Try a different architecture
-- [] C. Get more data
-- [] D. Build a deeper network
-- [] E. Use regularization
-- [] F. Nothing
+- [ ] A. Train more
+- [ ] B. Try a different architecture
+- [ ] C. Get more data
+- [ ] D. Build a deeper network
+- [ ] E. Use regularization
+- [ ] F. Nothing
 
 ### 6. Compare and Contrast:
 Given the following training and validation confusion matrices and the fact that human level performance has an error of ~14%, determine what the most important issue is and write the lettered answer in the file `6-compare_and_contrast`
@@ -62,5 +62,5 @@ Given the following training and validation confusion matrices and the fact that
 Most important issue:
 
 - [x] A. High Bias
-- [] B. High Variance
-- [] C. Nothing
+- [ ] B. High Variance
+- [ ] C. Nothing
