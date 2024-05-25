@@ -2,6 +2,7 @@
 """ This module contains ...
 """
 
+
 def early_stopping(cost, opt_cost, threshold, patience, count):
     """ Determines if you should stop gradient descent early
 
