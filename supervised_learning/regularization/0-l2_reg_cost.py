@@ -21,9 +21,9 @@ def l2_reg_cost(cost, lambtha, weights, L, m):
     n = 0
 
     for i in range(1, L + 1):
-        w = weights["W" + str(i)]
-        n += np.sum(np.square(w))
+        w = weights["W" + str(i)]  # Exctract the weights for current layer
+        n += np.sum(np.square(w))  # Add up all the squared weights
 
-    n *= lambtha / (2 * m)
+    n *= lambtha / (2 * m)  # Scale n
 
     return cost + n
