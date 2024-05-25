@@ -7,7 +7,7 @@
         - tensorflow.
 """
 
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 
 def l2_reg_cost(cost):
