@@ -18,7 +18,7 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
         - lambtha: L2 regularization parameter,
         - keep_prob: probability that a node will be kept for dropout.
     """
-    model = K.Sequential()
+    model = K.Sequential()  # Initialize empty sequential model
     l2 = K.regularizers.L2(lambtha)
 
     for i in range(len(layers)):

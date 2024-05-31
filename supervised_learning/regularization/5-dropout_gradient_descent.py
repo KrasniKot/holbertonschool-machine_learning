@@ -34,6 +34,7 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
 
         Al = cache[Al_key]
         gld = 1 - np.power(Al, 2)
+
         if layer == L:
             dZl = dAl
         else:
@@ -42,8 +43,10 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
 
         Wl = weights[w_key]
         Al1 = cache[Al1_key]
+
         dWl = (1 / m) * np.matmul(dZl, Al1.T)
         dbl = (1 / m) * np.sum(dZl, axis=1, keepdims=True)
         dAl = np.matmul(Wl.T, dZl)
+    
         weights[w_key] = weights[w_key] - alpha * dWl
         weights[b_key] = weights[b_key] - alpha * dbl
