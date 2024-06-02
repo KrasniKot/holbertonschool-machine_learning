@@ -75,14 +75,61 @@ Based on 6-train.py, update the function ``def train_model(network, data, labels
 - ``decay_rate`` is the decay rate
 
 ### 8. Save Only the Best:
-Based on 7-train.py, update the function def train_model(network, data, labels, batch_size, epochs, validation_data=None, early_stopping=False, patience=0, learning_rate_decay=False, alpha=0.1, decay_rate=1, save_best=False, filepath=None, verbose=True, shuffle=False): to also save the best iteration of the model:
+Based on 7-train.py, update the function ``def train_model(network, data, labels, batch_size, epochs, validation_data=None, early_stopping=False, patience=0, learning_rate_decay=False, alpha=0.1, decay_rate=1, save_best=False, filepath=None, verbose=True, shuffle=False):`` to also save the best iteration of the model:
 
-save_best is a boolean indicating whether to save the model after each epoch if it is the best
-a model is considered the best if its validation loss is the lowest that the model has obtained
-filepath is the file path where the model should be saved
+- ``save_best`` is a boolean indicating whether to save the model after each epoch if it is the best
+  - a model is considered the best if its validation loss is the lowest that the model has obtained
+- ``filepath`` is the file path where the model should be saved
 
 ### 9. Save and Load Model:
+Write the following functions:
+
+- ``def save_model(network, filename): saves an entire model:``
+  - ``network`` is the model to save
+  - ``filename`` is the path of the file that the model should be saved to
+  - Returns: ``None``
+-``def load_model(filename): loads an entire model:``
+  - ``filename`` is the path of the file that the model should be loaded from
+  - Returns: the loaded model
+
 ### 10. Save and Load Weights:
+Write the following functions:
+
+- ``def save_weights(network, filename, save_format='keras'): saves a model’s weights:``
+  - ``network`` is the model whose weights should be saved
+  - ``filename`` is the path of the file that the weights should be saved to
+  - ``save_format`` is the format in which the weights should be saved
+  - Returns: ``None``
+- ``def load_weights(network, filename): loads a model’s weights:``
+  - ``network`` is the model to which the weights should be loaded
+  - ``filename`` is the path of the file that the weights should be loaded from
+  - Returns: ``None``
+
 ### 11. Save and Load Configuration:
+Write the following functions:
+
+- ``def save_config(network, filename):`` saves a model’s configuration in JSON format:
+  - ``network`` is the model whose configuration should be saved
+  - ``filename`` is the path of the file that the configuration should be saved to
+  - Returns: ``None``
+- ``def load_config(filename):`` loads a model with a specific configuration:
+  - ``filename`` is the path of the file containing the model’s configuration in JSON format
+  - Returns: the loaded
+
 ### 12. Test:
+Write a function ``def test_model(network, data, labels, verbose=True):`` that tests a neural network:
+
+- ``network`` is the network model to test
+- ``data`` is the input data to test the model with
+- ``labels`` are the correct one-hot labels of data
+- ``verbose`` is a boolean that determines if output should be printed during the testing process
+
+Returns: the loss and accuracy of the model with the testing data, respectively
+
 ### 13. Predict:
+Write a function ``def predict(network, data, verbose=False):`` that makes a prediction using a neural network:
+
+- ``network`` is the network model to make the prediction with
+- ``data`` is the input data to make the prediction with
+- ``verbose`` is a boolean that determines if output should be printed during the prediction process
+- Returns: the prediction for the data
