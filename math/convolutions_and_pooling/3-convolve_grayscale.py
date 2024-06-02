@@ -24,33 +24,39 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
             - sw: stride for the width of the image.
     """
     m = images.shape[0]
-    ih = images.shape[1]
-    iw = images.shape[2]
+    h = images.shape[1]
+    w = images.shape[2]
+
     kh = kernel.shape[0]
     kw = kernel.shape[1]
+
+    padw = 0
+    padh = 0
+
     sh = stride[0]
     sw = stride[1]
 
-    if padding == "same":
-        padh = int(((ih - 1) * sh - ih + kh) / 2)
-        padw = int(((iw - 1) * sw - iw + kw) / 2)
+    if padding == 'same':
+        padh = int((((h - 1) * sh + kh - h) / 2) + 1)
+        padw = int((((w - 1) * sw + kw - w) / 2) + 1)
 
-    elif padding == "valid":
-        padh = padw = 0
+    if type(padding) is tuple:
+        padh = padding[0]
+        padw = padding[1]
 
-    else:
-        padh, padw = stride
+    padimg = np.pad(images, pad_width=((0, 0), (padh, padh),
+                                       (padw, padw)), mode='constant')
 
-    oh = int(((ih + (2 * padh) - kh) / stride[0]) + 1)
-    ow = int(((iw + (2 * padw) - kw) / stride[1]) + 1)
+    oh = int(((h + 2 * padh - kh) / sh) + 1)
+    ow = int(((w + 2 * padw - kh) / sw) + 1)
 
-    co = np.zeros([m, oh, ow])
-    imgpd = np.pad(images, pad_width=((0, 0), (padw, padw), (padh, padh)),
-                   mode='constant', constant_values=0)
+    co = np.zeros((m, oh, ow))
 
-    for i in range(oh):
-        for j in range(ow):
-            img = imgpd[:, i * sh: i * sh + kh, j * sw: j * sw + kw]
-            co[:, i, j] = np.multiply(img, kernel).sum(axis=(1, 2))
+    image = np.arange(m)
+
+    for x in range(oh):
+        for y in range(ow):
+            co[image, x, y] = (np.sum(padimg[image, x * sh:((x * sh) + kh),
+                               y * sw:((y * sw) + kw)] * kernel, axis=(1, 2)))
 
     return co
