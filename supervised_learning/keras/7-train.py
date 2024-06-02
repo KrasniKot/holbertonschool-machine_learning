@@ -30,16 +30,23 @@ def train_model(network, data, labels, batch_size, epochs,
         - alpha: initial learning rate.
         - decay_rate: decay rate.
     """
-    callbacks = []
+    def calculate_alpha(epoch):
+        """ Returns the learning rate for an epoch
+            - epoch: umber of passes through data for mini-batch gradient descent
+        """
+        return alpha / (1 + decay_rate * epoch)
 
-    if early_stopping:
-        estg = K.callbacks.EarlyStopping(monitor='val_loss', patience=patience)
-        callbacks.append(estg)
+    callbacks = []
+    ES = K.callbacks.EarlyStopping(monitor='val_loss', mode='min',
+                                   patience=patience)
+    LRD = K.callbacks.LearningRateScheduler(calculate_alpha, verbose=1)
 
     if validation_data and early_stopping:
-        itd = k.optimizers.schedules.InverseTimeDecay(initial_learning_rate, decay_steps, decay_rate, staircase=True)
-        model.compile(loss='binary_crossentropy', optimizer=itd, metrics=['accuracy'])  # the loss function is wrong, maybe the whole code
+        callbacks.append(ES)
+    if validation_data and learning_rate_decay:
+        callbacks.append(LRD)
 
-    return network.fit(x=data, y=labels, batch_size=batch_size, epochs=epochs,
-                       verbose=verbose, shuffle=shuffle,
-                       validation_data=validation_data, callbacks=callbacks)
+    return network.fit(x=data, y=labels, batch_size=batch_size,
+                          epochs=epochs, validation_data=validation_data,
+                          callbacks=callbacks,
+                          verbose=verbose, shuffle=shuffle)
