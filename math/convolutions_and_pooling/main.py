@@ -2,20 +2,18 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-convolve_grayscale = __import__('3-convolve_grayscale').convolve_grayscale
+pool = __import__('6-pool').pool
 
 
 if __name__ == '__main__':
 
-    dataset = np.load('MNIST.npz')
-    images = dataset['X_train']
+    dataset = np.load('animals_1.npz')
+    images = dataset['data']
     print(images.shape)
-    kernel = np.array([[1 ,0, -1], [1, 0, -1], [1, 0, -1]])
-    images_conv = convolve_grayscale(images, kernel, padding='valid', stride=(2, 2))
-    print(images_conv.shape)
+    images_pool = pool(images, (2, 2), (2, 2), mode='avg')
+    print(images_pool.shape)
 
-    plt.imshow(images[0], cmap='gray')
+    plt.imshow(images[0])
     plt.show()
-    plt.imshow(images_conv[0], cmap='gray')
-    plt.savefig("fig.png")
+    plt.imshow(images_pool[0] / 255)
     plt.show()
