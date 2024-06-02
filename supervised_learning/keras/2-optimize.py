@@ -25,4 +25,4 @@ def optimize_model(network, alpha, beta1, beta2):
 
     network.compile(optimizer=optimizer,
                     loss='categorical_crossentropy',
-                    metrics=[K.metrics.CategoricalAccuracy()])
+                    metrics=['accuracy'])

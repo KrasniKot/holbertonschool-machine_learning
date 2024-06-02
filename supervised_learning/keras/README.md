@@ -52,9 +52,9 @@ Write a function ``def train_model(network, data, labels, batch_size, epochs, ve
 Returns: the History object generated after training the model
 
 ### 5. Validate:
-Based on 4-train.py, update the function def train_model(network, data, labels, batch_size, epochs, validation_data=None, verbose=True, shuffle=False): to also analyze validaiton data:
+Based on 4-train.py, update the function ``def train_model(network, data, labels, batch_size, epochs, validation_data=None, verbose=True, shuffle=False):`` to also analyze validaiton data:
 
-validation_data is the data to validate the model with, if not None
+- ``validation_data`` is the data to validate the model with, if not ``None``
 
 ### 6. Early Stopping:
 Based on 5-train.py, update the function def train_model(network, data, labels, batch_size, epochs, validation_data=None, early_stopping=False, patience=0, verbose=True, shuffle=False): to also train the model using early stopping:
