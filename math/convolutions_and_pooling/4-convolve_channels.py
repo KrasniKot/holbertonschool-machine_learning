@@ -49,12 +49,12 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
         padh = padding[0]
         padw = padding[1]
 
-    padimg = np.pad(images, pad_width=((0, 0), (padh, pad_h),
-                                       (padw, padw) (0, 0)),
+    padimg = np.pad(images, pad_width=((0, 0), (padh, padh),
+                                       (padw, padw), (0, 0)),
                        mode='constant')
 
-    oh = int(((h + 2 * pad_h - kh) / sh) + 1)
-    ow = int(((w + 2 * pad_w - kw) / sw) + 1)
+    oh = int(((h + 2 * padh - kh) / sh) + 1)
+    ow = int(((w + 2 * padw - kw) / sw) + 1)
 
     co = np.zeros((m, oh, ow))
 
