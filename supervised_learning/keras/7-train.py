@@ -32,7 +32,7 @@ def train_model(network, data, labels, batch_size, epochs,
     """
     def calculate_alpha(epoch):
         """ Returns the learning rate for an epoch
-            - epoch: umber of passes through data for mini-batch gradient descent
+            - epoch: umber of passes through data for mini-batch GD
         """
         return alpha / (1 + decay_rate * epoch)
 
@@ -47,6 +47,6 @@ def train_model(network, data, labels, batch_size, epochs,
         callbacks.append(LRD)
 
     return network.fit(x=data, y=labels, batch_size=batch_size,
-                          epochs=epochs, validation_data=validation_data,
-                          callbacks=callbacks,
-                          verbose=verbose, shuffle=shuffle)
+                       epochs=epochs, validation_data=validation_data,
+                       callbacks=callbacks,
+                       verbose=verbose, shuffle=shuffle)
