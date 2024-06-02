@@ -52,4 +52,3 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
             co[:, i, j] = np.multiply(img, kernel).sum(axis=(1, 2))
 
     return co
-
