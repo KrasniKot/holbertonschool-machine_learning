@@ -22,7 +22,7 @@ def lenet5(x, y):
                           activation=tf.nn.relu,
                           kernel_initializer=weights_initializer)(x)
 
-    P1 = tf.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))P2(C1)
+    P1 = tf.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(C1)
 
     C2 = tf.layers.Conv2D(filters=16,
                           kernel_size=(5, 5),
