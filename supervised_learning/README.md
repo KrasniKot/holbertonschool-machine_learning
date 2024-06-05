@@ -103,3 +103,10 @@ No data to show
 * How to access the weights/outputs of a model
 What is HDF5?
 * How to save and load a model’s weights, a model’s configuration, and the entire model
+
+# Convolutional Neural Networks
+* What is a convolutional layer?
+* What is a pooling layer?
+* Forward propagation over convolutional and pooling layers
+* Back propagation over convolutional and pooling layers
+* How to build a CNN using Tensorflow and Keras 
