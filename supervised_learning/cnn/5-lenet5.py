@@ -15,44 +15,38 @@ def lenet5(X):
             - m: number of images
 
     """
-# arrabasaia
-    weights_initializer = K.initializers.he_normal()
-    C1 = K.layers.Conv2D(filters=6,
-                         kernel_size=(5, 5),
-                         padding='same',
-                         activation=K.activations.relu,
-                         kernel_initializer=weights_initializer)
-    output_1 = C1(X)
-    P2 = K.layers.MaxPooling2D(pool_size=(2, 2),
-                               strides=(2, 2))
-    output_2 = P2(output_1)
-    C3 = K.layers.Conv2D(filters=16,
-                         kernel_size=(5, 5),
-                         padding='valid',
-                         activation=K.activations.relu,
-                         kernel_initializer=weights_initializer)
-    output_3 = C3(output_2)
-    P4 = K.layers.MaxPooling2D(pool_size=(2, 2),
-                               strides=(2, 2))
-    output_4 = P4(output_3)
-    output_42 = K.layers.Flatten()(output_4)
-    F5 = K.layers.Dense(
-        120,
-        activation=K.activations.relu,
-        kernel_initializer=weights_initializer)
-    output_5 = F5(output_42)
-    F6 = K.layers.Dense(
-        84,
-        activation=K.activations.relu,
-        kernel_initializer=weights_initializer)
-    output_6 = F6(output_5)
-    F7 = K.layers.Dense(
-        10,
-        kernel_initializer=weights_initializer)
-    output_7 = F7(output_6)
-    softmax = K.layers.Softmax()(output_7)
-    model = K.Model(inputs=X, outputs=softmax)
-    model.compile(optimizer=K.optimizers.Adam(),
-                  loss='categorical_crossentropy',
+    init = K.initializers.he_normal()
+
+    activation = 'relu'
+
+    conv1 = K.layers.Conv2D(filters=6, kernel_size=5,
+                            padding='same', activation=activation,
+                            kernel_initializer=init)(X)
+
+    pool1 = K.layers.MaxPooling2D(pool_size=[2, 2], strides=2)(conv1)
+
+    conv2 = K.layers.Conv2D(filters=16, kernel_size=5,
+                            padding='valid', activation=activation,
+                            kernel_initializer=init)(pool1)
+
+    pool2 = K.layers.MaxPooling2D(pool_size=[2, 2], strides=2)(conv2)
+
+    flatten = K.layers.Flatten()(pool2)
+
+    FC1 = K.layers.Dense(units=120, activation=activation,
+                         kernel_initializer=init)(flatten)
+
+    FC2 = K.layers.Dense(units=84, activation=activation,
+                         kernel_initializer=init)(FC1)
+
+    FC3 = K.layers.Dense(units=10, kernel_initializer=init,
+                         activation='softmax')(FC2)
+
+    model = K.models.Model(X, FC3)
+
+    adam = K.optimizers.Adam()
+
+    model.compile(optimizer=adam, loss='categorical_crossentropy',
                   metrics=['accuracy'])
+
     return model
