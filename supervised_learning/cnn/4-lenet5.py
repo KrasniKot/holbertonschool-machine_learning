@@ -6,7 +6,7 @@
         - tensorflow
 """
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def lenet5(x, y):
