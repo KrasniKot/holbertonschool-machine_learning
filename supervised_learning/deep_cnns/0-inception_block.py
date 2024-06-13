@@ -52,4 +52,4 @@ def inception_block(A_prev, filters):
     l5 = c(filters=filters[5], kernel_size=(1, 1), **pms)(mp)
 
     # Concatenating outputs
-    return K.layers.concatenate([l0, l1, l2, l3, l4, mp, l5])
+    return K.layers.concatenate([l0, l2, l4, l5])
