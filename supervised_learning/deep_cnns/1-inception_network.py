@@ -23,14 +23,14 @@ def inception_network():
 
     # First (7, 7) conv layer's output
     L0 = K.layers.Conv2D(filters=64, strides=(2, 2),
-                         kernel_size=(7, 7), *pms)(ipt)
+                         kernel_size=(7, 7), **pms)(ipt)
 
     # Second (3, 3) max pooling layer's output
     L1 = K.layers.MaxPooling2D(**mxpms)(L0)
 
     # Bottleneck layer
     L2 = K.layers.Conv2D(filters=64, kernel_size=(1, 1), strides=(1, 1),
-                         **pms)(L2)
+                         **pms)(L1)
 
     # Third (3, 3) conv layer's output
     L2 = K.layers.Conv2D(filters=192, kernel_size=(3, 3), strides=(1, 1),
