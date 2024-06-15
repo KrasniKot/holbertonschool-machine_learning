@@ -27,7 +27,7 @@ def dense_block(X, nb_filters, gr, layers):
 
         # Activated normalized bottleneck layer's output before the (3, 3) conv
         L1 = K.layers.Conv2D(filters=(4 * gr), kernel_size=(1, 1), **pms)(anL0)
-        anL1 = K.layers.Activation(ru)(K.layers.BatchNormalization(axis=3)(C1))
+        anL1 = K.layers.Activation(ru)(K.layers.BatchNormalization(axis=3)(L1))
 
         # Final (3, 3) layer's output
         L2 = K.layers.Conv2D(filters=gr, kernel_size=(3, 3), **pms)(anL1)

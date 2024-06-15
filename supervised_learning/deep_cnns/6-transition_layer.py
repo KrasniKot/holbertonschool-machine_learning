@@ -22,7 +22,7 @@ def transition_layer(X, nf, compression):
     # Previous layer's normalized activated output
     anLX = K.layers.Activation(relu)(K.layers.BatchNormalization(axis=3)(X))
 
-    nb_filters *= compression  # recalculating number of filters
+    nf *= compression  # recalculating number of filters
     nf = int(nf)
 
     # First convolution (3, 3) layer's output
@@ -31,6 +31,6 @@ def transition_layer(X, nf, compression):
 
     # Last average pooling layer's output
     AP = K.layers.AveragePooling2D(pool_size=(2, 2), strides=(2, 2),
-                                   padding="valid")(AP)
+                                   padding="valid")(L0)
 
     return AP, nf
