@@ -32,7 +32,7 @@ def dense_block(X, nb_filters, gr, layers):
         # Final (3, 3) layer's output
         L2 = K.layers.Conv2D(filters=gr, kernel_size=(3, 3), **pms)(anL1)
 
-        X = K.layers.concatenate([X, L2])  # Concatenating input and the blocks output
+        X = K.layers.concatenate([X, L2])  # Concat input and blocks' output
         nb_filters += gr  # Recalculating filters number
 
     return X, nb_filters
