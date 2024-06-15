@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 from tensorflow import keras as K
-inception_block = __import__('0-inception_block').inception_block
+identity_block = __import__('2-identity_block').identity_block
 
 if __name__ == '__main__':
-    X = K.Input(shape=(224, 224, 3))
-    Y = inception_block(X, [64, 96, 128, 16, 32, 32])
+    X = K.Input(shape=(224, 224, 256))
+    Y = identity_block(X, [64, 64, 256])
     model = K.models.Model(inputs=X, outputs=Y)
     model.summary()

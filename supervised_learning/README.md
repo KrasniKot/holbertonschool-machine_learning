@@ -109,4 +109,11 @@ What is HDF5?
 * What is a pooling layer?
 * Forward propagation over convolutional and pooling layers
 * Back propagation over convolutional and pooling layers
-* How to build a CNN using Tensorflow and Keras 
+* How to build a CNN using Tensorflow and Keras
+
+# Deep Convolutional Architectures:
+- What is a skip connection?
+- What is a bottleneck layer?
+- What is the Inception Network?
+- What is ResNet? ResNeXt? DenseNet?
+- How to replicate a network architecture by reading a journal article*
