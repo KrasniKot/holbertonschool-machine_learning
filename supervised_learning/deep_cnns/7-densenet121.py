@@ -11,7 +11,7 @@
             - 6-transition_layer.
 """
 
-import tensorflow.keras as K
+from tensorflow import keras as K
 
 
 def densenet121(growth_rate=32, compresion=1.0):
