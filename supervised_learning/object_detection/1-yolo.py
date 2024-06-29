@@ -53,15 +53,66 @@ class Yolo:
                     - classes: class probabilities for all classes
             - image_size: numpy.ndarray, contains the image's original size [image_height, image_width]
         """
+
         def sigmoid(x):
+            """ Performs sigmoid calculation over an input X """
             return 1 / (1 + np.exp(-x))
 
         boxes = []
         box_confidences = []
         box_class_probs = []
 
-        for output in outputs:
-            box_confidences.append(sigmoid(output[:, :, :, 4:5]))
-            box_class_probs.append(sigmoid(output[:, :, :, 5:]))
+        image_height = image_size[0]
+        image_width = image_size[1]
+
+        for i, output in enumerate(outputs):
+            gh = output.shape[0]
+            gw = output.shape[1]
+
+            t_x = output[:, :, :, 0]
+            t_y = output[:, :, :, 1]
+            t_w = output[:, :, :, 2]
+            t_h = output[:, :, :, 3]
+
+            anchor = self.anchors[i]
+
+            pw = anchor[:, 0]
+            ph = anchor[:, 1]
+            pw = pw.reshape(1, 1, len(pw))
+            ph = ph.reshape(1, 1, len(ph))
+
+            cx = np.tile(np.arange(gw), gh).reshape(gw, gw, 1)
+            cy = np.tile(np.arange(gw),
+                         gh).reshape(gh, gh, 1).T.reshape(gh, gh, 1)
+
+            bx = sigmoid(t_x) + cx
+            by = sigmoid(t_y) + cy
+
+            bw = pw * np.exp(t_w)
+            bh = ph * np.exp(t_h)
+
+            bx = bx / gw
+            by = by / gh
+            bw = bw / int(self.model.input.shape[1])
+            bh = bh / int(self.model.input.shape[2])
+
+            x1 = (bx - bw / 2) * image_width
+            y1 = (by - bh / 2) * image_height
+            x2 = (bx + bw / 2) * image_width
+            y2 = (by + bh / 2) * image_height
+
+            box = np.zeros(output[:, :, :, :4].shape)
+            box[:, :, :, 0] = x1
+            box[:, :, :, 1] = y1
+            box[:, :, :, 2] = x2
+            box[:, :, :, 3] = y2
+
+            boxes.append(box)
+
+            box_confidence = sigmoid(output[:, :, :, 4, np.newaxis])
+            box_confidences.append(box_confidence)
+
+            box_class = sigmoid(output[:, :, :, 5:])
+            box_class_probs.append(box_class)
 
         return boxes, box_confidences, box_class_probs
