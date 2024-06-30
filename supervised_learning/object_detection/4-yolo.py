@@ -246,8 +246,27 @@ class Yolo:
         """
         image_paths = glob.glob(folder_path + "/*")
 
-        images = []
-        for img in image_paths:
-            images.append(cv2.imread(img))
 
-        return images, image_paths
+        return [cv2.imread(img) for img in image_paths], image_paths
+
+    def preprocess_images(self, images):
+        """ Preprocesses the images
+            - images: images to preprocess
+        """
+
+        w = self.model.input.shape[1]
+        h = self.model.input.shape[2]
+
+        count = len(images)
+
+        pimages = np.zeros((count, h, w, 3))
+        image_shapes = []
+
+        for i in range(count):
+            img = cv2.resize(images[i], (w, h),
+                             interpolation=cv2.INTER_CUBIC)
+            pimages[i] = img / 255
+
+            image_shapes.append(images[i].shape[0:-1])
+
+        return (pimages, np.array(image_shapes))
