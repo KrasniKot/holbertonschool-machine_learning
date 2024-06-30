@@ -130,3 +130,48 @@ class Yolo:
             box_class_probs.append(box_class)
 
         return boxes, box_confidences, box_class_probs
+
+    def filter_boxes(self, boxes, box_confidences, box_class_probs):
+        """ Determines which boxes will be shown or not
+                - boxes: numpy.ndarrays, of shape
+                         (grid_height, grid_width, anchor_boxes, 4);
+                         contains the processed boundary boxes
+                         for each output, respectively
+                - box_confidences: numpy.ndarrays, of shape
+                                   (grid_height, grid_width, anchor_boxes, 1);
+                                   contains the processed box confidences
+                                   for each output, respectively
+                - box_class_probs: numpy.ndarrays, of shape
+                                   (grid_height,
+                                   grid_width
+                                   anchor_boxes,
+                                   classes);
+                                   contains the processed box class
+                                   probabilities for each output,
+                                   respectively
+        """
+        filtered_boxes = []
+        box_classes = []
+        box_scores = []
+
+        for box, conf, prob in zip(boxes, box_confidences, box_class_probs):
+            # Computing box scores
+            scores = conf * prob
+            max_scores = np.max(scores, axis=-1)  # Maximum score per box
+            # Class with max score
+            max_classes = np.argmax(scores, axis=-1)
+
+            # Filter based on the confidence threshold
+            mask = max_scores >= self.class_t
+
+            # Apply the mask to filter boxes, classes, and scores
+            filtered_boxes.append(box[mask])
+            box_classes.append(max_classes[mask])
+            box_scores.append(max_scores[mask])
+
+        # Concatenate results across all outputs
+        filtered_boxes = np.concatenate(filtered_boxes, axis=0)
+        box_classes = np.concatenate(box_classes, axis=0)
+        box_scores = np.concatenate(box_scores, axis=0)
+
+        return filtered_boxes, box_classes, box_scores
