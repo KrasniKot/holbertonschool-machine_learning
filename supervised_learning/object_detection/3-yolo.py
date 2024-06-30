@@ -208,7 +208,7 @@ class Yolo:
 
             keep = []
 
-            while idxs.size > 0:
+            while len(idxs) > 0:
                 i = idxs[0]
                 keep.append(i)  # Keep the index of the highest scoring box
 
@@ -225,7 +225,7 @@ class Yolo:
                 iou = inter / (areas[i] + areas[idxs[1:]] - inter)
 
                 inds = np.where(iou <= self.nms_t)[0]
-                idxs = idxs[inds + 1]  # Update idxs to remove overlapped
+                idxs = idxs[1:][inds]  # Update idxs to remove overlapped
 
             box_predictions.append(fboxs[keep])
             predicted_box_classes.append(b_classes[keep])
