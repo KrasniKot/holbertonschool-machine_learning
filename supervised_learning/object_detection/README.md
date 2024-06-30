@@ -51,3 +51,16 @@ Returns a tuple of (filtered_boxes, box_classes, box_scores):
 filtered_boxes: a numpy.ndarray of shape (?, 4) containing all of the filtered bounding boxes:
 box_classes: a numpy.ndarray of shape (?,) containing the class number that each box in filtered_boxes predicts, respectively
 box_scores: a numpy.ndarray of shape (?) containing the box scores for each box in filtered_boxes, respectively
+
+### 3. Non-max Suppression:
+Write a class Yolo (Based on 2-yolo.py):
+
+Add the public method def non_max_suppression(self, filtered_boxes, box_classes, box_scores):
+filtered_boxes: a numpy.ndarray of shape (?, 4) containing all of the filtered bounding boxes:
+box_classes: a numpy.ndarray of shape (?,) containing the class number for the class that filtered_boxes predicts, respectively
+box_scores: a numpy.ndarray of shape (?) containing the box scores for each box in filtered_boxes, respectively
+Returns a tuple of (box_predictions, predicted_box_classes, predicted_box_scores):
+box_predictions: a numpy.ndarray of shape (?, 4) containing all of the predicted bounding boxes ordered by class and box score
+predicted_box_classes: a numpy.ndarray of shape (?,) containing the class number for box_predictions ordered by class and box score, respectively
+predicted_box_scores: a numpy.ndarray of shape (?) containing the box scores for box_predictions ordered by class and box score, respectively
+
