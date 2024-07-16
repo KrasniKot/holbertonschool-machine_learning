@@ -53,7 +53,7 @@ This directory contains the Machine Learning math projects
 - What is mean, standard deviation, and variance?
 - Common probability distributions
 
-### Convolutions and Pooling
+### Convolutions and Pooling:
 - What is a convolution?
 - What is max pooling? average pooling?
 - What is a kernel/filter?
@@ -63,3 +63,10 @@ This directory contains the Machine Learning math projects
 - What are channels?
 - How to perform a convolution over an image
 - How to perform max/average pooling over an image
+
+### Advanced Linear Algebra:
+- What is a determinant? How would you calculate it?
+- What is a minor, cofactor, adjugate? How would calculate them?
+- What is an inverse? How would you calculate it?
+- What are eigenvalues and eigenvectors? How would you calculate them?
+- What is definiteness of a matrix? How would you determine a matrix’s definiteness?

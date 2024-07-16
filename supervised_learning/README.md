@@ -117,3 +117,28 @@ What is HDF5?
 - What is the Inception Network?
 - What is ResNet? ResNeXt? DenseNet?
 - How to replicate a network architecture by reading a journal article*
+
+# Transfer learning:
+- What is a transfer learning?
+- What is fine-tuning?
+- What is a frozen layer? How and why do you freeze a layer?
+- How to use transfer learning with Keras applications
+
+# Object Detection:
+- What is OpenCV and how do you use it?
+- What is object detection?
+- What is the Sliding Windows algorithm?
+- What is a single-shot detector?
+- What is the YOLO algorithm?
+- What is IOU and how do you calculate it?
+- What is non-max suppression?
+- What are anchor boxes?
+- What is mAP and how do you calculate it?
+
+# Neural Style Transfer:
+- What is Neural Style Transfer?
+- What is a gram matrix?
+- How to calculate style cost
+- How to calculate content cost
+- What is Gradient Tape and how do you use it?
+- How to perform Neural Style Transfer
