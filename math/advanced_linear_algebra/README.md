@@ -135,7 +135,44 @@ It is singular
 ```
 
 ### 5. Is the following matrix invertible? If so, what is its inverse?
+[ 2, 1, 2 ]
+[ 1, 0, 1 ]
+[ 4, 1, 4 ]
+
+1. ->
+```
+[ 4, 1, 2 ]
+[ 1, 0, 1 ]
+[ 4, 1, 2 ]
+```
+2. ->
+```
+[ 2, 1, 4 ]
+[ 1, 0, 1 ]
+[ 2, 1, 4 ]
+```
+3. ->
+```
+[ 4, 1, 4 ]
+[ 1, 0, 1 ]
+[ 2, 1, 2 ]
+```
+4. ->
+```
+It is singular
+```
+
 ### 6. Given the following matrix, calculate where v is an eigenvector of A, calculate (A**10)v
+
+Given A = ``[-2, -4,  2]``  and v = ``[ 2]``
+          ``[-2,  1,  2]``          ``[-3]``
+          ``[ 4,  2,  5]``          ``[-1]``
+
+1. -> ``[[118098], [-177147], [-59049]]``
+2. -> ``[[2097152], [-3145728], [-1048576]]``
+3. -> ``[[2048], [-3072], [-1024]]``
+4. -> ``None of the above``
+
 ### 7. Which of the following are also eigenvalues (λ) and eigenvectors (v) of A?
 ### 8. What is the definiteness of the following matrix?
 ### 9. What is the definiteness of the following matrix?
