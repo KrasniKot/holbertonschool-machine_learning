@@ -8,7 +8,7 @@ def determinant(matrix):
     """ Calculates the determinant of a matrix
         - matrix: matrix to calculate its determinant
     """
-    if not matrix or not isinstance(matrix[0], list):
+    if not matrix or not all(isinstance(row, list) for row in matrix):
         raise TypeError('matrix must be a list of lists')
     if not is_square(matrix):
         raise ValueError('matrix must be a square matrix')
