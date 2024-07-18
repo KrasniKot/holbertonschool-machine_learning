@@ -12,11 +12,11 @@ def minor(matrix):
     if not matrix or not all(isinstance(row, list) for row in matrix):
         raise TypeError('matrix must be a list of lists')
     if not is_square(matrix):
-        raise ValueError('matrix must be a non-empty square')
+        raise ValueError('matrix must be a non-empty square matrix')
 
     # Special case for [[]] matrix
     if len(matrix) == 1 and len(matrix[0]) == 0:
-        return 1
+        raise ValueError('matrix must be a non-empty square matrix')
 
     # Special case for [[x]] matrix
     if len(matrix) == 1 and len(matrix[0]) == 1:
