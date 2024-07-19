@@ -35,7 +35,7 @@ def cofactor(matrix):
 
             det = determinant(minor)
             cofactor_matrix[i].append((-1)**(i + j) * det)
-    
+
     return cofactor_matrix
 
 
