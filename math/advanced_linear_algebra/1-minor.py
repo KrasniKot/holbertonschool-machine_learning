@@ -59,6 +59,9 @@ def is_square(matrix):
 
 def determinant(matrix):
     """ Recursively calculates the determinant of a matrix """
+    if len(matrix) == 2 and len(matrix[0]) == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
     det = 0
     for c in range(len(matrix)):
         minor = get_minor_slice(matrix, 0, c)
@@ -72,9 +75,3 @@ def get_minor_slice(matrix, i, j):
         - j: column
     """
     return [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
-
-mat = [[98, 89, 0, 17, 3],
-      [13, 14, 30, 43, 13],
-      [13, -13, -14, -15, 56],
-      [9, 5, 8, 6, 57],
-      [92, 34, 3, -3, -89]]
