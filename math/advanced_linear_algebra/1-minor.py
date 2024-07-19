@@ -22,6 +22,7 @@ def minor(matrix):
     if len(matrix) == 1 and len(matrix[0]) == 1:
         return [[1]]
 
+    # Special case for 2*2 matrix
     if len(matrix) == 2 and len(matrix[0]) == 2:
         return [[matrix[1][1], matrix[1][0]], [matrix[0][1], matrix[0][0]]]
 
@@ -35,7 +36,7 @@ def minor(matrix):
             minor = get_minor_slice(matrix, i, j)
 
             # Calculate determinant and append it to minor_matrix
-            det = minor[0][0] * minor[1][1] - minor[1][0] * minor[0][1]
+            det = determinant(minor)
             minor_matrix[i].append(det)
 
     return minor_matrix
@@ -56,9 +57,24 @@ def is_square(matrix):
     return True
 
 
+def determinant(matrix):
+    """ Recursively calculates the determinant of a matrix """
+    det = 0
+    for c in range(len(matrix)):
+        minor = get_minor_slice(matrix, 0, c)
+        det += ((-1) ** c) * matrix[0][c] * determinant(minor)
+    return det
+
+
 def get_minor_slice(matrix, i, j):
     """ Returns a minor for the given position
         - i: row
         - j: column
     """
     return [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+
+mat = [[98, 89, 0, 17, 3],
+      [13, 14, 30, 43, 13],
+      [13, -13, -14, -15, 56],
+      [9, 5, 8, 6, 57],
+      [92, 34, 3, -3, -89]]
