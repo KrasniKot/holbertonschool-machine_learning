@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-""" This module contains the function minor(),
-    that calculates the minor matrix of a matrix
+""" This module contains the function cofactor(),
+    that calculates the cofactor matrix of a matrix
 """
 
 
-def minor(matrix):
-    """ Calculates the determinant of a minor matrix
-        and builds a matrix of determinants
-        - matrix: matrix to calculate its determinant
+def cofactor(matrix):
+    """ Calculates the cofactor of a matrix
+        - matrix: matrix to calculate its cofactor
     """
     if not matrix or not all(isinstance(row, list) for row in matrix):
         raise TypeError('matrix must be a list of lists')
@@ -24,22 +23,20 @@ def minor(matrix):
 
     # Special case for 2*2 matrix
     if len(matrix) == 2 and len(matrix[0]) == 2:
-        return [[matrix[1][1], matrix[1][0]], [matrix[0][1], matrix[0][0]]]
+        return [[matrix[1][1], -matrix[1][0]], [-matrix[0][1], matrix[0][0]]]
 
-    minor_matrix = []
+    cofactor_matrix = []
 
     for i in range(len(matrix)):
-        minor_matrix.append([])
+        cofactor_matrix.append([])
 
         for j in range(len(matrix[0])):
-            # Get minor for element ij
             minor = get_minor_slice(matrix, i, j)
 
-            # Calculate determinant and append it to minor_matrix
             det = determinant(minor)
-            minor_matrix[i].append(det)
-
-    return minor_matrix
+            cofactor_matrix[i].append((-1)**(i + j) * det)
+    
+    return cofactor_matrix
 
 
 def is_square(matrix):
