@@ -14,9 +14,15 @@ def definiteness(matrix):
 
     mat = matrix
 
+    # Case [[]] matrix
     if mat.ndim != 2 or mat.shape[0] != mat.shape[1] or mat.size == 0:
         return
 
+    # Case matrix is not symmetric
+    if not np.allclose(matrix, matrix.T):
+        return None
+
+    # Case matrix is not of shape (n, n)
     if matrix.shape[0] != matrix.shape[1]:
         return
 
