@@ -20,10 +20,13 @@ class Poisson():
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
+                # λ = Sum(number of events) / length of the interval
                 self.lambtha = (sum(data) / len(data))
 
     def pmf(self, k):
-        """ Calculates the PMF for a certain number of occurrences """
+        """ Calculates the PMF for a certain number of occurrences
+            - k: number of ocurrences
+        """
         k = int(k)
         if k < 0:
             return 0
@@ -35,9 +38,7 @@ class Poisson():
         a certain number of occurrences
         """
         k = int(k)
-        return sum([
-            self.lambtha ** i / self.__f(i) * self.E **
-            -self.lambtha for i in range(k + 1)])
+        return sum([self.pmf(i) for i in range(k + 1)])
 
     @staticmethod
     def __f(k):
