@@ -42,3 +42,13 @@ Write a function ``def inverse(matrix):`` that calculates the inverse of a matri
 - If ``matrix`` is not a list of lists, raise a ``TypeError`` with the message ``matrix must be a list of lists``
 - If ``matrix`` is not square or is empty, raise a ``ValueError`` with the message ``matrix must be a non-em`pty square matrix``
 - Returns: the inverse of ``matrix``, or ``None`` if ``matrix`` is singular
+
+## 5. Definiteness
+Write a function`` def definiteness(matrix):`` that calculates the definiteness of a matrix:
+
+- ``matrix`` is a ``numpy.ndarray`` of shape ``(n, n)`` whose definiteness should be calculated
+- If ``matrix`` is not a ``numpy.ndarray``, raise a ``TypeError`` with the message ``matrix must be a numpy.ndarray``
+- If ``matrix`` is not a valid ``matrix``, return ``None``
+- Return: the string Positive definite, Positive semi-definite, Negative semi-definite, Negative definite, or Indefinite if the ``matrix`` is positive definite, positive semi-definite, negative semi-definite, negative definite of indefinite, respectively
+- If ``matrix`` does not fit any of the above categories, return ``None``
+- You may ``import numpy as np``
