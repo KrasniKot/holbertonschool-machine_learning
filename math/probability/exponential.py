@@ -19,6 +19,7 @@ class Exponential():
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
+                # λ = 1 / Sum(number of events) / length of the interval
                 self.lambtha = (1 / (sum(data) / len(data)))
 
     def pdf(self, k):
