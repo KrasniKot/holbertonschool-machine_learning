@@ -55,4 +55,4 @@ def likelihood(x, n, P):
 
     f = np.math.factorial
 
-    return f(n) / (f(n - x) * f(x)) * (P ** x) * ((1 - P) ** (n - x))
+    return (f(n) / (f(n - x) * f(x))) * (P ** x) * ((1 - P) ** (n - x))
