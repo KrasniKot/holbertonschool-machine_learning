@@ -20,7 +20,7 @@ def definiteness(matrix):
 
     # Case matrix is not symmetric
     if not np.allclose(matrix, matrix.T):
-        return None
+        return
 
     # Case matrix is not of shape (n, n)
     if matrix.shape[0] != matrix.shape[1]:

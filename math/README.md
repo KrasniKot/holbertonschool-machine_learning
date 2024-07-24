@@ -70,3 +70,11 @@ This directory contains the Machine Learning math projects
 - What is an inverse? How would you calculate it?
 - What are eigenvalues and eigenvectors? How would you calculate them?
 - What is definiteness of a matrix? How would you determine a matrix’s definiteness?
+
+### Bayesian Probability
+- What is Bayesian Probability?
+- What is Bayes’ rule and how do you use it?
+- What is a base rate?
+- What is a prior?
+- What is a posterior?
+- What is a likelihood?
