@@ -16,5 +16,13 @@ Write a function ``def mean_cov(X):`` that calculates the mean and covariance of
 - You are not allowed to use the function ``numpy.cov``
 
 ### 1. Correlation:
+Write a function ``def correlation(C):`` that calculates a correlation matrix:
+
+- ``C`` is a ``numpy.ndarray`` of shape ``(d, d)`` containing a covariance matrix
+- ``d`` is the number of dimensions
+- If ``C`` is not a ``numpy.ndarray``, raise a ``TypeError`` with the message ``C must be a numpy.ndarray``
+- If ``C`` does not have shape ``(d, d)``, raise a ``ValueError`` with the message ``C must be a 2D square matrix``
+- Returns a ``numpy.ndarray`` of shape ``(d, d)`` containing the correlation matrix
+
 ### 2. Initialize:
 ### 3. PDF:
