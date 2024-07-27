@@ -26,6 +26,17 @@ class MultiNormal:
                  PDF should be calculated
                 - d: number of dimensions of the instance
         """
+        if type(x) is not np.ndarray:
+            raise TypeError("x must be a numpy.ndarray")
+
+        d = self.cov.shape[0]
+        if len(x.shape) != 2:
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+        test_d, one = x.shape
+
+        if test_d != d or one != 1:
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+
         n = self.mean.shape[0]
         diff = x - self.mean
         inv_Sigma = np.linalg.inv(self.cov)
