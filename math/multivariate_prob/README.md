@@ -25,4 +25,28 @@ Write a function ``def correlation(C):`` that calculates a correlation matrix:
 - Returns a ``numpy.ndarray`` of shape ``(d, d)`` containing the correlation matrix
 
 ### 2. Initialize:
+Create the class ``MultiNormal`` that represents a Multivariate Normal distribution:
+
+class constructor ``def __init__(self, data):``
+
+- ``data`` is a ``numpy.ndarray`` of shape ````(d, n)```` containing the data set:
+  - ``n`` is the number of data points
+  - ``d`` is the number of dimensions in each data point
+- If ``data`` is not a 2D ``numpy.ndarra``y, raise a ``TypeError`` with the message data must be a 2D ``numpy.ndarray``
+- If ``n`` is less than 2, raise a ``ValueError`` with the message ``data must contain multiple data points``
+- Set the public instance variables:
+  - ``mean`` - a ``numpy.ndarray`` of shape ``(d, 1) ``containing the mean of data
+  - ``cov`` - a ``numpy.ndarray`` of shape ``(d, d)`` containing the covariance matrix data
+
+- You are not allowed to use the function ``numpy.cov``
+
 ### 3. PDF:
+Update the class ``MultiNormal``:
+
+public instance method ``def pdf(self, x):`` that calculates the PDF at a data point:
+- ``x`` is a ``numpy.ndarray`` of shape (d, 1) containing the data point whose PDF should be calculated
+  - ``d`` is the number of dimensions of the Multinomial instance
+- If ``x`` is not a ``numpy.ndarray``, raise a ``TypeError`` with the message`` x must be a numpy.ndarray``
+- If ``x`` is not of shape ``(d, 1)``, raise a ``ValueError`` with the message ``x must have the shape ({d}, 1)``
+- Returns the value of the PDF
+- You are not allowed to use the function ``numpy.cov``
