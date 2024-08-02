@@ -25,4 +25,4 @@ def variance(X, C):
     min_distances_squared = np.min(distances_squared, axis=0)
 
     # Sum the minimum squared distances to get the total intra-cluster variance
-    return = np.sum(min_distances_squared)  
+    return np.sum(min_distances_squared)  
