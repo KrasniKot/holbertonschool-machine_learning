@@ -17,6 +17,28 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
         - iterations: is a positive integer containing the maximum number of
                       iterations for K-means
     """
+    if type(X) is not np.ndarray:
+        return (None, None)
+
+    if type(kmin) is not int:
+        return (None, None)
+
+    if kmax is not None and type(kmax) is not int:
+        return (None, None)
+    if kmax is None:
+        kmax = X.shape[0]
+
+    if len(X.shape) != 2 or kmin < 1:
+        return (None, None)
+
+    if kmax is not None and kmax <= kmin:
+        return (None, None)
+
+    if type(iterations) is not int:
+        return (None, None)
+    if iterations <= 0:
+        return (None, None)
+
     results = []
     varsdiff = []
     for k in range(kmin, kmax + 1):
