@@ -59,6 +59,17 @@ Write a function ``def optimum_k(X, kmin=1, kmax=None, iterations=1000):`` that 
   - ``d_vars`` is a list containing the difference in variance from the smallest cluster size for each cluster size`
 
 ### 4. Initialize GMM:
+Write a function ``def initialize(X, k):`` that initializes variables for a Gaussian Mixture Model:
+
+- ``X`` is a ``numpy.ndarray`` of shape ``(n, d)`` containing the data set
+- ``k`` is a positive integer containing the number of clusters
+- You are not allowed to use any loops
+- Returns: ``pi``, ``m``, ``S``, or ``None``, ``None``, ``None`` on failure
+  - ``pi`` is a ``numpy.ndarray`` of shape ``(k,)`` containing the priors for each cluster, initialized evenly
+  - ``m`` is a ``numpy.ndarray`` of shape ``(k, d)`` containing the centroid means for each cluster, initialized with K-means
+  - ``S`` is a ``numpy.ndarray`` of shape ``(k, d, d)`` containing the covariance matrices for each cluster, initialized as identity matrices
+- You should use ``kmeans = __import__('1-kmeans').kmeans``
+
 ### 5. PDF:
 ### 6. Expectation:
 ### 7. Maximization:
