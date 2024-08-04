@@ -6,9 +6,11 @@ import numpy as np
 
 def kmeans(X, k, iterations=1000):
     """ Performs K-means on a dataset
-        - X:
-        - k: 
-        - iterations: 
+        - X: numpy.ndarray of shape (n, d) containing the dataset
+            - n:  number of data points
+            - d: number of dimensions for each data point
+        - k: positive integer containing the number of clusters
+        - iterations: positive integer containing the max number of iterations
     """
 
     C, low, high = initialize(X, k)
