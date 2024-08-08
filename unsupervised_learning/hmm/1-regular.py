@@ -27,4 +27,4 @@ def regular(P):
     b = np.append(b, 1)
 
     # Solve the linear system
-    return np.linalg.lstsq(A, b, rcond=None)[0]
+    return np.linalg.lstsq(A, b, rcond=None)[0].reshape(1, -1)
