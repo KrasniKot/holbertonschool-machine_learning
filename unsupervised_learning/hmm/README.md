@@ -19,3 +19,11 @@ Write the function ``def regular(P):`` that determines the steady state probabil
   - ``P[i, j]`` is the probability of transitioning from state ``i`` to state ``j``
   - ``n`` is the number of states in the markov chain
 - Returns: a ``numpy.ndarray`` of shape ``(1, n)`` containing the steady state probabilities, or ``None`` on failure
+
+### 2. Absorbing Chains:
+Write the function ``def absorbing(P):`` that determines if a markov chain is absorbing:
+
+- ``P`` is a is a square 2D ``numpy.ndarray`` of shape ``(n, n)`` representing the standard transition matrix
+  - ``P[i, j]`` is the probability of transitioning from state ``i`` to state ``j``
+  - ``n`` is the number of states in the markov chain
+- Returns: ``True`` if it is absorbing, or ``False`` on failure
