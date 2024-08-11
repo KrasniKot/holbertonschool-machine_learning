@@ -17,7 +17,6 @@ def absorbing(P):
 
     # Matrix to check reachability to absorbing states
     reachable = np.zeros((n, n), dtype=bool)
-
     # If there is a non-zero probability of moving from i to j, [i, j] = True
     reachable[P > 0] = True
 
@@ -25,7 +24,7 @@ def absorbing(P):
     for _ in range(n):
         reachable = reachable | (reachable @ reachable)
 
-    # Can each state reach any absorbing state?
+    # Each state must be able to reach any absorbing state
     for i in range(n):
         if not any(reachable[i, j] for j in absorbing_states):
             return False
