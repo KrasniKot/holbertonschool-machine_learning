@@ -29,7 +29,7 @@ def forward(Observation, Emission, Transition, Initial):
 
         # 2. induction (Recursion)
         for t in range(1, T):
-            F[:, t] = F[:, t - 1] @ Transition.T * Emission[:, Observation[t]]
+            F[:, t] = Transition.T @ F[:, t - 1] * Emission[:, Observation[t]]
 
         # 3. Termination
         return np.sum(F[:, T - 1]), F
