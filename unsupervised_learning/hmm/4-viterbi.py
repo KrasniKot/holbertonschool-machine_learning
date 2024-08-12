@@ -21,8 +21,9 @@ def viterbi(Observation, Emission, Transition, Initial):
     try:
         T = Observation.shape[0]
         N = Emission.shape[0]
+        mx = np.max
 
-        # Initialize the viterbi and backpointer matrices
+        # Viterbi and backpointer matrices initialization
         viterbi = np.zeros((N, T))
         backpointer = np.zeros((N, T), dtype=int)
 
@@ -33,7 +34,6 @@ def viterbi(Observation, Emission, Transition, Initial):
         # Recursion step
         for t in range(1, T):
             for s in range(N):
-                mx = np.max
                 trans_prob = viterbi[:, t - 1] * Transition[:, s]
                 viterbi[s, t] = mx(trans_prob) * Emission[s, Observation[t]]
                 backpointer[s, t] = np.argmax(trans_prob)
