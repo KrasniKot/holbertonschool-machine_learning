@@ -20,30 +20,34 @@ def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
         iterations: is the number of times expectation-maximization should be
                     performed
     """
-    T = Observations.shape[0]
-    M, N = Emission.shape
+    try:
+        T = Observations.shape[0]
+        M, N = Emission.shape
 
-    for n in range(1, iterations):
-        alpha = forward(Observations, Emission, Transition, Initial)
-        beta = backward(Observations, Emission, Transition, Initial)
-        xi = np.zeros((M, M, T - 1))
-        for i in range(T - 1):
-            denominator = np.dot(np.dot(alpha[:, i].T, Transition) *
-                                 Emission[:, Observations[i + 1]].T,
-                                 beta[:, i + 1])
-            for j in range(M):
-                numerator = alpha[j, i] * Transition[j] *\
-                    Emission[:, Observations[i + 1]].T * beta[:, i + 1].T
-                xi[j, :, i] = numerator / denominator
-        gamma = np.sum(xi, axis=1)
-        Transition = np.sum(xi, 2) / np.sum(gamma, axis=1).reshape((-1, 1))
-        gamma = np.hstack((gamma,
-                           np.sum(xi[:, :, T - 2], axis=0).reshape((-1, 1))))
-        denominator = np.sum(gamma, axis=1)
-        for i in range(N):
-            Emission[:, i] = np.sum(gamma[:, Observations == i], axis=1)
-        Emission = np.divide(Emission, denominator.reshape((-1, 1)))
-    return (Transition, Emission)
+        for n in range(1, iterations):
+            alpha = forward(Observations, Emission, Transition, Initial)
+            beta = backward(Observations, Emission, Transition, Initial)
+            xi = np.zeros((M, M, T - 1))
+            for i in range(T - 1):
+                denominator = np.dot(np.dot(alpha[:, i].T, Transition) *
+                                     Emission[:, Observations[i + 1]].T,
+                                     beta[:, i + 1])
+                for j in range(M):
+                    numerator = alpha[j, i] * Transition[j] *\
+                        Emission[:, Observations[i + 1]].T * beta[:, i + 1].T
+                    xi[j, :, i] = numerator / denominator
+            gamma = np.sum(xi, axis=1)
+            gam = gamma
+            Transition = np.sum(xi, 2) / np.sum(gamma, axis=1).reshape((-1, 1))
+            gam = np.hstack((gam,
+                             np.sum(xi[:, :, T - 2], axis=0).reshape((-1, 1))))
+            denominator = np.sum(gamma, axis=1)
+            for i in range(N):
+                Emission[:, i] = np.sum(gamma[:, Observations == i], axis=1)
+            Emission = np.divide(Emission, denominator.reshape((-1, 1)))
+        return (Transition, Emission)
+    except Exception:
+        return None, None
 
 
 def backward(Observation, Emission, Transition, Initial):
