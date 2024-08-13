@@ -29,3 +29,12 @@ Public instance method ``def predict(self, X_s):`` that predicts the mean and st
 - Returns: ``mu``, ``sigma``
   - ``mu`` is a ``numpy.ndarray`` of shape ``(s,)`` containing the mean for each point in ``X_s``, respectively
   - ``sigma`` is a ``numpy.ndarray`` of shape ``(s,)`` containing the variance for each point in ``X_s``, respectively
+
+
+### 2. Udate Gaussian Process:
+Update the class ``GaussianProcess``:
+
+Public instance method ``def update(self, X_new, Y_new):`` that updates a Gaussian Process:
+- ``X_new`` is a ``numpy.ndarray`` of shape ``(1,)`` that represents the new sample point
+- ``Y_new`` is a ``numpy.ndarray`` of shape ``(1,)`` that represents the new sample function value
+- Updates the public instance attributes ``X``, ``Y``, and ``K``
