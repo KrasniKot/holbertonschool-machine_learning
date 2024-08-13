@@ -41,5 +41,3 @@ class GaussianProcess:
                 K[i][j] = self.sigma_f ** 2 * np.exp(-num / denom)
 
         return K
-
-
