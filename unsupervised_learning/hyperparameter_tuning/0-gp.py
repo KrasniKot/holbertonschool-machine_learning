@@ -11,7 +11,7 @@ class GaussianProcess:
         """ Initializes a GaussianProcess
             - X_init: numpy.ndarray of shape (t, 1); the inputs already sampled
                       with the black-box function
-            - Y_init: numpy.ndarray of shape (t, 1); the outputs already sampled
+            - Y_init: numpy.ndarray of shape (t, 1); outputs already sampled
                       with the black-box function
                 > l: number of initial states
             - l: length parameter for the kernel
@@ -39,5 +39,7 @@ class GaussianProcess:
                 denom = 2 * self.l ** 2
 
                 K[i][j] = self.sigma_f ** 2 * np.exp(-num / denom)
-        
+
         return K
+
+

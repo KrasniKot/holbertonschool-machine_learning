@@ -19,3 +19,13 @@ Public instance method ``def kernel(self, X1, X2):`` that calculates the covaria
 - ``X2`` is a ``numpy.ndarray`` of shape ``(n, 1)``
 - the kernel should use the Radial Basis Function (RBF)
 - Returns: the covariance kernel matrix as a ``numpy.ndarray`` of shape ``(m, n)``
+
+### 1. Gaussian Process Prediction:
+Update the class ``GaussianProcess``:
+
+Public instance method ``def predict(self, X_s):`` that predicts the mean and standard deviation of points in a Gaussian process:
+- ``X_s`` is a numpy.ndarray of shape ``(s, 1)`` containing all of the points whose mean and standard deviation should be calculated
+  - ``s`` is the number of sample points
+- Returns: ``mu``, ``sigma``
+  - ``mu`` is a ``numpy.ndarray`` of shape ``(s,)`` containing the mean for each point in ``X_s``, respectively
+  - ``sigma`` is a ``numpy.ndarray`` of shape ``(s,)`` containing the variance for each point in ``X_s``, respectively
