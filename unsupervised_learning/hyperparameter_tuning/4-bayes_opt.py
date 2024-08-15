@@ -40,7 +40,7 @@ class BayesianOptimization:
 
     def acquisition(self):
         """ Calculates the next best sample location """
-        # Predictions and stddev 
+        # Predictions and stddev
         mu, sigma = self.gp.predict(self.X_s)
 
         with np.errstate(divide='warn'):
