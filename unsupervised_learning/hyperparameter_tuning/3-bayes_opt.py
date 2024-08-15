@@ -2,9 +2,8 @@
 """ Performs the Bayessian Optimization algorithm """
 
 import numpy as np
-
-
 GP = __import__('2-gp').GaussianProcess
+
 
 class BayesianOptimization:
     """ Defines a Bayessian Optimization algorithm """
