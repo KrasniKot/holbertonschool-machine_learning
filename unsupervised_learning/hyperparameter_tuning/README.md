@@ -59,4 +59,14 @@ Class constructor ``def __init__(self, f, X_init, Y_init, bounds, ac_samples, l=
   - ``X_s``: a numpy.ndarray of shape ``(ac_samples, 1)`` containing all acquisition sample points, evenly spaced between min and max
   - ``xsi``: the exploration-exploitation factor
   - ``minimize``: a bool for minimization versus maximization
-- ou may use ``GP = __import__('2-gp').GaussianProcess``
+- You may use ``GP = __import__('2-gp').GaussianProcess``
+
+### 4. Bayesian Optimization - Acquisition:
+Based on ``3-bayes_opt.py``, update the class ``BayesianOptimization``:
+
+Public instance method ``def acquisition(self):`` that calculates the next best sample location:
+- Uses the Expected Improvement acquisition function
+- Returns: ``X_next``, ``EI``
+- ``X_next`` is a ``numpy.ndarray`` of shape ``(1,)`` representing the next best sample point
+- ``EI`` is a ``numpy.ndarray`` of shape ``(ac_samples,)`` containing the expected improvement of each potential sample
+- You may use ``from scipy.stats import norm``
