@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+""" Function that creates a vanilla autoencoder
+
+Requires:
+    - tensorflow
+"""
 import tensorflow.keras as keras
 
 layers = keras.layers
