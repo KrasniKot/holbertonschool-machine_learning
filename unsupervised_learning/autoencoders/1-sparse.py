@@ -10,6 +10,7 @@ layers = keras.layers
 models = keras.models
 l1 = keras.regularizers.l1
 
+
 def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     """ Creates a vanilla autoencoder
         - input_dims: integer, dimensions of the model input
