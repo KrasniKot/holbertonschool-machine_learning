@@ -20,7 +20,7 @@ def autoencoder(input_dims, filters, latent_dims):
     """
     # Encoder input
     encoder_input = keras.Input(shape=(input_dims))
-    x = inputs
+    x = encoder_input
 
     # Subsequent layers
     for f in filters:
@@ -29,7 +29,7 @@ def autoencoder(input_dims, filters, latent_dims):
         x = keras.layers.MaxPooling2D((2, 2), padding="same")(x)
 
     # Encoder model
-    encoder = keras.Model(inputs, x)
+    encoder = keras.Model(encoder_input, x)
 
     # Decoder inputs and latent space
     decoder_input = keras.Input(shape=latent_dims)
