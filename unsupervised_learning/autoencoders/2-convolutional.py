@@ -19,17 +19,17 @@ def autoencoder(input_dims, filters, latent_dims):
                        latent space representation
     """
     # Encoder input
-    encoder_input = keras.Input(shape=input_dims)
-    x = encoder_input
+    encoder_input = keras.Input(shape=(input_dims))
+    x = inputs
 
-    # Subsequent convolutional layers
+    # Subsequent layers
     for f in filters:
-        x = layers.Conv2D(filters=f, kernel_size=(3, 3),
-                          padding="same", activation="relu")(x)
-        x = layers.MaxPooling2D(pool_size=(2, 2), padding="same")(x)
+        x = keras.layers.Conv2D(f, (3, 3), activation="relu",
+                                padding="same")(x)
+        x = keras.layers.MaxPooling2D((2, 2), padding="same")(x)
 
     # Encoder model
-    encoder = keras.Model(encoder_input, x)
+    encoder = keras.Model(inputs, x)
 
     # Decoder inputs and latent space
     decoder_input = keras.Input(shape=latent_dims)

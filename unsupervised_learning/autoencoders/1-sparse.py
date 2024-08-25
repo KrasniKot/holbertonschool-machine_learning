@@ -8,7 +8,6 @@ import tensorflow.keras as keras
 
 layers = keras.layers
 models = keras.models
-l1 = keras.regularizers.l1
 
 
 def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
@@ -29,7 +28,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
 
     # Latent space
     latent = layers.Dense(
-        latent_dims, activation='relu', activity_regularizer=l1(lambtha))(x)
+        latent_dims,
+        activation='relu',
+        activity_regularizer=keras.regularizers.l1(lambtha))(x)
 
     # Encoder model
     encoder = models.Model(encoder_input, latent, name="encoder")
