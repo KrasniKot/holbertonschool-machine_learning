@@ -56,3 +56,28 @@
 - What is the Viterbi algorithm and how do you implement it?
 - What is the Forward-Backward algorithm and how do you implement it?
 - What is the Baum-Welch algorithm and how do you implement it?
+
+### Hyperparameter Tuning:
+- What is Hyperparameter Tuning?
+- What is random search? grid search?
+- What is a Gaussian Process?
+- What is a mean function?
+- What is a Kernel function?
+- What is Gaussian Process Regression/Kriging?
+- What is Bayesian Optimization?
+- What is an Acquisition function?
+- What is Expected Improvement?
+- What is Knowledge Gradient?
+- What is Entropy Search/Predictive Entropy Search?
+- What is GPy?
+- What is GPyOpt?
+
+### Autoencoders:
+* What is an autoencoder?
+* What is latent space?
+* What is a bottleneck?
+* What is a sparse autoencoder?
+* What is a convolutional autoencoder?
+* What is a generative model?
+* What is a variational autoencoder?
+* What is the Kullback-Leibler divergence?
