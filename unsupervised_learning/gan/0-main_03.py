@@ -163,6 +163,7 @@ def visualize_5D(G, show=True, title=None, filename=None, dpi=200):
         plt.show()
 
 ## LET'S GO !
+
 set_seeds(0)
 G = example_fully_connected_GAN(Simple_GAN ,four_clouds_example(1000), [2,10,10,5], 16, steps_per_epoch=100, learning_rate=.001)
 visualize_5D(G,show=True, title=f"after 16 epochs")
