@@ -125,11 +125,11 @@ class WGAN_GP(keras.Model):
                 gp = self.gradient_penalty(interpoled_sample)
 
                 # new_discr_loss = discr_loss + self.lambda_gp * gp
-                discr_loss += self.lambda_gp * gp
+                ndiscr_loss = discr_loss + self.lambda_gp * gp
 
             # Gradient descent with respect to new_discr_loss
             disc_gradients = (
-                disc_tape.gradient(discr_loss,
+                disc_tape.gradient(ndiscr_loss,
                                    self.discriminator.trainable_variables))
 
             self.discriminator.optimizer.apply_gradients(zip(
