@@ -72,6 +72,10 @@ class WGAN_GP(keras.Model):
 
     # generator of real samples of size batch_size
     def get_fake_sample(self, size=None, training=False):
+        """ Generates a fake sample
+            - size: number of fake examples to generate
+            - training: determines whether the model is being trained
+        """
         if not size:
             size = self.batch_size
 
@@ -79,20 +83,33 @@ class WGAN_GP(keras.Model):
 
     # generator of fake samples of size batch_size
     def get_real_sample(self, size=None):
+        """ Retrieves a sample of real randomly sorted examples
+            - size: sample size
+        """
         if not size:
             size = self.batch_size
+
         sorted_indices = tf.range(tf.shape(self.real_examples)[0])
         random_indices = tf.random.shuffle(sorted_indices)[:size]
+
         return tf.gather(self.real_examples, random_indices)
+
 
     # generator of interpolating samples of size batch_size
     def get_interpolated_sample(self, real_sample, fake_sample):
+        """ Fetches an interpolated sample
+            - real_sample: real sample
+            - fake_sample: fake sample
+        """
         u = tf.random.uniform(self.scal_shape)
         v = tf.ones(self.scal_shape) - u
         return u*real_sample + v * fake_sample
 
     # computing the gradient penalty
     def gradient_penalty(self, interpolated_sample):
+        """ Gradient penalty with respect to an interpolated sample
+            - interpolated_sample: interpolated sample
+        """
         with tf.GradientTape() as gp_tape:
             gp_tape.watch(interpolated_sample)
             pred = self.discriminator(interpolated_sample, training=True)
