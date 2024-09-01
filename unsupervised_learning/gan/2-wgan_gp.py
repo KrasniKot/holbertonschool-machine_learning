@@ -94,7 +94,6 @@ class WGAN_GP(keras.Model):
 
         return tf.gather(self.real_examples, random_indices)
 
-
     # generator of interpolating samples of size batch_size
     def get_interpolated_sample(self, real_sample, fake_sample):
         """ Fetches an interpolated sample
