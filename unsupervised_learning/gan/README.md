@@ -514,3 +514,17 @@ def convolutional_GenDiscr() :
 
     return get_generator() , get_discriminator()
 ```
+
+### 4. Our own "This person does not exist": Playing with a pre-trained model
+The developers of this project have trained a ``WGAN_GP`` model just as you did in the last task, but for a larger number of epoch ``(150)``, of a larger number of steps ``(200)`` with a small learning rate ``(.0001)`` and stored
+
+- The weights of the generator in a file ``generator.h5``
+- The weights of the discriminator in a file ``discriminator.h5``
+
+The aim of this task is to recover the ``WGAN_GP`` model from these weights, and then to play a little bit in the main with this model.
+
+#### Replace the weights
+Update your class ``WGAN_GP`` by adding a method ``replace_weight(self,gen_h5,disc_h5)`` that allows you to:
+
+- replace the weights of the generator by the ones that have been stored in the ``.h5`` file ``gen_h5``
+- replace the weights of the discriminator by the ones that have been stored in the ``.h5`` file ``gen_h5``
