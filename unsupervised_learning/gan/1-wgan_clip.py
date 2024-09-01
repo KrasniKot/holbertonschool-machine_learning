@@ -26,7 +26,7 @@ class WGAN_clip(keras.Model):
             - batch_size: training batch size
             - disc_iter: iterations the discriminator should perform for each
                          training step the generator does
-            learning_rate: learning rate
+            - learning_rate: learning rate
         """
         super().__init__()  # __init__ of keras.Model first is run first
         self.latent_generator = latent_generator
