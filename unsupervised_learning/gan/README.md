@@ -489,3 +489,28 @@ It consists in filling in three holes:
 
 The two losses are the same as in the WGAN_clip class, and in the training, you just have to add the gradient penalty to the generator loss (inside the tape) as indicated in the commented pseudo code.
 
+### 3. Generating faces:
+Write a function`` def convolutional_GenDiscr()`` just like the function ``fully_connected_GenDiscr()`` of task 0 that builds a generator and discriminator as described here under:
+- For the generator, the input data will have shape ``(16)``
+- For the discriminator, the input data will have shape ``(16,16,1)``
+- Use a hyperbolic tangent activation function “tanh” (even in Dense layers)
+- In every ``Conv2D``, the ``padding=“same”``
+- Returns: the concatenated output of the generator and discriminator
+
+Copy this code and fill in the method ``def convolutional_GenDiscr()``
+
+```
+def convolutional_GenDiscr() :
+
+
+    def generator() :
+        #generator model
+
+
+
+    def get_discriminator():
+        #discriminator model
+        
+
+    return get_generator() , get_discriminator()
+```
