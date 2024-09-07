@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ Forward propagation for a RNN
 
 Requires:
