@@ -123,3 +123,22 @@ Create the class ``BidirectionalCell`` that represents a bidirectional cell of a
     - ``m`` is the batch size for the data
   - ``h_prev`` is a ``numpy.ndarray`` of shape ``(m, h)`` containing the previous hidden state
   - Returns: ``h_next``, the next hidden state
+
+### 6. Bidirectional Cell Backward:
+Update the class ``BidirectionalCell``, based on ``5-bi_forward.py``:
+
+- public instance method ``def backward(self, h_next, x_t):`` that calculates the hidden state in the backward direction for one time step
+  - ``x_t`` is a ``numpy.ndarray`` of shape ``(m, i)`` that contains the data input for the cell
+    - ``m`` is the batch size for the data
+  - ``h_next`` is a ``numpy.ndarray`` of shape ``(m, h)`` containing the next hidden state
+  - Returns: ``h_pev``, the previous hidden state
+
+### 7. Bidirectional Output:
+Update the class B``idirectionalCell, based on ``6-bi_backward.py``:
+
+- public instance method ``def output(self, H):`` that calculates all outputs for the RNN:
+  - ``H`` is a ``numpy.ndarray`` of shape ``(t, m, 2 * h)`` that contains the concatenated hidden states from both directions, excluding their initialized states
+    - ``t`` is the number of time steps
+    - ``m`` is the batch size for the data
+    - ``h`` is the dimensionality of the hidden states
+  - Returns: ``Y``, the outputs
