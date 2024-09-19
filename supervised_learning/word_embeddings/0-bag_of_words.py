@@ -52,4 +52,4 @@ def bag_of_words(sentences, vocab=None):
                 # Add 1 for each time a word appears in a sentenece
                 embeddings[i][word_index[word]] += 1
 
-    return embeddings, vocab
+    return embeddings, np.array(vocab)
