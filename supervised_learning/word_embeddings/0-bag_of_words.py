@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Function that creates a baf of words """
+""" Function that creates a bag of words """
 
 import numpy as np
 import re
