@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Function that creates and trains a genism fastText model """
-from gensim.models import FastText
+
+import gensim
 
 
 def fasttext_model(sentences, size=100, min_count=5, negative=5, window=5,
@@ -19,7 +20,8 @@ def fasttext_model(sentences, size=100, min_count=5, negative=5, window=5,
         - seed: seed for the random number generator
         - workers: number of worker threads to train the model
     """
-    model = FastText(sentences=sentences,
+    fasttext = gensim.models.FastText
+    model = fasttext(sentences=sentences,
                      sg=cbow,
                      vector_size=size,
                      negative=negative,

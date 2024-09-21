@@ -52,4 +52,18 @@ Write a function ``def gensim_to_keras(model):`` that converts a ``gensim word2v
 
 
 ### 5. ELMo:
+When training an ELMo embedding model, you are training:
 
+The internal weights of the BiLSTM
+The character embedding layer
+The weights applied to the hidden states
+In the text file ``5-elmo``, write the letter answer, followed by a newline, that lists the correct statements:
+
+A. 1, 2, 3
+B. 1, 2
+C. 2, 3
+D. 1, 3
+E. 1
+F. 2
+G. 3
+H. None of the above
