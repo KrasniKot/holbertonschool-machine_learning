@@ -43,7 +43,10 @@ Write a function ``def word2vec_model(sentences, vector_size=100, min_count=5, w
 - Returns: the trained model
 
 ### 3. Extract Word2Vec:
+Write a function ``def gensim_to_keras(model):`` that converts a ``gensim word2vec`` model to a keras Embedding layer:
 
+- ``model`` is a trained gensim word2vec models
+- Returns: the trainable ``keras`` Embedding
 
 ### 4. FastText:
 

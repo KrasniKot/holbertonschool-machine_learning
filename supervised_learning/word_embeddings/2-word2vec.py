@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Create a function that trains a gensim word2vec model """
 
-import gensim
+from gensim.models import Word2Vec
 
 
 def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
@@ -20,10 +20,9 @@ def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
         - seed: seed for the random number generator
         - workers: number of worker threads to train the model
     """
-    model = gensim.models.Word2Vec(sentences, min_count=min_count,
-                                   epochs=iterations, vector_size=size,
-                                   window=window, negative=negative, seed=seed,
-                                   sg=cbow, workers=workers)
+    model = Word2Vec(sentences, vector_size=size, window=window,
+                     min_count=min_count, negative=negative, workers=workers,
+                     sg=cbow, seed=seed, epochs=iterations)
 
     model.train(sentences, total_examples=model.corpus_count,
                 epochs=model.epochs)
