@@ -11,11 +11,11 @@ def tf_idf(sentences, vocab=None):
     """
     # Initialize the TfidfVectorizer with the optional vocabulary
     vectorizer = TfidfVectorizer(vocabulary=vocab)
-    
+
     # Fit the vectorizer to the sentences
     # and transform them into TF-IDF features
     X = vectorizer.fit_transform(sentences)
-    
+
     # Convert the sparse matrix to a dense array (if needed)
     # and get the feature names
     return X.toarray(), vectorizer.get_feature_names_out()
