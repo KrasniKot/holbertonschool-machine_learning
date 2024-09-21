@@ -24,4 +24,9 @@ def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
                                    min_count=min_count, negative=negative,
                                    workers=workers, sg=cbow, seed=seed,
                                    epochs=iterations)
+
+    model.build_vocab(sentences)
+    model.train(sentences, total_examples=model.corpus_count,
+                epochs=model.epochs)
+
     return model
