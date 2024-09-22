@@ -33,14 +33,16 @@ def uni_bleu(references, sentence):
     sent_length = len(sentence)
 
     # Find the closest reference length to the model proposed sentence length
-    closest_ref_length = min(ref_lengths, key=lambda ref_len: (abs(ref_len - sent_length), ref_len))
+    closest_ref_length = min(
+        ref_lengths,
+        key=lambda ref_len: (abs(ref_len - sent_length), ref_len))
 
     # Calculate bravity penalty to discourage overly short translations.
     if sent_length > closest_ref_length:
         brevity_penalty = 1
     else:
         brevity_penalty = math.exp(1 - closest_ref_length / sent_length)
-    
+
     # Step 5: Calculate the final unigram BLEU score
     bleu_score = brevity_penalty * precision
 
