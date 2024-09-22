@@ -81,3 +81,5 @@
 * What is a generative model?
 * What is a variational autoencoder?
 * What is the Kullback-Leibler divergence?
+
+### Gans:
