@@ -5,6 +5,7 @@ import tensorflow as tf
 
 layers = tf.keras.layers
 Embedding = layers.Embedding
+""" Embedding class """
 GRU = layers.GRU
 
 
