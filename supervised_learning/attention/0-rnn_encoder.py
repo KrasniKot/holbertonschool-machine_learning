@@ -4,7 +4,6 @@
 import tensorflow as tf
 
 layers = tf.keras.layers
-GRU = layers.GRU
 
 
 class RNNEncoder(layers.Layer):
@@ -24,9 +23,9 @@ class RNNEncoder(layers.Layer):
         self.units = units
         emb = layers.Embedding(input_dim=vocab, output_dim=embedding)
         self.embedding = emb
-        self.gru = GRU(units=self.units, return_sequences=True,
-                       return_state=True,
-                       recurrent_initializer='glorot_uniform')
+        self.gru = layers.GRU(units=self.units, return_sequences=True,
+                              return_state=True,
+                              recurrent_initializer='glorot_uniform')
 
     def initialize_hidden_state(self):
         """ Initializes the hidden states for the RNN cell to a tensor of zeros
