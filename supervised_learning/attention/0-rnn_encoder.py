@@ -4,8 +4,6 @@
 import tensorflow as tf
 
 layers = tf.keras.layers
-Embedding = layers.Embedding
-""" Embedding class """
 GRU = layers.GRU
 
 
@@ -24,7 +22,8 @@ class RNNEncoder(layers.Layer):
         super(RNNEncoder, self).__init__()
         self.batch = batch
         self.units = units
-        self.embedding = Embedding(input_dim=vocab, output_dim=embedding)
+        emb = layers.Embedding(input_dim=vocab, output_dim=embedding)
+        self.embedding = emb
         self.gru = GRU(units=self.units, return_sequences=True,
                        return_state=True,
                        recurrent_initializer='glorot_uniform')
