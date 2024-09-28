@@ -1,66 +1,56 @@
 #!/usr/bin/env python3
-"""
-    Module to create Class RNN Decoder
-"""
-import tensorflow as tf
+""" Decoder for machine translation """
 
+import tensorflow as tf
 SelfAttention = __import__('1-self_attention').SelfAttention
 
 
 class RNNDecoder(tf.keras.layers.Layer):
-    """ class to create RNN decoder for machine translation
-    """
+    """ Defines an RNN Decoder for Machine Translation """
 
     def __init__(self, vocab, embedding, units, batch):
-        """ class constructor
-
-        :param vocab: integer, size of output vocabulary
-        :param embedding: integer, dimensionality of embedding vector
-        :param units: integer, number hidden units in RNN cell
-        :param batch: integer, batch size
+        """ Initializes an RNN Decoder
+            - vocab: integer representing the size of the output vocabulary
+            - embedding: integer representing the dimensionality
+                         of the embedding vector
+            - units: integer representing the number of hidden
+                     units in the RNN cell
+            - batch: integer representing the batch size
         """
-
         super().__init__()
-        self.units = units
-        self.batch = batch
-        self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
-                                                   output_dim=embedding)
-        self.gru = tf.keras.layers.GRU(
-            units=units,
-            return_sequences=True,
-            return_state=True,
-            recurrent_initializer="glorot_uniform")
-        self.F = tf.keras.layers.Dense(units=vocab)
-        self.attention = SelfAttention(self.units)
+
+        Embedding = tf.keras.layers.Embedding
+        GRU = tf.keras.layers.GRU
+        Dense = tf.keras.layers.Dense
+
+        self.embedding = Embedding(input_dim=vocab, output_dim=embedding)
+        self.gru = GRU(units=units, return_sequences=True, return_state=True,
+                       recurrent_initializer="glorot_uniform")
+        self.F = Dense(units=vocab)
+        self.sattention = SelfAttention(vocab)
 
     def call(self, x, s_prev, hidden_states):
+        """ Computes the output for the decoder
+            - x: tensor of shape (batch, 1) containing the previous word
+                 in the target sequence as an index of the target vocabulary
+            - s_prev: tensor of shape (batch, units) containing the previous
+                      decoder hidden state
         """
-            call function
+        context, _ = self.attention(s_prev, hidden_states)
 
-        :param x: tensor, shape(batch,1), previous word in the target
-        :param s_prev: tensor, shape(batch, units) previous decoder
-            hidden state
-        :param hidden_states: tensor, shape(batch,input_seq_len,units)
-             outputs of the encoder
+        # Pass the previous word index through the embedding layer
+        x = self.embedding(x)
 
-        :return: y, s
-            y: tensor, shape(batch, vocab) output word as a one hot
-                vector in the target vocabulary
-            s: tensor, shape(batch, units) new decoder hidden state
-        """
-        # context and weigh : context.shape(32,256)
-        context, att_weights = self.attention(s_prev, hidden_states)
+        # Concatenate the context vector with x
+        x = tf.concat([tf.expand_dims(context, 1), x], axis=-1)
 
-        x = self.embedding(x) 
-        # concatenate context with embedding vector
-        context = tf.expand_dims(context, axis=1)
-        context_concat = tf.concat([context, x], axis=-1)
+        # Pass the concatenated vector through the GRU layer
+        output, s = self.gru(x)
 
-        outputs, hidden_state = self.gru(context_concat)
+        # Remove the extra axis
+        output = tf.squeeze(output, axis=1)
 
-        new_outputs = tf.reshape(outputs,
-                                 shape=(outputs.shape[0], outputs.shape[2]))
+        # Pass the GRU output through the Dense layer to predict the next word
+        y = self.F(output)
 
-        y = self.F(new_outputs)
-
-        return y, hidden_state
+        return y, s
