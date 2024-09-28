@@ -20,8 +20,8 @@ class RNNDecoder(tf.keras.layers.Layer):
         super().__init__()
 
         Embedding = tf.keras.layers.Embedding
-        GRU = tf.keras.layers.GRU
-        Dense = tf.keras.layers.Dense
+        GRU       = tf.keras.layers.GRU
+        Dense     = tf.keras.layers.Dense
 
         self.embedding = Embedding(input_dim=vocab, output_dim=embedding)
         self.gru = GRU(units=units, return_sequences=True, return_state=True,
