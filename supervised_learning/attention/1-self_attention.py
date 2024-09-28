@@ -5,10 +5,8 @@
 
 import tensorflow as tf
 
-layers = tf.keras.layers
 
-
-class SelfAttention(layers.Layer):
+class SelfAttention(tf.keras.layers):
     """ Defines a Self Attention class """
 
     def __init__(self, units):
