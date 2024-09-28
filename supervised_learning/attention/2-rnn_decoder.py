@@ -36,21 +36,24 @@ class RNNDecoder(tf.keras.layers.Layer):
             - s_prev: tensor of shape (batch, units) containing the previous
                       decoder hidden state
         """
-        context, _ = self.attention(s_prev, hidden_states)
+        # context and weigh : context.shape(32,256)
+        context, att_weights = self.attention(s_prev, hidden_states)
 
-        # Pass the previous word index through the embedding layer
-        x = self.embedding(x)
+        # embedding vector
+        x = self.embedding(x)  # shape(32, 1, 128)
 
-        # Concatenate the context vector with x
-        x = tf.concat([tf.expand_dims(context, 1), x], axis=-1)
+        # concatenate context with embedding vector
+        context = tf.expand_dims(context, axis=1)  # context.shape(32,1,256)
+        context_concat = tf.concat([context, x], axis=-1)
+        # context.shape(32,1,384)
 
-        # Pass the concatenated vector through the GRU layer
-        output, s = self.gru(x)
+        outputs, hidden_state = self.gru(context_concat)
+        # output.shape(32,1,256)
 
-        # Remove the extra axis
-        output = tf.squeeze(output, axis=1)
+        # new_output.shape(32,256)
+        new_outputs = tf.reshape(outputs,
+                                 shape=(outputs.shape[0], outputs.shape[2]))
 
-        # Pass the GRU output through the Dense layer to predict the next word
-        y = self.F(output)
+        y = self.F(new_outputs)
 
-        return y, s
+        return y, hidden_state
