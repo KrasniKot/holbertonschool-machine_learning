@@ -45,11 +45,8 @@ class SelfAttention(tf.keras.layers.Layer):
         # Apply softmax to get attention weights
         attention_weights = tf.nn.softmax(alignment_scores, axis=1)
 
-        # Expand the dimensions of the attention_weights so that it has the
-        # same shape as the encoder hidden states tensor
-        attention_weights_expanded = tf.expand_dims(attention_weights, axis=-1)
-
         # Compute the context vector as the weighted sum of hidden states
-        context_vector = tf.reduce_sum(attention_weights_expanded, axis=1)
+        context = attention_weights * hidden_states
+        context_vector = tf.reduce_sum(attention_weights, axis=1)
 
         return context_vector, attention_weights
