@@ -1,29 +1,25 @@
 #!/usr/bin/env python3
-""" Class to calculate the self attention
 """
-
+    Module to create Class SelfAttention
+"""
 import tensorflow as tf
 
 
-class SelfAttention(tf.keras.layers):
-    """ Defines a Self Attention class """
-
+class SelfAttention(tf.keras.layers.Layer):
+    """
+        class to calculate attention ofr machine translation
+    """
     def __init__(self, units):
-        """ Initializes a SelfAttention
-            - units: integer, number hidden units in alignment model
         """
+            class constructor
+        :param units: integer, number hidden units in alignment model
+        """
+        if not isinstance(units, int):
+            raise TypeError("units should be an integer")
+
         super().__init__()
-
-        # Determines how important is the previous
-        # encoder hidden state to the decoder hidden states
         self.W = tf.keras.layers.Dense(units=units)
-
-        # Determines how important are the encoder hidden states
-        # in relation to the previous decoder hidden state
         self.U = tf.keras.layers.Dense(units=units)
-
-        # Determine the importance (or "attention")
-        # of the encoder hidden states relative to the current decoder state
         self.V = tf.keras.layers.Dense(units=1)
 
     def call(self, s_prev, hidden_states):
