@@ -36,7 +36,7 @@ class SelfAttention(tf.keras.layers.Layer):
         # Learnt attention weight matrices
         W = self.W(s_prev)
         U = self.U(hidden_states)
-    
+
         # Compute alignment scores: e_ij = v^T(tanh(W + U))
         alignment_scores = self.V(tf.nn.tanh(W + U))
 
