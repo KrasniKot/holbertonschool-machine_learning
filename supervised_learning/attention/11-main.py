@@ -4,7 +4,7 @@ import os
 import random
 import numpy as np
 import tensorflow as tf
-Encoder = __import__('9-transformer_encoder').Encoder
+Transformer = __import__('11-transformer').Transformer
 
 SEED = 0
 
@@ -14,13 +14,11 @@ random.seed(SEED)
 np.random.seed(SEED)
 tf.random.set_seed(SEED)
 
-encoder = Encoder(6, 512, 8, 2048, 10000, 1000)
-print(encoder.dm)
-print(encoder.N)
-print(encoder.embedding)
-print(encoder.positional_encoding)
-print(encoder.blocks)
-print(encoder.dropout)
+transformer = Transformer(6, 512, 8, 2048, 10000, 12000, 1000, 1500)
+print(transformer.encoder)
+print(transformer.decoder)
+print(transformer.linear)
 x = tf.random.uniform((32, 10))
-output = encoder(x, True, None)
+y = tf.random.uniform((32, 15))
+output = transformer(x, y, True, None, None, None)
 print(output)
