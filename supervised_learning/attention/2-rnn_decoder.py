@@ -37,7 +37,7 @@ class RNNDecoder(tf.keras.layers.Layer):
                       decoder hidden state
         """
         # context and weigh : context.shape(32,256)
-        context, att_weights = self.attention(s_prev, hidden_states)
+        context, att_weights = self.sattention(s_prev, hidden_states)
 
         # embedding vector
         x = self.embedding(x)  # shape(32, 1, 128)
