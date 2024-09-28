@@ -27,7 +27,7 @@ class RNNDecoder(tf.keras.layers.Layer):
         self.gru = GRU(units=units, return_sequences=True, return_state=True,
                        recurrent_initializer="glorot_uniform")
         self.F = Dense(units=vocab)
-        self.sattention = SelfAttention(vocab)
+        self.sattention = SelfAttention(units)
 
     def call(self, x, s_prev, hidden_states):
         """ Computes the output for the decoder
@@ -36,24 +36,35 @@ class RNNDecoder(tf.keras.layers.Layer):
             - s_prev: tensor of shape (batch, units) containing the previous
                       decoder hidden state
         """
-        # context and weigh : context.shape(32,256)
-        context, att_weights = self.sattention(s_prev, hidden_states)
+        # Apply the attention mechanism
+        context, _ = self.sattention(s_prev, hidden_states)
 
-        # embedding vector
-        x = self.embedding(x)  # shape(32, 1, 128)
+        # The previous target word x is passed through an embedding layer
+        # transforming it into a dense vector representation
+        x = self.embedding(x)
 
-        # concatenate context with embedding vector
-        context = tf.expand_dims(context, axis=1)  # context.shape(32,1,256)
+        # Since the context vector has a shape (batch, units)
+        # we expand the dimension to make it (batch, 1, units)
+        context = tf.expand_dims(context, axis=1)
+
+        # The context vector (batch, 1, units)
+        # and the embedding vector x (with shape (batch, 1, embedding_dim))
+        # are concatenated along the last dimension (feature dimension).
+        # The resulting tensor has the shape
+        # (batch, 1, feature dimension + embedding_dim).
         context_concat = tf.concat([context, x], axis=-1)
-        # context.shape(32,1,384)
 
+        # Retrieve the output and hidden state
         outputs, hidden_state = self.gru(context_concat)
-        # output.shape(32,1,256)
 
-        # new_output.shape(32,256)
-        new_outputs = tf.reshape(outputs,
-                                 shape=(outputs.shape[0], outputs.shape[2]))
+        # The outputs tensor from the GRU has shape (batch, 1, units).
+        # The reshaping removes the time dimension (which is 1 here)
+        # so that the tensor becomes (batch, units).
+        resh = tf.reshape
+        noutputs = resh(outputs, shape=(outputs.shape[0], outputs.shape[2]))
 
-        y = self.F(new_outputs)
+        # The reshaped outputs are passed through a dense layer (likely self.F)
+        # to produce the final output y, which represents the predicted word.
+        y = self.F(noutputs)
 
         return y, hidden_state
