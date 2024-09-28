@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""" Class to calculate the self attention based on the paper:
-    - https://arxiv.org/pdf/1409.0473
+""" Class to calculate the self attention
 """
 
 import tensorflow as tf
@@ -15,8 +14,6 @@ class SelfAttention(tf.keras.layers):
         """
         super().__init__()
 
-        # ########## This layers will be used to calculate the alignment scores
-
         # Determines how important is the previous
         # encoder hidden state to the decoder hidden states
         self.W = tf.keras.layers.Dense(units=units)
@@ -28,7 +25,6 @@ class SelfAttention(tf.keras.layers):
         # Determine the importance (or "attention")
         # of the encoder hidden states relative to the current decoder state
         self.V = tf.keras.layers.Dense(units=1)
-        # ##########
 
     def call(self, s_prev, hidden_states):
         """ Calculates the context vector and the attention weights
