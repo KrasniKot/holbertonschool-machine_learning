@@ -23,7 +23,7 @@ class Decoder(tf.keras.layers.Layer):
         # Aliases
         Dout = tf.keras.layers.Dropout
         Emddg = tf.keras.layers.Embedding
-        hdn  = hidden
+        hdn = hidden
 
         super().__init__()
 
