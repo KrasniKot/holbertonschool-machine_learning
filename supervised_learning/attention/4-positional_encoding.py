@@ -6,8 +6,8 @@ import numpy as np
 
 def positional_encoding(max_seq_len, dm):
     """ Calculates the positional encoding for a transformer
-        - max_seq_len: integer representing the maximum sequence length
-        - dm: model depth
+        - max_seq_len ... integer representing the maximum sequence length
+        - dm ............ model depth
     """
     # Initialize a numpy array of zeros to hold the positional encodings
     positional_encoding = np.zeros((max_seq_len, dm))

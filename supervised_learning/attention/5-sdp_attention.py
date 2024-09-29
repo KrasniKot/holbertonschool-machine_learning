@@ -6,14 +6,10 @@ import tensorflow as tf
 
 def sdp_attention(Q, K, V, mask=None):
     """ Calculates the Scaled Dot-Product Attention
-        - Q: tensor with its last two dimensions as (..., seq_len_q, dk)
-             containing the query matrix
-        - K: tensor with its last two dimensions as (..., seq_len_v, dk)
-             containing the key matrix
-        - V: tensor with its last two dimensions as (..., seq_len_v, dv)
-             containing the value matrix
-        - mask: tensor that can be broadcast into (..., seq_len_q, seq_len_v)
-                containing the optional mask
+        - Q ...... tensor with its last two dimensions as (..., seq_len_q, dk) containing the query matrix
+        - K ...... tensor with its last two dimensions as (..., seq_len_v, dk) containing the key matrix
+        - V ...... tensor with its last two dimensions as (..., seq_len_v, dv) containing the value matrix
+        - mask ... tensor that can be broadcast into (..., seq_len_q, seq_len_v) containing the optional mask
     """
     # Matrix multiplication of Q by transposed K
     dk = tf.cast(Q.shape[-1], dtype=tf.float32)

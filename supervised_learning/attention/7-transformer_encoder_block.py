@@ -31,14 +31,13 @@ class EncoderBlock(tf.keras.layers.Layer):
 
     def call(self, x, training, mask=None):
         """ Returns the encoder's output
-            - x:          tensor of shape (batch, input_seq_len, dm)
-                          containing the input to the encoder block.
-            - training:   boolean to determine if the model is training
-            - mask:       the mask to be applied for multi head attention
+            - x .......... tensor of shape (batch, input_seq_len, dm) containing the input to the encoder block.
+            - training ... boolean to determine if the model is training
+            - mask ....... the mask to be applied for multi head attention
         """
         #### Apply multi-head attention and dropout to the input x
-        mattentions, _      = self.mha(x, x, x, mask)
-        mattentions = self.dropout1(mattentions, training=training)
+        mattentions, _ = self.mha(x, x, x, mask)
+        mattentions    = self.dropout1(mattentions, training=training)
         ####
 
         # The input x is added to the dropout-modified attention output

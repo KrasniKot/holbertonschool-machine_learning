@@ -10,8 +10,8 @@ class MultiHeadAttention(tf.keras.layers.Layer):
 
     def __init__(self, dm, h):
         """ Initializes a MultiHead Attention
-            - dm: integer representing the dimensionality of the model
-            - h: integer representing the number of heads
+            - dm ... integer representing the dimensionality of the model
+            - h .... integer representing the number of heads
         """
         super().__init__()
         self.h      = h                                         # Number of heads
@@ -25,13 +25,10 @@ class MultiHeadAttention(tf.keras.layers.Layer):
 
     def call(self, Q, K, V, mask):
         """ Returns the attention mechanism output and the attention weights
-            - Q: tensor of shape (batch, seq_len_q, dk)
-                 containing the input to generate the query matrix
-            - K: tensor of shape (batch, seq_len_v, dk)
-                 containing the input to generate the key matrix
-            - V: tensor of shape (batch, seq_len_v, dv)
-                 containing the input to generate the value matrix
-            - mask: always None
+            - Q ...... tensor of shape (batch, seq_len_q, dk) containing the input to generate the query matrix
+            - K ...... tensor of shape (batch, seq_len_v, dk) containing the input to generate the key matrix
+            - V ..-... tensor of shape (batch, seq_len_v, dv) containing the input to generate the value matrix
+            - mask ... always None
         """
         batch_size = tf.shape(Q)[0]
 

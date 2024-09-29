@@ -10,12 +10,10 @@ class RNNDecoder(tf.keras.layers.Layer):
 
     def __init__(self, vocab, embedding, units, batch):
         """ Initializes an RNN Decoder
-            - vocab: integer representing the size of the output vocabulary
-            - embedding: integer representing the dimensionality
-                         of the embedding vector
-            - units: integer representing the number of hidden
-                     units in the RNN cell
-            - batch: integer representing the batch size
+            - vocab ....... integer representing the size of the output vocabulary
+            - embedding ... integer representing the dimensionality of the embedding vector
+            - units ....... integer representing the number of hidden units in the RNN cell
+            - batch ....... integer representing the batch size
         """
         super().__init__()
 
@@ -23,18 +21,15 @@ class RNNDecoder(tf.keras.layers.Layer):
         GRU       = tf.keras.layers.GRU
         Dense     = tf.keras.layers.Dense
 
-        self.embedding = Embedding(input_dim=vocab, output_dim=embedding)
-        self.gru = GRU(units=units, return_sequences=True, return_state=True,
-                       recurrent_initializer="glorot_uniform")
-        self.F = Dense(units=vocab)
+        self.embedding  = Embedding(input_dim=vocab, output_dim=embedding)
+        self.gru        = GRU(units=units, return_sequences=True, return_state=True, recurrent_initializer="glorot_uniform")
+        self.F          = Dense(units=vocab)
         self.sattention = SelfAttention(units)
 
     def call(self, x, s_prev, hidden_states):
         """ Computes the output for the decoder
-            - x: tensor of shape (batch, 1) containing the previous word
-                 in the target sequence as an index of the target vocabulary
-            - s_prev: tensor of shape (batch, units) containing the previous
-                      decoder hidden state
+            - x ........ tensor of shape (batch, 1) containing the previous word in the target sequence as an index of the target vocabulary
+            - s_prev ... tensor of shape (batch, units) containing the previous decoder hidden state
         """
         # Apply the attention mechanism
         context, _ = self.sattention(s_prev, hidden_states)

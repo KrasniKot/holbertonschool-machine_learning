@@ -11,7 +11,7 @@ class SelfAttention(tf.keras.layers.Layer):
 
     def __init__(self, units):
         """ Initializes a SelfAttention
-            - units: integer, number hidden units in alignment model
+            - units ... integer, number hidden units in alignment model
         """
         super().__init__()
 
@@ -32,10 +32,8 @@ class SelfAttention(tf.keras.layers.Layer):
 
     def call(self, s_prev, hidden_states):
         """ Calculates the context vector and the attention weights
-            - s_prev: tensor of shape (batch, units)
-                      containing the previous decoder hidden state
-            - hidden_states: tensor of shape (batch, input_seq_len, units)
-                             containing the outputs of the encoder
+            - s_prev .......... tensor of shape (batch, units) containing the previous decoder hidden state
+            - hidden_states ... tensor of shape (batch, input_seq_len, units) containing the outputs of the encoder
         """
         # Expand s_prev to have the same time dimension as hidden_states
         # sprev: (batch, units) -> (batch, 1, units)
@@ -52,7 +50,7 @@ class SelfAttention(tf.keras.layers.Layer):
         attention_weights = tf.nn.softmax(alignment_scores, axis=1)
 
         # Compute the context vector as the weighted sum of hidden states
-        c = attention_weights * hidden_states
+        c       = attention_weights * hidden_states
         context = tf.reduce_sum(c, axis=1)
 
         return context, attention_weights
