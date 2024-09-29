@@ -21,7 +21,7 @@ class Encoder(tf.keras.layers.Layer):
             - drop_rate ...... dropout rate
         """
         Dout      = tf.keras.layers.Dropout
-        Emddg = tf.keras.layers.Embedding
+        Emddg     = tf.keras.layers.Embedding
         hdn       = hidden
 
         super().__init__()
@@ -49,14 +49,15 @@ class Encoder(tf.keras.layers.Layer):
         ###### Positional encoding and scaling
         # Scaling: values are scaled by sqrt(dm)
         x *= tf.math.sqrt(tf.cast(self.dm, tf.float32))
+
         # This operation combines the learned content of each token
         # (from the embedding) with information about its position in the
         # sequence (from the positional encoding).
         x += self.positional_encoding[:input_seq_len, :]
-        ######
-
+    
         # Apply dropout to the positional encoding
         x = self.dropout(x, training=training)
+        ######
 
         # The input is passed through N encoder blocks where each block processes x further
         for i in range(self.N):
