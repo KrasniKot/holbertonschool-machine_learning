@@ -14,8 +14,7 @@ class Encoder(tf.keras.layers.Layer):
             - N .............. number of blocks in the encoder
             - dm ............. dimensionality of the model
             - h .............. number of heads
-            - hidden ......... number of hidden units in the fully
-                               connected layer
+            - hidden ......... number of hidden units in the fully connected layer
             - target_vocab ... size of the target vocabulary
             - max_seq_len .... maximum sequence length possible
             - drop_rate ...... dropout rate
@@ -28,15 +27,14 @@ class Encoder(tf.keras.layers.Layer):
 
         self.N                   = N
         self.dm                  = dm
-        self.embedding           = Embddg(input_dim=input_vocab, output_dim=dm)
+        self.embedding           = Emddg(input_dim=input_vocab, output_dim=dm)
         self.positional_encoding = positional_encoding(max_seq_len, dm)
         self.blocks              = [EncoderBlock(dm, h, hdn, drop_rate) for _ in range(N)]
         self.dropout             = Dout(drop_rate)
 
     def call(self, x, training, mask):
         """ Returns the encoder output
-            - x ......... tensor of shape (batch, input_seq_len, dm)
-                          containing the input to the encoder
+            - x ......... tensor of shape (batch, input_seq_len, dm) containing the input to the encoder
             - training .. boolean to determine if the model is training
             - mask ...... mask to be applied for multi head attention
         """

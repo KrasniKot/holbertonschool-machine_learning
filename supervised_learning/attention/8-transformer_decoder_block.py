@@ -37,15 +37,11 @@ class DecoderBlock(tf.keras.layers.Layer):
 
     def call(self, x, encoder_output, training, look_ahead_mask, padding_mask):
         """ Returns the decoder's output
-            - x ................. tensor of shape (batch, target_seq_len, dm)
-                                  containing the input to the decoder block
-            - encoder_output .... tensor of shape (batch, input_seq_len, dm)
-                                  containing the output of the encoder
+            - x ................. tensor of shape (batch, target_seq_len, dm) containing the input to the decoder block
+            - encoder_output .... tensor of shape (batch, input_seq_len, dm) containing the output of the encoder
             - training .......... boolean to determine if the model is training
-            - look_ahead_mask ... mask to be applied to the first
-                                  multi head attention layer
-            - padding_mask ...... mask to be applied to the second
-                                  multi head attention layer
+            - look_ahead_mask ... mask to be applied to the first multi head attention layer
+            - padding_mask ...... mask to be applied to the second multi head attention layer
         """
         ###### Apply masked attention and dropout to the input x to prevent
         # the model from looking ahead in the target
