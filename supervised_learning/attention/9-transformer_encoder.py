@@ -9,7 +9,8 @@ EncoderBlock = __import__('7-transformer_encoder_block').EncoderBlock
 class Encoder(tf.keras.layers.Layer):
     """ Defines an Encoder for a Transformer """
 
-    def __init__(self, N, dm, h, hidden, input_vocab, max_seq_len, drop_rate=0.1):
+    def __init__(self, N, dm, h, hidden, input_vocab, max_seq_len,
+                 drop_rate=0.1):
         """ Intializes an Encoder
             - N .............. number of blocks in the encoder
             - dm ............. dimensionality of the model
@@ -20,7 +21,7 @@ class Encoder(tf.keras.layers.Layer):
             - max_seq_len .... maximum sequence length possible
             - drop_rate ...... dropout rate
         """
-        Dout      = tf.keras.layers.Dropout
+        Dout = tf.keras.layers.Dropout
         Embedding = tf.keras.layers.Embedding
         hdn = hidden
 
@@ -58,7 +59,7 @@ class Encoder(tf.keras.layers.Layer):
         # Apply dropout to the positional encoding
         x = self.dropout(x, training=training)
 
-        # The input is passed through N encoder blocks where each block processes x further
+        # The input is passed through N encoder blocks where
         for i in range(self.N):
             x = self.blocks[i](x, training, mask)
 
