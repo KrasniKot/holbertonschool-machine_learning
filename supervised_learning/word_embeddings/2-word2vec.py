@@ -20,9 +20,11 @@ def word2vec_model(sentences, size=100, min_count=5, window=5, negative=5,
         - seed: seed for the random number generator
         - workers: number of worker threads to train the model
     """
+    sg = 0 if cbow else 1
+
     model = gensim.models.Word2Vec(sentences, vector_size=size, window=window,
                                    min_count=min_count, negative=negative,
-                                   workers=workers, sg=cbow, seed=seed,
+                                   workers=workers, sg=sg, seed=seed,
                                    epochs=iterations)
 
     model.build_vocab(sentences)
