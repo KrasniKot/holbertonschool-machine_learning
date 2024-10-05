@@ -4,6 +4,7 @@
 import tensorflow_datasets as tfds
 import transformers
 
+
 class Dataset:
     """ Loads and prepas a dataset for machine translation """
 
@@ -18,7 +19,7 @@ class Dataset:
 
         # Set instance attributes and tokenizers
         self.data_train, self.data_valid = dt, dv
-        self.tokenizer_en, self.tokenizer_pt = ten, tpt
+        self.tokenizer_pt, self.tokenizer_en = tpt, ten
         # #######
 
     def tokenize_dataset(self, data):
@@ -39,8 +40,10 @@ class Dataset:
             endata.append(en.decode('utf-8'))
 
         # Load pre-trained tokenizers
-        tpt = fp('neuralmind/bert-base-portuguese-cased', use_fast=True, clean_up_tokenization_spaces=True)
-        ten = fp('bert-base-uncased', use_fast=True, clean_up_tokenization_spaces=True)
+        tpt = fp('neuralmind/bert-base-portuguese-cased', use_fast=True,
+                 clean_up_tokenization_spaces=True)
+        ten = fp('bert-base-uncased', use_fast=True,
+                 clean_up_tokenization_spaces=True)
 
         # Train both tokenizers on the dataset sentence iterators
         # and set the corresponding instance attributes
