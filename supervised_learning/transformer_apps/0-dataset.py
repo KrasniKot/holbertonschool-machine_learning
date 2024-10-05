@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """ Load and prepare a dataset for machine translation """
 
-import tensorflow.compat.v2 as tf
 import tensorflow_datasets as tfds
-
+import transformers
 
 class Dataset:
     """ Loads and prepas a dataset for machine translation """
