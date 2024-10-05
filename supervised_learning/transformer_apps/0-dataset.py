@@ -28,16 +28,25 @@ class Dataset:
             >> tokenizer_pt ... trained tokenizer for Portuguese.
             >> tokenizer_en ... trained tokenizer for English.
         """
-        bfc = tfds.deprecated.text.SubwordTextEncoder.build_from_corpus
+        # Define aliases
+        fp = transformers.AutoTokenizer.from_pretrained
 
-        # ####### Build a subword text tokenizer of vocab size 2 **12 (32768),
-        # built from the corpus of sentences in the datasets
-        tpt = bfc((pt.numpy() for pt, _ in data), target_vocab_size=2 ** 15)
-        ten = bfc((en.numpy() for _, en in data), target_vocab_size=2 ** 15)
+        # Get portugese and english sentences
+        ptdata = []
+        endata = []
+        for pt, en in data.as_numpy_iterator():
+            ptdata.append(pt.decode('utf-8'))
+            endata.append(en.decode('utf-8'))
 
-        # set the instance tokenizers
-        self.tokenizer_pt = tpt
-        self.tokenizer_en = ten
-        # #######
+        # Load pre-trained tokenizers
+        tpt = fp('neuralmind/bert-base-portuguese-cased', use_fast=True, clean_up_tokenization_spaces=True)
+        ten = fp('bert-base-uncased', use_fast=True, clean_up_tokenization_spaces=True)
+
+        # Train both tokenizers on the dataset sentence iterators
+        # and set the corresponding instance attributes
+        self.tokenizer_pt = tpt.train_new_from_iterator(ptdata,
+                                                        vocab_size=2 ** 13)
+        self.tokenizer_en = ten.train_new_from_iterator(endata,
+                                                        vocab_size=2 ** 13)
 
         return self.tokenizer_pt, self.tokenizer_en
