@@ -32,7 +32,6 @@ class Dataset:
         self.data_valid = dv.map(tfenc, num_parallel_calls=tf.data.AUTOTUNE)
         # #######
 
-
     def tokenize_dataset(self, data):
         """ Creates sub-word tokenizers for our dataset:
             - datat ........... dataset containing tuples of (pt, en) sentences
@@ -102,7 +101,10 @@ class Dataset:
             >> Tokenized English sentence tensor
         """
         # Wrap the self.encode function
-        ptkns, enkns = tf.py_function(func=self.encode, inp=[pt, en], Tout=[tf.int64, tf.int64])
+        ptkns, enkns = tf.py_function(
+            func=self.encode,
+            inp=[pt, en],
+            Tout=[tf.int64, tf.int64])
 
         # Set the shape of the tensors to [None], a 1D array of variable length
         ptkns.set_shape([None])
