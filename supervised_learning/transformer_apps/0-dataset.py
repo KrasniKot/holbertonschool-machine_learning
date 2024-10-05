@@ -15,7 +15,7 @@ class Dataset:
         dt, dv = tfds.load('ted_hrlr_translate/pt_to_en',
                            split=['train', 'validation'], as_supervised=True)
         # Tokenize training dataset
-        ten, tpt = self.tokenize_dataset(dt)
+        tpt, ten = self.tokenize_dataset(dt)
 
         # Set instance attributes and tokenizers
         self.data_train, self.data_valid = dt, dv
