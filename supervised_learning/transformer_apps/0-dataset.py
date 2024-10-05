@@ -18,7 +18,7 @@ class Dataset:
         tpt, ten = self.tokenize_dataset(dt)
 
         # Set instance attributes and tokenizers
-        self.data_train, self.data_valid = dt, dv
+        self.data_train, self.data_valid     = dt, dv
         self.tokenizer_pt, self.tokenizer_en = tpt, ten
         # #######
 
