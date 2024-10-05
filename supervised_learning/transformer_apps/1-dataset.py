@@ -56,11 +56,11 @@ class Dataset:
 
     def encode(self, pt, en):
         """ Encondes a translation into tokens
-            - pt ....... tf.Tensor containing the Portuguese sentence
-            - en ....... tf.Tensor containing the corresponding English sentenc
+            - pt ..... tf.Tensor containing the Portuguese sentence
+            - en ..... tf.Tensor containing the corresponding English sentence
 
-            >> ptkns ... np.ndarray containing the Portuguese tokens
-            >> etkns ... np.ndarray containing the English tokens
+            >> np.ndarray containing the Portuguese tokens
+            >> np.ndarray containing the English tokens
         """
         # Decode tf.Tensor to strings
         pt = pt.numpy().decode('utf-8')
@@ -76,8 +76,8 @@ class Dataset:
         envsize = self.tokenizer_en.vocab_size
 
         # Inserting the SOS (vocab size) and EOS (vocab size + 1) tokens
-        ptkns = [ptvsize] + pt_tokens + [ptvsize + 1]
-        etkns = [envsize] + en_tokens + [envsize + 1]
+        ptkns = [ptvsize] + ptkns + [ptvsize + 1]
+        etkns = [envsize] + etkns + [envsize + 1]
         # #######
 
         return ptkns, etkns
