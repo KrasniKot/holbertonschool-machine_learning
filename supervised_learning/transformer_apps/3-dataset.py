@@ -18,13 +18,12 @@ class Dataset:
         tfenc = self.tf_encode
 
         # Load training and validation datasets as (input, label)
-        dt, dv = tfds.load('ted_hrlr_translate/pt_to_en',
-                           split=['train', 'validation'], as_supervised=True)
+        dt, dv = tfds.load('ted_hrlr_translate/pt_to_en', split=['train', 'validation'], as_supervised=True)
 
         # Tokenize training dataset
         tpt, ten = self.tokenize_dataset(dt)
 
-        # ####### Set instance attributes and tokenizers
+        ######## Set instance attributes and tokenizers
         # Set tokenizers
         self.tokenizer_pt, self.tokenizer_en = tpt, ten
 
@@ -35,7 +34,7 @@ class Dataset:
         # Set training and validation datasets
         self.data_train = self._process_exs(dt, batch_size, max_len)
         self.data_valid = self._process_exs(dv, batch_size, max_len, tr=False)
-        # #######
+        ########
 
     def tokenize_dataset(self, data):
         """ Creates sub-word tokenizers for our dataset:
@@ -55,17 +54,13 @@ class Dataset:
             endata.append(en.decode('utf-8'))
 
         # Load pre-trained tokenizers
-        tpt = fp('neuralmind/bert-base-portuguese-cased',
-                 use_fast=True, clean_up_tokenization_spaces=True)
-        ten = fp('bert-base-uncased', use_fast=True,
-                 clean_up_tokenization_spaces=True)
+        tpt = fp('neuralmind/bert-base-portuguese-cased', use_fast=True, clean_up_tokenization_spaces=True)
+        ten = fp('bert-base-uncased', use_fast=True, clean_up_tokenization_spaces=True)
 
         # Train both tokenizers on the dataset sentence iterators
         # and set the corresponding instance attributes
-        self.tokenizer_pt = tpt.train_new_from_iterator(ptdata,
-                                                        vocab_size=2 ** 13)
-        self.tokenizer_en = ten.train_new_from_iterator(endata,
-                                                        vocab_size=2 ** 13)
+        self.tokenizer_pt = tpt.train_new_from_iterator(ptdata, vocab_size=2 ** 13)
+        self.tokenizer_en = ten.train_new_from_iterator(endata, vocab_size=2 ** 13)
 
         return self.tokenizer_pt, self.tokenizer_en
 
@@ -74,8 +69,8 @@ class Dataset:
             - pt ..... tf.Tensor containing the Portuguese sentence
             - en ..... tf.Tensor containing the corresponding English sentence
 
-            >> np.ndarray containing the Portuguese tokens
-            >> np.ndarray containing the English tokens
+            > np.ndarray containing the Portuguese tokens
+            > np.ndarray containing the English tokens
         """
         # Decode tf.Tensor to strings
         pt = pt.numpy().decode('utf-8')
@@ -85,7 +80,7 @@ class Dataset:
         ptkns = self.tokenizer_pt.encode(pt, add_special_tokens=False)
         etkns = self.tokenizer_en.encode(en, add_special_tokens=False)
 
-        # ####### Insert sentence start and end tokens
+        ######## Insert sentence start and end tokens
         # Extract vocab size
         ptvsize = self.tokenizer_pt.vocab_size
         envsize = self.tokenizer_en.vocab_size
@@ -93,7 +88,7 @@ class Dataset:
         # Inserting the SOS (vocab size) and EOS (vocab size + 1) tokens
         ptkns = [ptvsize] + ptkns + [ptvsize + 1]
         etkns = [envsize] + etkns + [envsize + 1]
-        # #######
+        ########
 
         return ptkns, etkns
 
@@ -106,8 +101,7 @@ class Dataset:
             >> Tokenized English sentence tensor
         """
         # Wrap the self.encode function
-        ptkns, enkns = tf.py_function(func=self.encode,
-                                      inp=[pt, en], Tout=[tf.int64, tf.int64])
+        ptkns, enkns = tf.py_function(func=self.encode, inp=[pt, en], Tout=[tf.int64, tf.int64])
 
         # Set the shape of the tensors to [None], a 1D array of variable length
         ptkns.set_shape([None])
