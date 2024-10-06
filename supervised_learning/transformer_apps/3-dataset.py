@@ -37,7 +37,6 @@ class Dataset:
         self.data_valid = self._process_exs(dv, batch_size, max_len, tr=False)
         # #######
 
-
     def tokenize_dataset(self, data):
         """ Creates sub-word tokenizers for our dataset:
             - datat ........... dataset containing tuples of (pt, en) sentences
