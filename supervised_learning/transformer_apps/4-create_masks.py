@@ -12,7 +12,7 @@ def _build_padded_masks(datas):
     """
     for data in datas:
         # Convert the padding tokens into tf.float32 type
-        seq = tf.cast(tf.math.equal(seq, 0), tf.float32)
+        seq = tf.cast(tf.math.equal(data, 0), tf.float32)
 
         # Reshape the mask to have the shape (batch_size, 1, 1, seq_length)
         yield seq[:, tf.newaxis, tf.newaxis, :]
@@ -39,9 +39,10 @@ def create_masks(inputs, target):
     look_ahead_mask = 1 - tf.linalg.band_part(tf.ones((seqlen, seqlen)), -1, 0)
 
     # 3. Expand dimensions of the look-ahead mask for broadcasting
-    look_ahead_mask_expanded = _build_padded_masks(target)
+    mask_generator = _build_padded_masks([target])
+    look_ahead_mask_expanded = next(mask_generator)
 
     # 4. Ensure combined_mask has compatible shapes
-    combined_mask = tf.maximum(look_ahead_mask_expanded, decoder_padding_mask)
+    combined_mask = tf.maximum(look_ahead_mask, look_ahead_mask_expanded)
 
-    return encoder_mask, combined_mask, decoder_padding_mask
+    return encoder_mask, combined_mask, decoder_mask
