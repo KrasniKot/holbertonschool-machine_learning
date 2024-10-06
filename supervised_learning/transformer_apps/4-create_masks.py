@@ -1,38 +1,47 @@
 #!/usr/bin/env python3
-"""
-Create masks """
+""" Create masks the encoder and decoder """
+
 import tensorflow as tf
 
 
-def create_padding_mask(seq):
-    """ Creates a padding mask for the input sequence.
+def _build_padded_masks(datas):
+    """ Builds a padded mask for the given datas
+        - datas ... list containing the different datas to pad
+
+        > Padded mask
     """
-    seq = tf.cast(tf.math.equal(seq, 0), tf.float32)
-    return seq[:, tf.newaxis, tf.newaxis, :]
+    for data in datas:
+        # Convert the padding tokens into tf.float32 type
+        seq = tf.cast(tf.math.equal(seq, 0), tf.float32)
 
-
-def create_look_ahead_mask(size):
-    """ Creates a look-ahead mask for the target sequence.
-    """
-    mask = 1 - tf.linalg.band_part(tf.ones((size, size)), -1, 0)
-    return mask
-
+        # Reshape the mask to have the shape (batch_size, 1, 1, seq_length)
+        yield seq[:, tf.newaxis, tf.newaxis, :]
 
 def create_masks(inputs, target):
+    """ Creates masks for the encoder and decoder.
+
+        - inputs .... tensor of shape (batch_size, seq_len_in)
+                      representing the input sentences.
+        - target .... tensor of shape (batch_size, seq_len_out)
+                      representing the target sentences.
+
+        > Padding mask for the encoder, shape (batch_size, 1, 1, seq_len_in).
+        > Combined mask for the decoder, shape (batch_size, 1, seq_len_o
+        > Padding mask for the decoder, shape (batch_size, 1, 1, seq_len_out).
     """
-    Creates masks
-    """
- 
-    encoder_mask = create_padding_mask(inputs)
-    decoder_mask = create_padding_mask(inputs)
+    # 1. Generate the padding masks and  retrieve them
+    mask_generator = _build_padded_masks([inputs, inputs])
+    encoder_mask = next(mask_generator)  # Mask for inputs (encoder)
+    decoder_mask = next(mask_generator)  # Mask for targets (decoder)
 
-    # Look-ahead mask for the target
-    look_ahead_mask = create_look_ahead_mask(tf.shape(target)[1])
+    # 2. Create the look-ahead mask for the target
+    seqlen = tf.shape(target)[1]
+    look_ahead_mask = 1 - tf.linalg.band_part(tf.ones((seqlen, seqlen)), -1, 0)
 
-    # Target padding mask (for padding in the target sentence)
-    dec_target_padding_mask = create_padding_mask(target)
+    # 3. Expand dimensions of the look-ahead mask for broadcasting
+    look_ahead_mask_expanded = _build_padded_masks(target)
 
-    # Mask for 1st decoder attention block (look-ahead + target padding)
-    combined_mask = tf.maximum(look_ahead_mask, dec_target_padding_mask)
+    # 4. Ensure combined_mask has compatible shapes
+    combined_mask = tf.maximum(look_ahead_mask_expanded, decoder_padding_mask)
 
-    return encoder_mask, combined_mask, decoder_mask
+    return encoder_mask, combined_mask, decoder_padding_mask
