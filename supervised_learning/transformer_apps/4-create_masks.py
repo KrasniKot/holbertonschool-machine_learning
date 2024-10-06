@@ -17,6 +17,7 @@ def _build_padded_masks(datas):
         # Reshape the mask to have the shape (batch_size, 1, 1, seq_length)
         yield seq[:, tf.newaxis, tf.newaxis, :]
 
+
 def create_masks(inputs, target):
     """ Creates masks for the encoder and decoder.
 
