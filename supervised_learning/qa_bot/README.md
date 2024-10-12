@@ -16,5 +16,19 @@ Write a function ``def question_answer(question, reference):`` that finds a snip
 Create a script that takes in input from the user with the prompt ``Q:`` and prints ``A:`` as a response. If the user inputs ``exit``, ``quit``, ``goodbye``, or ``bye``, case insensitive, print ``A: Goodbye`` and exit.
 
 ### 2. Answer Questions:
+Based on the previous tasks, write a function ``def answer_loop(reference):`` that answers questions from a reference text:
+
+- ``reference`` is the reference text
+- If the answer cannot be found in the reference text, respond with ``Sorry, I do not understand your question.``
+
 ### 3. Semantic Search:
+Write a function ``def semantic_search(corpus_path, sentence):`` that performs semantic search on a corpus of documents:
+
+- ``corpus_path`` is the path to the corpus of reference documents on which to perform semantic search
+- ``sentence`` is the sentence from which to perform semantic search
+- Returns: the reference text of the document most similar to ``sentence``
+
 ### 4. Multi-reference Question Answering:
+Based on the previous tasks, write a function ``def question_answer(coprus_path):`` that answers questions from multiple reference texts:
+
+- ``corpus_path``: is the path to the corpus of reference documents

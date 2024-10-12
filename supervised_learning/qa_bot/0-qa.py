@@ -7,9 +7,10 @@ import tensorflow as tf
 
 
 def question_answer(question, reference):
-    """ Finds a snippet of text within a reference document to answer a question
+    """ Finds a snippet of text within a reference document to answer questions
         - question ..... string containing the question to answer
-        - reference .... string containing the reference document from which to find the answer
+        - reference .... string containing the reference document
+                         from which to find the answer
         > a string containing the answer, or None if no asnwer found
     """
     # Set aliases
@@ -24,10 +25,16 @@ def question_answer(question, reference):
     # #######
 
     # Tokenize the input question and reference (context)
-    inputs = tokenizer(question, reference, return_tensors='tf', truncation=True, padding=True)
+    inputs = tokenizer(question,
+                       reference,
+                       return_tensors='tf',
+                       truncation=True,
+                       padding=True)
 
     # Perform inference on the model to get start and end logits
-    outputs = bert_model([inputs["input_ids"], inputs["attention_mask"], inputs["token_type_ids"]])
+    outputs = bert_model([inputs["input_ids"],
+                          inputs["attention_mask"],
+                          inputs["token_type_ids"]])
 
     # Extract the start and end logits
     start_logits, end_logits = outputs[0: 2]
@@ -43,7 +50,9 @@ def question_answer(question, reference):
     tkns = inputs["input_ids"][0][start_index: end_index + 1]
 
     # Convert token indices back into words
-    answer = tokenizer.decode(tkns, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+    answer = tokenizer.decode(tkns,
+                              skip_special_tokens=True,
+                              clean_up_tokenization_spaces=True)
 
     # If the model fails to find an answer, return None
     if not answer.strip():
