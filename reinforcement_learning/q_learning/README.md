@@ -18,5 +18,14 @@ Write a function ``def q_init(env):`` that initializes the Q-table:
 - Returns: the`` Q-table`` as a ``numpy.ndarray`` of zeros
 
 ### 2. Epsilon Greedy:
+Write a function ``def epsilon_greedy(Q, state, epsilon):`` that uses epsilon-greedy to determine the next action:
+
+- ``Q`` is a ``numpy.ndarray`` containing the q-table
+- ``state`` is the current state
+- ``epsilon`` is the epsilon to use for the calculation
+- You should sample ``p`` with ``numpy.random.uniformn`` to determine if your algorithm should explore or exploit
+- If exploring, you should pick the next action with ``numpy.random.randint`` from all possible actions
+- Returns: the next action index
+
 ### 3. Q-learning:
 ### 4. Play:
