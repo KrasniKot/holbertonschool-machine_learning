@@ -5,6 +5,7 @@
 
 import gymnasium as gym
 
+
 def load_frozen_lake(desc=None, map_name=None, is_slippery=False):
     """ Loads the pre-made FrozenLakeEnv environment from gymnasium
         - desc ........ None or a list of lists containing a custom description
