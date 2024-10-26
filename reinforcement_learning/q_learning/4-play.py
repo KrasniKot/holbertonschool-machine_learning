@@ -5,12 +5,20 @@ import numpy as np
 
 
 def play(env, Q, max_steps=100):
-    """ Play an episode using the trained Q-table """
+    """ Play an episode using the trained Q-table
+        - env .......... FrozenLakeEnv instance
+        - Q ............ numpy.ndarray containing the Q-table
+        - max_steps .... maximum number of steps in the episode
+
+        Returns:
+        > Total rewards for the episode
+        > List of rendered outputs representing the board state at each step
+    """
     # 1. Reset the environment to get the initial state
     state = env.reset()[0]
 
     # 2. For each step in the episode
-    total_rewards = 0
+    total_rewards    = 0
     rendered_outputs = []
     for _ in range(max_steps):
         # a. Render the current state of the environment
@@ -24,7 +32,7 @@ def play(env, Q, max_steps=100):
 
         # d. Update reward and update the next step
         total_rewards += reward
-        state = next_state
+        state          = next_state
 
         # e. Check episode has ended
         if done:
