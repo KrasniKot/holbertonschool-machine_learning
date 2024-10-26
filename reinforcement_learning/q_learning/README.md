@@ -12,6 +12,11 @@ Write a function ``def load_frozen_lake(desc=None, map_name=None, is_slippery=Fa
 - Returns: the environment
 
 ### 1. Initialize Q-table:
+Write a function ``def q_init(env):`` that initializes the Q-table:
+
+- ``env`` is the ``FrozenLakeEnv`` instance
+- Returns: the`` Q-table`` as a ``numpy.ndarray`` of zeros
+
 ### 2. Epsilon Greedy:
 ### 3. Q-learning:
 ### 4. Play:
