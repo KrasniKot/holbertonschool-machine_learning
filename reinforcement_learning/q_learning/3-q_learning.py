@@ -5,8 +5,7 @@ import numpy as np
 epsilon_greedy = __import__('2-epsilon_greedy').epsilon_greedy
 
 
-def train(env, Q, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99,
-          epsilon=1, min_epsilon=0.1, epsilon_decay=0.05):
+def train(env, Q, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99, epsilon=1, min_epsilon=0.1, epsilon_decay=0.05):
     """ Performs Q-Learning
         - env ................ FrozenLakeEnv instance
         - Q .................. numpy.ndarray containing the Q-table
@@ -27,9 +26,7 @@ def train(env, Q, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99,
 
     for episode in range(episodes):
         # 2. Set initial value of the state
-        state = env.reset()  # Reset the environment for a new episode
-        # print(state)
-        state = state[0]
+        state = env.reset()[0]  # Reset the environment for a new episode
 
         total_reward = 0
 
@@ -45,14 +42,13 @@ def train(env, Q, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99,
             if done and reward == 0:
                 reward = -1
 
-            # ####### d. Update the Q-value using the Q-learning formula:
-            #    a[r + γ * max(Q(s' ,a')) - Q(s, a)]
-            td = reward + gamma * np.max(Q[nstate]) - Q[state, naction]
-            Q[state, naction] += alpha * td
-            # #######
+            ######## d. Update the Q-value using the Q-learning formula:
+            # a[r + γ * max(Q(s', a')) - Q(s, a)]
+            Q[state, naction] += alpha * reward + gamma * np.max(Q[nstate]) - Q[state, naction]
+            ########
 
             total_reward += reward
-            state = nstate
+            state         = nstate
 
             if done:
                 break  # End the episode if done

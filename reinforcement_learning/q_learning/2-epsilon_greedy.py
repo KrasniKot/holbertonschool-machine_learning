@@ -13,10 +13,8 @@ def epsilon_greedy(Q, state, epsilon):
         > Returns: next action index
     """
     # Get p to determine whether the agent should explore or exploit
-    p = np.random.uniform(0, 1)
-
     # If p is less than epsilon then explore
-    if p < epsilon:
+    if np.random.uniform(0, 1) < epsilon:
         return np.random.randint(0, Q.shape[1])
     # If p is greater or equals than epsilon, then exploit
     else:
