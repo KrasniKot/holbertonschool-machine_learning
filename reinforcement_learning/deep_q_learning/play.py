@@ -37,7 +37,9 @@ class PygameCallback(Callback):
 
         # Render the environment
         frame = self.env.render(mode='rgb_array')  # Get the frame
-        frame = pygame.surfarray.make_surface(frame.swapaxes(0, 1))  # Convert to Pygame surface
+
+        # Convert to Pygame surface
+        frame = pygame.surfarray.make_surface(frame.swapaxes(0, 1))
         frame = pygame.transform.scale(frame, (640, 480))
         self.screen.blit(frame, (0, 0))  # Draw the frame on the screen
         pygame.display.flip()  # Update the display
