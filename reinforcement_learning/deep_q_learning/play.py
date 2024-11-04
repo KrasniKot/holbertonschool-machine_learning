@@ -143,8 +143,7 @@ def __set_up_env(envname="ALE/Breakout-v5"):
     env = gym.make(envname, render_mode="rgb_array")
 
     # 2. Preprocess the environment’s observations
-    env = AtariPreprocessing(env, screen_size=84, grayscale_obs=True,
-                             frame_skip=1, noop_max=30)
+    env = AtariPreprocessing(env, screen_size=84, grayscale_obs=True, frame_skip=1, noop_max=30)
 
     # 3. Compatibility wrapping to ensure compatibility with keras rl
     return CWrapper(env)
