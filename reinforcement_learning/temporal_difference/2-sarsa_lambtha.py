@@ -21,8 +21,7 @@ def epsilon_greedy(Q, state, epsilon):
         return np.argmax(Q[state])
 
 
-def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1,
-                  gamma=0.99, epsilon=1, min_epsilon=0.1, epsilon_decay=0.05):
+def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99, epsilon=1, min_epsilon=0.1, epsilon_decay=0.05):
     """ Performs SARSA(λ)
         - env ............. environment instance
         - Q ............... numpy.ndarray of shape (s,a) containing the Q table
@@ -37,27 +36,26 @@ def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1,
     """
     fepsilon = epsilon
 
-    for episode in range(episodes):
-        es = np.zeros_like(Q)
-        state = env.reset()[0]
-        action = epsilon_greedy(Q, state, epsilon)
+    for episode in range(episodes):    # 1. For each episode
+        es     = np.zeros_like(Q)                   #   1a. Set e(s) to zero
+        state  = env.reset()[0]                     #   1b. Reset the environment to get current state
+        action = epsilon_greedy(Q, state, epsilon)  #   1c. Determine first action using epsilon greedy
 
-        for _ in range(max_steps):
-            ns, r, term, trunc, _ = env.step(action)
+        for _ in range(max_steps):  # 2. For each step
+            ns, r, term, trunc, _ = env.step(action)                           # 2a. Take the action
 
-            naction = epsilon_greedy(Q, ns, epsilon)
-            δ = r + gamma * Q[ns, naction] - Q[state, action]
-            es[state, action] += 1
-            es *= lambtha * gamma
-            Q += alpha * δ * es
+            naction           = epsilon_greedy(Q, ns, epsilon)                 # 2b. Choose next action
+            δ                 = r + gamma * Q[ns, naction] - Q[state, action]  # 2c. Compute TD error
+            es[state, action] += 1                                             # 2d. Update e(s, a) adding 1
+            es                *= lambtha * gamma                               # 2e. Decay the eligibility traces
+            Q                 += alpha * δ * es                                # 2f. Update Q-values using eligibility traces
 
-            if term or trunc:
+            if term or trunc:                                                  # 2g. Check episode still lives
                 break
 
-            state = ns
+            state  = ns
             action = naction
 
-        epsilon = min_epsilon + (fepsilon - min_epsilon) *\
-            np.exp(-epsilon_decay * episode)
+        epsilon = min_epsilon + (fepsilon - min_epsilon) * np.exp(-epsilon_decay * episode)  # 3. Decay epsilon at the end of each episode
 
     return Q
