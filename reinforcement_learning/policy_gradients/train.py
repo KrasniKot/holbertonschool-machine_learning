@@ -6,12 +6,13 @@ import numpy as np
 policy_gradient = __import__('policy_gradient').policy_gradient
 
 
-def train(env, nb_episodes, alpha=0.000045, gamma=0.98):
+def train(env, nb_episodes, alpha=0.000045, gamma=0.98, show_result=False):
     """ Optimize the policy using Monte Carlo Gradient Policy
         - env ............ Gymnasium CartPole-v1 environment
         - nb_episodes .... Number of episodes to train over
         - alpha .......... Learning rate
         - gamma .......... Discount factor
+        - show_result .... If True, render environment each 1000 episodes
     """
     # Initlize weights with the shape of (state, actions)
     θ = np.random.rand(env.observation_space.shape[0], env.action_space.n)
@@ -37,6 +38,10 @@ def train(env, nb_episodes, alpha=0.000045, gamma=0.98):
             # Perform next action and determine if the episode lives
             s = ns
             done = term or trunc
+
+        # Render the environment every 1000 episodes if show_result is True
+        if show_result and episode % 1000 == 0:
+            env.render()
 
         # Calculate total reward for the episode and store it
         S.append(sum(Rs))

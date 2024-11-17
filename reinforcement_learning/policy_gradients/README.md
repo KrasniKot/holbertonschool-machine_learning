@@ -23,4 +23,7 @@ Write a function ``def train(env, nb_episodes, alpha=0.000045, gamma=0.98):`` th
 - Return: all values of the score (sum of all rewards during one episode loop)
 - You need print the current episode number and the score after each loop in a format: ``Episode: {} Score: {}``
 
-###
+### 3. Animate iteration
+In the file ``train.py``, update the function ``def train(env, nb_episodes, alpha=0.000045, gamma=0.98, show_result=False)`` by adding a last optional parameter ``show_result`` (default: ``False``).
+
+- When this parameter is set to ``True``, you should render the environment every 1000 episodes computed.
