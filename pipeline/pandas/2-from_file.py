@@ -8,4 +8,4 @@ def from_file(filename, delimiter):
         - filename ....... file to load from
         - delimiter ...... column separator
     """
-    return pd.read_csv(filename, delimiter=delimiter)  # noqa: E501
+    return pd.read_csv(filename, delimiter=delimiter)
