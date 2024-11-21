@@ -8,7 +8,7 @@ def fill(df):
     df.drop(columns=['Weighted_Price'], inplace=True)
 
     # Use the previous value of Close to fill the next missing one
-    df['Close'].ffill()
+    df = df['Close'].ffill()
 
     # Fill missing values in High, Low, and Open columns with the corresponding Close value in the same row # noqa
     for col in ['High', 'Low', 'Open']:
