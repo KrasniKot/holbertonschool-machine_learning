@@ -16,4 +16,4 @@ def concat(df1, df2):
 
     # Filter df2 for rows with timestamps up to and including 1417411920
     # Concatenate the filtered rows from df2 and df1, adding keys
-    return pd.concat([df2.loc[:1417411920], df1], keys=['bitstamp', 'coinbase'])  # noqa
+    return pd.concat([df2.loc[:1417411920], df1], keys=['bitstamp', 'coinbase'])
