@@ -10,7 +10,7 @@ def fill(df):
     # Use the previous value of Close to fill the next missing one
     df['Close'] = df['Close'].ffill()
 
-    # Fill missing values in High, Low, and Open columns with the corresponding Close value in the same row # noqa
+    # Fill missing values in High, Low, and Open columns with the corresponding Close value in the same row
     for col in ['High', 'Low', 'Open']:
         df[col] = df[col].fillna(df['Close'])
 
