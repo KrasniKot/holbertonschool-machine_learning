@@ -3,7 +3,7 @@
 
 
 def analyze(df):
-    """ Computes descriptive statistics for all columns except the Timestamp column """  # noqa
-    # Exclude the 'Timestamp' column and compute statistics for the remaining columns  # noqa
+    """ Computes descriptive statistics for all columns except the Timestamp column """
+    # Exclude the 'Timestamp' column and compute statistics for the remaining columns
     # Compute descriptive statistics
     return df.drop(columns=['Timestamp']).describe()
