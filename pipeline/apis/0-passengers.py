@@ -10,7 +10,7 @@ def availableShips(passengerCount):
     # Function so safely convert to int without getting errors
     # safe_convert_to_int = lambda x: int(x) if str(x).isdigit() else -1
     def safe_convert_to_int(x):
-        """ Safe convert """
+        """ REMOVE LATER """
         return int(x) if str(x).isdigit() else -1
 
     # Get response for a request
