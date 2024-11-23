@@ -15,7 +15,7 @@ def sentientPlanets():
         for s in species:  # Iterate over the species
             if any('sentient' in (s.get(key) or '') for key in ('designation', 'classification')):  # noqa
                 if hworld := s.get('homeworld'):
-                    splanets += requests.get(hworld).json().get('name')
+                    splanets.append(requests.get(hworld).json().get('name'))
 
         response = requests.get(nurl).json()
 
