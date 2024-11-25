@@ -18,7 +18,7 @@ def nfound(result=None):
 
 def lreached(result):
     """ In case rate limit reached """
-    rlim = int(result.headers['X-Ratelimit-Reset'])
+    rlim    = int(result.headers['X-Ratelimit-Reset'])
     minutes = int((rlim - int(time.time())) / 60)
 
     print(f'Reset in {minutes} min')
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     }
 
     # Request user
-    got = requests.get(argv[1], headers={'accept': 'application/vnd.github+json'})  # noqa
+    got = requests.get(argv[1], headers={'accept': 'application/vnd.github+json'})
 
     # Handle response by code
     responses[got.status_code](got)
