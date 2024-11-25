@@ -8,10 +8,7 @@ def availableShips(passengerCount):
     """ Fetches the number of available ships that can hold a given number of passengers """  # noqa
 
     # Function so safely convert to int without getting errors
-    # safe_convert_to_int = lambda x: int(x) if str(x).isdigit() else -1
-    def safe_convert_to_int(x):
-        """ REMOVE LATER """
-        return int(x) if x.isdigit() else -1
+    safe_convert_to_int = lambda x: int(x) if str(x).isdigit() else -1
 
     # Get response for a request
     response = requests.get('https://swapi-api.hbtn.io/api/starships/').json()
