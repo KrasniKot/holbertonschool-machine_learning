@@ -12,7 +12,7 @@ def get_launches():
 
     # Get count of launches per rocket
     for k, v in Counter([lch.get('rocket') for lch in results]).most_common():
-        rname = requests.get(f'https://api.spacexdata.com/v4/rockets/{k}').json().get('name')  # noqa
+        rname = requests.get(f'https://api.spacexdata.com/v4/rockets/{k}').json().get('name')
         print(f'{rname}: {v}')  # Print results
 
 
