@@ -10,8 +10,8 @@ def get_upcoming():
 
     ul = min(ul, key=lambda launch: launch['date_unix'])
 
-    rn = requests.get(f"https://api.spacexdata.com/v4/rockets/{ul.get('rocket')}").json().get('name')  # noqa
-    li = requests.get(f"https://api.spacexdata.com/v4/launchpads/{ul.get('launchpad')}").json()  # noqa
+    rn = requests.get(f"https://api.spacexdata.com/v4/rockets/{ul.get('rocket')}").json().get('name')
+    li = requests.get(f"https://api.spacexdata.com/v4/launchpads/{ul.get('launchpad')}").json()
     ln = li.get('name')
     ll = li.get('locality')
 
