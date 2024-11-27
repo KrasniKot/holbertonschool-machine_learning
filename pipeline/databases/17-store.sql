@@ -4,4 +4,4 @@ FOR EACH ROW
     -- Decrease the quantity of the item based on the new order
     UPDATE items
     SET items.quantity = items.quantity - NEW.number
-    WHERE item.name = NEW.item_name;
+    WHERE items.name = NEW.item_name;
