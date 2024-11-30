@@ -11,7 +11,6 @@ BEGIN
     -- 2. If not found, create it
     IF pid IS NULL THEN
         INSERT INTO projects (name) VALUES (project_name);
-        SET project_id = LAST_INSERT_ID();
     END IF;
 
     -- 3. Add the correction
