@@ -1,13 +1,13 @@
---  Reset valid_email to 0 if the new email is different from the old one
-DELIMITER #
-
-CREATE TRIGGER UpdateMail
-BEFORE UPDATE ON users
-FOR EACH ROW
-BEGIN
-    IF NEW.email != OLD.email THEN
-        SET NEW.valid_email = 0;
-    END IF;
-END #
-
-DELIMITER;
+-- Calculate and list Glam rock bands by longevity until 2020
+SELECT 
+    band_name,
+    CASE
+        WHEN split IS NOT NULL THEN split - formed
+        ELSE 2020 - formed
+    END AS lifespan
+FROM 
+    metal_bands
+WHERE 
+    style LIKE '%Glam rock%'
+ORDER BY 
+    lifespan DESC;
