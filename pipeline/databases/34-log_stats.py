@@ -7,7 +7,7 @@ from pymongo import MongoClient
 def log_stats():
     """ Logs formatted stats about Nginx logs stored in MongoDB. """
     # ####### Connect to MongoDB
-    client = MongoClient('mongodb://172.17.0.3:27017/')  # Set client
+    client = MongoClient('mongodb://127.0.0.1:27017')  # Set client
     db = client.logs  # Set db
     col = db.nginx  # Set collection
     # #######

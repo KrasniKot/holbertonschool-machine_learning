@@ -1,5 +1,5 @@
 -- Add a new correction for a student
-DELIMITER #
+DELIMITER ##
 
 CREATE PROCEDURE AddBonus(IN user_id INT, IN project_name VARCHAR(100), IN score INT)
 BEGIN
@@ -16,6 +16,6 @@ BEGIN
     -- 3. Add the correction
     INSERT INTO corrections (user_id, project_id, score) VALUES (user_id, project_id, score);
 
-END #;
+END ##;
 
 DELIMITER;
