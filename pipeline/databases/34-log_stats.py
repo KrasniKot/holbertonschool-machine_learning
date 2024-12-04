@@ -20,7 +20,7 @@ def log_stats():
     [print(f"\tmethod {m}: {col.count_documents({'method': m})}") for m in ["GET", "POST", "PUT", "PATCH", "DELETE"]]  # noqa
 
     # Number of documents of GET method with /status path
-    print(f"{col.count_documents({"method": "GET", "path": "/status"})} status check")  # noqa
+    print(f"{col.count_documents({'method': 'GET', 'path': '/status'})} status check")  # noqa
 
 
 if __name__ == "__main__":
