@@ -15,7 +15,7 @@ BEGIN
     END IF;
 
     -- 3. Add the correction
-    INSERT INTO corrections (user_id, pid, score) VALUES (user_id, pid, score);
+    INSERT INTO corrections (user_id, project_id, score) VALUES (user_id, pid, score);
 
 END ##;
 
