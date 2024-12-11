@@ -7,8 +7,8 @@ import tensorflow as tf
 def change_contrast(image, lower, upper):
     """ Randomly change the contrast of an image
         - image .... image whose contrast should be changed
-        - lower .... float representing the lower bound of the random contrast factor range
-        - upper .... float representing the upper bound of the random contrast factor range
+        - lower .... float representing the lower bound of
+        - upper .... float representing the upper bound of
     """
     # Generate a random contrast factor between lower and upper bounds
     contrast_factor = tf.random.uniform([], lower, upper)
