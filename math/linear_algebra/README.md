@@ -39,16 +39,37 @@ The middle columns of the matrix are: [[9, 4], [7, 3], [4, 6]]
 root@ffbdd98be718:~/holbertonschool-machine_learning# 
 ```
 
-### 2. Size Me Please:
+### 2. Size Me Please
 Write a function `def matrix_shape(matrix):` that calculates the shape of a matrix:
 - You can assume all elements in the same dimension are of the same type/shape
 - The shape should be returned as a list of integers
 
-### 3. Flip Me Over:
+#### Execution
+The output should look something like this:
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# python3 2-main.py 
+[2, 2]
+[2, 3, 5]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# 
+```
+
+### 3. Flip Me Over
 Write a function `def matrix_transpose(matrix):` that returns the transpose of a 2D matrix, `matrix`:
 - You must return a new matrix
 - You can assume that `matrix` is never empty
 - You can assume all elements in the same dimension are of the same type/shape
+
+#### Execution
+The output should look something like
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# python3 3-main.py 
+[[1, 2], [3, 4]]
+[[1, 3], [2, 4]]
+--------------------------------------------------
+[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]
+[[1, 6, 11, 16, 21, 26], [2, 7, 12, 17, 22, 27], [3, 8, 13, 18, 23, 28], [4, 9, 14, 19, 24, 29], [5, 10, 15, 20, 25, 30]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# 
+```
 
 ### 4. Line Up:
 Write a function `def add_arrays(arr1, arr2):` that adds two arrays element-wise:
