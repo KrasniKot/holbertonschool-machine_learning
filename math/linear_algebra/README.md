@@ -1,14 +1,29 @@
 # Linear Algebra
 
+## Requirements
+
+- [x] Python 3
+
 ## Tasks
 
-### 0. Slice Me Up:
-Complete the following source code (found below):
+### 0. Slice Me Up
+Complete the source code:
 - `arr1` should be the first two numbers of `arr`
 - `arr2` should be the last five numbers of `arr`
 - `arr3` should be the 2nd through 6th numbers of `arr`
 - You are not allowed to use any loops or conditional statements
-- Your program should be exactly 8 lines
+
+#### Execution
+To execute this program run `python3 0-slice_me_up.py`
+
+The output should look something like:
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# python3 0-slice_me_up.py 
+The first two numbers of the array are: [9, 8]
+The last five numbers of the array are: [9, 4, 1, 0, 3]
+The 2nd through 6th numbers of the array are: [8, 2, 3, 9, 4]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# 
+```
 
 ### 1. Trim Me Down:
 Complete the following source code (found below):
