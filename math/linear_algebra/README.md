@@ -25,12 +25,19 @@ The 2nd through 6th numbers of the array are: [8, 2, 3, 9, 4]
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# 
 ```
 
-### 1. Trim Me Down:
-Complete the following source code (found below):
+### 1. Trim Me Down
+Complete the source code
 - `the_middle` should be a 2D matrix containing the 3rd and 4th columns of `matrix`
 - You are not allowed to use any conditional statements
 - You are only allowed to use one `for` loop
-- Your program should be exactly 6 lines
+
+#### Execution
+The output should look something like:
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning# python3 math/linear_algebra/1-trim_me_down.py 
+The middle columns of the matrix are: [[9, 4], [7, 3], [4, 6]]
+root@ffbdd98be718:~/holbertonschool-machine_learning# 
+```
 
 ### 2. Size Me Please:
 Write a function `def matrix_shape(matrix):` that calculates the shape of a matrix:

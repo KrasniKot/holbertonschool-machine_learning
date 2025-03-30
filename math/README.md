@@ -1,8 +1,9 @@
 # Math
 This directory contains the Machine Learning math projects
 
-## Projects:
-### Linear Algebra:
+## Projects
+### Linear Algebra
+The project on linear algebra encompasses tasks covering the concepts listed below:
 - What is a vector?
 - What is a matrix?
 - What is a transpose?
