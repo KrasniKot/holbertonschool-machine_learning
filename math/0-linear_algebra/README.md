@@ -93,6 +93,15 @@ Write a function `def add_matrices2D(mat1, mat2):` that adds two matrices elemen
 - You must return a new matrix
 - If `mat1` and `mat2` are not the same shape, return `None`
 
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 5-across_the_planes.py 
+Mat1 + Mat2: [[6, 8], [10, 12]]
+Mat1: [[1, 2], [3, 4]]
+Mat2: [[5, 6], [7, 8]]
+None
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
+```
+
 ### 6. Howdy Partner:
 Write a function `def cat_arrays(arr1, arr2):` that concatenates two arrays:
 - You can assume that `arr1` and `arr2` are lists of ints/floats
