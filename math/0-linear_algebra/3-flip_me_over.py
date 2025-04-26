@@ -1,7 +1,7 @@
 """ This module contains matrix_transpose() """
 
 
-def matrix_transpose(matrix: list) -> list:
+def matrix_transpose(matrix: list[int]) -> list:
     """ Transposes the given matrix
         - matrix .... given matrix to be transposed
 

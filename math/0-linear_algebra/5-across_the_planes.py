@@ -5,12 +5,12 @@ ms = __import__('2-size_me_please').matrix_shape  # Function to obtain the matri
 aa = __import__('4-line_up').add_arrays           # Function to add up two matrices (1d)
 
 
-def add_matrices2D(mat1: list, mat2: list) -> list:
+def add_matrices2D(mat1, mat2) :
     """ Adds two matrices
-        - mat1 .... matrix a
-        - mat2 .... matrix b
+        - mat1 - list[list[Union[int, float]]] .... matrix a
+        - mat2 - list[list[Union[int, float]]] .... matrix b
 
-        >>> Performs element-wise addition on two 2d matrices
+        >>> Performs element-wise addition on two 2d matrices - list[list[Union[int, float]]]
     """
     # Check both matrices have same dimensions and return the element-wise addition
     if ms(mat1) == ms(mat2): return [aa(mat1[index], mat2[index]) for index in range(len(mat1))]

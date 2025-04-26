@@ -1,7 +1,7 @@
 """ This module contains matrix_shape() """
 
 
-def matrix_shape(matrix: list) -> list:
+def matrix_shape(matrix: list[int]) -> list[int]:
     """ Calculates recursively the shape of a matrix
         - matrix ..... matrix to calculate its shape
 

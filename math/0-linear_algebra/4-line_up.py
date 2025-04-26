@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """ This module contains add_arrays() """
 
+from typing import Union
+
 ms = __import__('2-size_me_please').matrix_shape
 
 
-def add_arrays(arr1: list, arr2: list) -> list:
+def add_arrays(arr1: list[Union[int, float]], arr2: list[Union[int, float]]) -> list[Union[int, float]]:
     """ Adds two arrays if they are the same shape
         - arr1 .... array a
         - arr2 .... array b

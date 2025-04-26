@@ -71,12 +71,13 @@ Matrix 2: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18,
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
 
-### 4. Line Up:
+### 4. Line Up
 Write a function `def add_arrays(arr1, arr2):` that adds two arrays element-wise:
 - You can assume that `arr1` and `arr2` are lists of ints/floats
 - You must return a new list
 - If `arr1` and `arr2` are not the same shape, return `None`
 
+#### Execution
 ```
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 4-line_up.py 
 Array addition (arr1, arr2): [6, 8, 10, 12]
@@ -86,13 +87,14 @@ None
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
 
-### 5. Across The Planes:
+### 5. Across The Planes
 Write a function `def add_matrices2D(mat1, mat2):` that adds two matrices element-wise:
 - You can assume that `mat1` and `mat2` are 2D matrices containing ints/floats
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If `mat1` and `mat2` are not the same shape, return `None`
 
+#### Execution
 ```
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 5-across_the_planes.py 
 Mat1 + Mat2: [[6, 8], [10, 12]]
@@ -102,17 +104,44 @@ None
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
 
-### 6. Howdy Partner:
+### 6. Howdy Partner
 Write a function `def cat_arrays(arr1, arr2):` that concatenates two arrays:
 - You can assume that `arr1` and `arr2` are lists of ints/floats
 - You must return a new list
 
-### 7. Gettin’ Cozy:
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 6-howdy_partner.py 
+---------- Two arrays ----------
+Array 1: [1, 2, 3, 4, 5]
+Array 2: [6, 7, 8]
+
+Concatenation... [1, 2, 3, 4, 5, 6, 7, 8]
+---------- Two empty arrays ----------
+Array 1: []
+Array 2: []
+
+Concatenation... []
+---------- One empty array ----------
+Array 1: [1, 2, 3, 4, 5]
+Array 2: []
+
+Concatenation... [1, 2, 3, 4, 5]
+```
+
+### 7. Gettin’ Cozy
 Write a function `def cat_matrices2D(mat1, mat2, axis=0):` that concatenates two matrices along a specific axis:
 - You can assume that `mat1` and `mat2` are 2D matrices containing ints/floats
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If the two matrices cannot be concatenated, return `None`
+
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 7-gettin_cozy.py 
+Matrix1 + Matrix2, along first axis: [[1, 2], [3, 4], [5, 6]]
+Matrix1 + Matrix3, along second axis: [[1, 2, 7], [3, 4, 8]]
+```
 
 ### 8. Ridin’ Bareback:
 Write a function `def mat_mul(mat1, mat2):` that performs matrix multiplication:
