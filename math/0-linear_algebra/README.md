@@ -6,6 +6,7 @@
 
 ## Tasks
 
+
 ### 0. Slice Me Up
 Complete the source code:
 - `arr1` should be the first two numbers of `arr`
@@ -25,6 +26,7 @@ The 2nd through 6th numbers of the array are: [8, 2, 3, 9, 4]
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/linear_algebra# 
 ```
 
+
 ### 1. Trim Me Down
 Complete the source code
 - `the_middle` should be a 2D matrix containing the 3rd and 4th columns of `matrix`
@@ -39,6 +41,7 @@ The middle columns of the matrix are: [[9, 4], [7, 3], [4, 6]]
 root@ffbdd98be718:~/holbertonschool-machine_learning# 
 ```
 
+
 ### 2. Size Me Please
 Write a function `def matrix_shape(matrix):` that calculates the shape of a matrix:
 - You can assume all elements in the same dimension are of the same type/shape
@@ -52,6 +55,7 @@ Shape matrix 1: [2, 2]
 Shape matrix 2: [2, 3, 5]
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
+
 
 ### 3. Flip Me Over
 Write a function `def matrix_transpose(matrix):` that returns the transpose of a 2D matrix, `matrix`:
@@ -71,6 +75,7 @@ Matrix 2: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18,
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
 
+
 ### 4. Line Up
 Write a function `def add_arrays(arr1, arr2):` that adds two arrays element-wise:
 - You can assume that `arr1` and `arr2` are lists of ints/floats
@@ -86,6 +91,7 @@ Array 2: [5, 6, 7, 8]
 None
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
+
 
 ### 5. Across The Planes
 Write a function `def add_matrices2D(mat1, mat2):` that adds two matrices element-wise:
@@ -103,6 +109,7 @@ Mat2: [[5, 6], [7, 8]]
 None
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
 ```
+
 
 ### 6. Howdy Partner
 Write a function `def cat_arrays(arr1, arr2):` that concatenates two arrays:
@@ -129,6 +136,7 @@ Array 2: []
 Concatenation... [1, 2, 3, 4, 5]
 ```
 
+
 ### 7. Gettin’ Cozy
 Write a function `def cat_matrices2D(mat1, mat2, axis=0):` that concatenates two matrices along a specific axis:
 - You can assume that `mat1` and `mat2` are 2D matrices containing ints/floats
@@ -143,12 +151,31 @@ Matrix1 + Matrix2, along first axis: [[1, 2], [3, 4], [5, 6]]
 Matrix1 + Matrix3, along second axis: [[1, 2, 7], [3, 4, 8]]
 ```
 
+
 ### 8. Ridin’ Bareback:
 Write a function `def mat_mul(mat1, mat2):` that performs matrix multiplication:
 - You can assume that `mat1` and `mat2` are 2D matrices containing ints/floats
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If the two matrices cannot be multiplied, return `None`
+
+#### Execution:
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 8-ridin_bareback.py 
+First test: [[11, 14, 17, 20], [23, 30, 37, 44], [35, 46, 57, 68]]
+Square Matrix Test (3x3): [[30, 24, 18], [84, 69, 54], [138, 114, 90]]
+Non-Square Matrices Test (3x2 * 2x3): [[27, 30, 33], [61, 68, 75], [95, 106, 117]]
+Rectangular Matrices Test (2x3 * 3x1): [[50], [122]]
+Zero Matrix Test: [[0, 0], [0, 0], [0, 0]]
+Single Element Matrix Test: [[6]]
+Non-Commutative Test A * B: [[19, 22], [43, 50]]
+Non-Commutative Test B * A: [[23, 34], [31, 46]]
+Incompatible Dimensions (2x3 * 2x2): None
+Incompatible Dimensions (3x3 * 1x2): None
+Empty Matrix Test: None
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
+```
+
 
 ### 9. Let The Butcher Slice It:
 Complete the following source code (fond below):
