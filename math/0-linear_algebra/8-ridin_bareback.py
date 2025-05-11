@@ -8,6 +8,7 @@ def mat_mul(mat1: list, mat2: list) -> list:
         mult = []
         for ymat1 in range(len(mat1)):
             multrow = []
+
             for col in range(len(mat2[0])): multrow.append(sum(mat1[ymat1][row] * mat2[row][col] for row in range(len(mat1[0]))))
             mult.append(multrow)
 

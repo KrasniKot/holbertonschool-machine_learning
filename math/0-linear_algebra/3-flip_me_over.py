@@ -7,7 +7,7 @@ def matrix_transpose(matrix: list[int]) -> list:
 
         >>> Transposed matrix
     """
-    return [[matrix[i][j] for i in range(len(matrix))] for j in range(len(matrix[0]))]
+    return list(zip(*matrix))
 
 
 if __name__ == '__main__':

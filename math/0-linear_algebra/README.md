@@ -152,14 +152,14 @@ Matrix1 + Matrix3, along second axis: [[1, 2, 7], [3, 4, 8]]
 ```
 
 
-### 8. Ridin’ Bareback:
+### 8. Ridin’ Bareback
 Write a function `def mat_mul(mat1, mat2):` that performs matrix multiplication:
 - You can assume that `mat1` and `mat2` are 2D matrices containing ints/floats
 - You can assume all elements in the same dimension are of the same type/shape
 - You must return a new matrix
 - If the two matrices cannot be multiplied, return `None`
 
-#### Execution:
+#### Execution
 ```
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 8-ridin_bareback.py 
 First test: [[11, 14, 17, 20], [23, 30, 37, 44], [35, 46, 57, 68]]
@@ -177,25 +177,95 @@ root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
 ```
 
 
-### 9. Let The Butcher Slice It:
-Complete the following source code (fond below):
+### 9. Let The Butcher Slice It
+Complete the following source code:
 - `mat1` should be the middle two rows of `matrix`
 - `mat2` should be the middle two columns of `matrix`
 - `mat3` should be the bottom-right, square, 3x3 matrix of `matrix`
 - You are not allowed to use any loops or conditional statements
 - Your program should be exactly 10 lines
 
-### 10. I'll Use My Scale:
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 9-let_the_butcher_slice_it.py 
+The middle two rows of the matrix are:
+[[ 7  8  9 10 11 12]
+ [13 14 15 16 17 18]]
+
+The middle two columns of the matrix are:
+[[ 3  4]
+ [ 9 10]
+ [15 16]
+ [21 22]]
+
+The bottom-right, square, 3x3 matrix is:
+[[10 11 12]
+ [16 17 18]
+ [22 23 24]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
+
+### 10. I'll Use My Scale
 Write a function `def np_shape(matrix):` that calculates the shape of a `numpy.ndarray`:
 - You are not allowed to use any loops or conditional statements
 - You are not allowed to use `try/except` statements
 - The shape should be returned as a tuple of integers
+
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 10-ill_use_my_scale.py 
+mat1 shape: (6,)
+mat2 shape: (0,)
+mat3 shape: (2, 2, 5)
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
 
 ### 11. The Western Exchange:
 Write a function `def np_transpose(matrix):` that transposes matrix:
 - You can assume that `matrix` can be interpreted as a `numpy.ndarray`
 - You are not allowed to use any loops or conditional statements
 - You must return a new `numpy.ndarray`
+
+#### Execution:
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 11-the_western_exchange.py 
+----------------------------------------
+Matrix 1:
+[1 2 3 4 5 6]
+Transpose of Matrix 1:
+[1 2 3 4 5 6]
+----------------------------------------
+Matrix 2:
+[]
+Transpose of Matrix 2:
+[]
+----------------------------------------
+Matrix 3:
+[[[ 1  2  3  4  5]
+  [ 6  7  8  9 10]]
+
+ [[11 12 13 14 15]
+  [16 17 18 19 20]]]
+Transpose of Matrix 3:
+[[[ 1 11]
+  [ 6 16]]
+
+ [[ 2 12]
+  [ 7 17]]
+
+ [[ 3 13]
+  [ 8 18]]
+
+ [[ 4 14]
+  [ 9 19]]
+
+ [[ 5 15]
+  [10 20]]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
 
 ### 12. Bracing The Elements:
 Write a function `def np_elementwise(mat1, mat2):` that performs element-wise addition, subtraction, multiplication, and division:
