@@ -1,10 +1,10 @@
 """ This module contains np_transpose() """
 
-import numpy as np
+from numpy.typing import NDArray
 
 
-def np_transpose(matrix):
-    """ Trasnposes a matrix """
+def np_transpose(matrix: NDArray) -> NDArray:
+    """ Transposes a matrix. """
     return matrix.T
 
 

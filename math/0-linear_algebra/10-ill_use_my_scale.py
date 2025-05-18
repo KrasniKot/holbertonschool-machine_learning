@@ -1,10 +1,11 @@
 """ This module contains np_shape() """
 
 import numpy as np
+from numpy.typing import NDArray
 
 
-def np_shape(matrix) -> tuple:
-    """ Returns the shape of a np matrix """
+def np_shape(matrix: NDArray) -> tuple[int, ...]:
+    """ Returns the shape of a NumPy matrix. """
     return matrix.shape
 
 

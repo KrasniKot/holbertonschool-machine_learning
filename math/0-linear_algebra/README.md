@@ -3,6 +3,8 @@
 ## Requirements
 
 - [x] Python 3
+- [x] Pip
+- [x] Numpy
 
 ## Tasks
 
@@ -66,13 +68,13 @@ Write a function `def matrix_transpose(matrix):` that returns the transpose of a
 #### Execution
 The output should look something like
 ```
-root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python3 3-flip_me_over.py 
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 3-flip_me_over.py 
 Matrix 1: [[1, 2], [3, 4]]
-[[1, 3], [2, 4]]
+[(1, 3), (2, 4)]
 --------------------------------------------------
 Matrix 2: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]
-[[1, 6, 11, 16, 21, 26], [2, 7, 12, 17, 22, 27], [3, 8, 13, 18, 23, 28], [4, 9, 14, 19, 24, 29], [5, 10, 15, 20, 25, 30]]
-root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# 
+[(1, 6, 11, 16, 21, 26), (2, 7, 12, 17, 22, 27), (3, 8, 13, 18, 23, 28), (4, 9, 14, 19, 24, 29), (5, 10, 15, 20, 25, 30)]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
 ```
 
 
@@ -222,13 +224,13 @@ root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
 ```
 
 
-### 11. The Western Exchange:
+### 11. The Western Exchange
 Write a function `def np_transpose(matrix):` that transposes matrix:
 - You can assume that `matrix` can be interpreted as a `numpy.ndarray`
 - You are not allowed to use any loops or conditional statements
 - You must return a new `numpy.ndarray`
 
-#### Execution:
+#### Execution
 ```
 root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 11-the_western_exchange.py 
 ----------------------------------------
@@ -267,12 +269,51 @@ root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
 ```
 
 
-### 12. Bracing The Elements:
+### 12. Bracing The Elements
 Write a function `def np_elementwise(mat1, mat2):` that performs element-wise addition, subtraction, multiplication, and division:
 - You can assume that `mat1` and `mat2` can be interpreted as `numpy.ndarrays`
 - You should return a tuple containing the element-wise sum, difference, product, and quotient, respectively
 - You are not allowed to use any loops or conditional statements
 - You can assume that `mat1` and `mat2` are never empty
+
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 12-bracin_the_elements.py 
+Matrix 1:
+ [[11 22 33]
+ [44 55 66]]
+Matrix 2:
+ [[1 2 3]
+ [4 5 6]]
+---------------------------------------- matrix to matrix operations ----------------------------------------
+Add (Element-wise Addition):
+ [[12 24 36]
+ [48 60 72]]
+Sub (Element-wise Subtraction):
+ [[10 20 30]
+ [40 50 60]]
+Mul (Hadamard Product):
+ [[ 11  44  99]
+ [176 275 396]]
+Div (Element-wise Division):
+ [[11. 11. 11.]
+ [11. 11. 11.]]
+---------------------------------------- matrix to scalar (2) operations ----------------------------------------
+Add (Element-wise Addition with scalar):
+ [[13 24 35]
+ [46 57 68]]
+Sub (Element-wise Subtraction with scalar):
+ [[ 9 20 31]
+ [42 53 64]]
+Mul (Hadamard Product with scalar):
+ [[ 22  44  66]
+ [ 88 110 132]]
+Div (Element-wise Division with scalar):
+ [[ 5.5 11.  16.5]
+ [22.  27.5 33. ]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
 
 ### 13. Cat's Got Your Tongue:
 Write a function `def np_cat(mat1, mat2, axis=0)` that concatenates two matrices along a specific axis:
@@ -282,12 +323,46 @@ Write a function `def np_cat(mat1, mat2, axis=0)` that concatenates two matrices
 - You may use: `import numpy as np`
 - You can assume that `mat1` and `mat2` are never empty
 
+#### Execution
+```
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 13-cats_got_your_tongue.py 
+Concatenation mat1 and mat2 (axis 0):
+ [[11 22 33]
+ [44 55 66]
+ [ 1  2  3]
+ [ 4  5  6]]
+
+Concatenation mat1 and mat2 (axis 1):
+ [[11 22 33  1  2  3]
+ [44 55 66  4  5  6]]
+
+Concatenation mat1 and mat1 (axis 1):
+ [[11 22 33  7]
+ [44 55 66  8]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
+
 ### 14. Saddle Up:
 Write a function def `np_matmul(mat1, mat2):` that performs matrix multiplication:
 - You can assume that `mat1` and `mat2` are `numpy.ndarray`s
 - You are not allowed to use any loops or conditional statements
 - You may use: `import numpy as np`
 - You can assume that `mat1` and `mat2` are never empty
+
+# Execution:
+```
+oot@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 14-saddle_up.py 
+matrix 1 @ matrix 2:
+ [[ 330  396  462]
+ [ 726  891 1056]]
+
+matrix 1 @ matrix 3:
+ [[ 550]
+ [1342]]
+root@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
 
 ### 15. Slice Like A Ninja
 Write a function `def np_slice(matrix, axes={}):` that slices a matrix along specific axes:
