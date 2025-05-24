@@ -371,6 +371,36 @@ Write a function `def np_slice(matrix, axes={}):` that slices a matrix along spe
 - `axes` is a dictionary where the key is an axis to slice along and the `value` is a tuple representing the slice to make along that axis
 - You can assume that axes represents a valid slice
 
+# Execution
+```
+root@f19c3905f049:~/holbertonschool-machine_learning/math/0-linear_algebra# python 100-slice_like_a_ninja.py 
+First matrix:
+[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]]
+Matrix slice:
+[[2 3]
+ [7 8]]
+
+------------------------------
+Second matrix:
+[[[ 1  2  3  4  5]
+  [ 6  7  8  9 10]]
+
+ [[11 12 13 14 15]
+  [16 17 18 19 20]]
+
+ [[21 22 23 24 25]
+  [26 27 28 29 30]]]
+Matrix slice:
+[[[ 5  3  1]
+  [10  8  6]]
+
+ [[15 13 11]
+  [20 18 16]]]
+root@f19c3905f049:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
+
 ### 16. The Whole Barn:
 Write a function `def add_matrices(mat1, mat2):` that adds two matrices:
 - You can assume that `mat1` and `mat2` are matrices containing `ints/floats`
