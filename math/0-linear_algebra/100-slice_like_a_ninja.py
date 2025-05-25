@@ -1,9 +1,9 @@
 """ This module contains np_slice() """
 
 import numpy as np
+from typing import Any, Dict, Tuple
 
-
-def np_slice(matrix, axes={}):
+def np_slice(matrix: np.ndarray, axes: Dict[int, Tuple[int | None, int | None]]) -> np.ndarray:
     """ Slices a matrix along specific axes
         > matrix .... matrix to be sliced
         > axes ...... dictionary where the key represents the axis to slice along and

@@ -350,7 +350,7 @@ Write a function def `np_matmul(mat1, mat2):` that performs matrix multiplicatio
 - You may use: `import numpy as np`
 - You can assume that `mat1` and `mat2` are never empty
 
-# Execution:
+#### Execution:
 ```
 oot@ffbdd98be718:~/holbertonschool-machine_learning/math/0-linear_algebra# python 14-saddle_up.py 
 matrix 1 @ matrix 2:
@@ -371,7 +371,7 @@ Write a function `def np_slice(matrix, axes={}):` that slices a matrix along spe
 - `axes` is a dictionary where the key is an axis to slice along and the `value` is a tuple representing the slice to make along that axis
 - You can assume that axes represents a valid slice
 
-# Execution
+#### Execution
 ```
 root@f19c3905f049:~/holbertonschool-machine_learning/math/0-linear_algebra# python 100-slice_like_a_ninja.py 
 First matrix:
@@ -401,7 +401,7 @@ root@f19c3905f049:~/holbertonschool-machine_learning/math/0-linear_algebra#
 ```
 
 
-### 16. The Whole Barn:
+### 16. The Whole Barn
 Write a function `def add_matrices(mat1, mat2):` that adds two matrices:
 - You can assume that `mat1` and `mat2` are matrices containing `ints/floats`
 - You can assume all elements in the same dimension are of the same type/shape
@@ -409,7 +409,26 @@ Write a function `def add_matrices(mat1, mat2):` that adds two matrices:
 - If matrices are not the same shape, return `None`
 - You can assume that `mat1` and `mat2` will never be empty
 
-### 17. Squashed Like Sardines:
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/0-linear_algebra# python 101-the_whole_barn.py 
+Addition equals:
+[5, 7, 9]
+
+Addition equals:
+[[6, 8], [10, 12]]
+[2, 3, 2, 4]
+
+Addition equals:
+[[[[12, 14, 16, 18], [20, 22, 24, 26]], [[28, 120, 122, 124], [126, 128, 130, 132]], [[134, 136, 138, 140], [142, 144, 146, 148]]], [[[150, 152, 154, 156], [158, 160, 162, 164]], [[166, 168, 170, 172], [174, 176, 178, 180]], [[182, 184, 186, 188], [190, 192, 194, 196]]]]
+
+Addition equals:
+None
+root@6b792e227861:~/holbertonschool-machine_learning/math/0-linear_algebra#
+```
+
+
+### 17. Squashed Like Sardines
 - Write a function `def cat_matrices(mat1, mat2, axis=0):` that concatenates two matrices along a specific axis:
 - You can assume that `mat1` and `mat2` are matrices containing ints/floats
 - You can assume all elements in the same dimension are of the same type/shape

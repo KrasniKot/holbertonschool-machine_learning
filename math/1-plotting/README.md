@@ -2,10 +2,29 @@
 
 ## Tasks
 
-### 0. Line Graph:
-Complete the following source code to plot `y` as a line graph:
+A ``UserWarning`` might be displayed during the executions below, as the ``Python`` programs utilising ``Matplotlib`` are being run within a headless environment — a ``Docker`` container or a server entirely lacking graphical display capabilities. Even so, the images of the plots will still be generated and saved successfully.
+
+### 0. Line Graph
+
+Complete the source code to plot `y` as a line graph:
+
 - `y` should be plotted as a solid red line
 - The x-axis should range from 0 to 10
+
+#### Execution
+In this case I am using a docker container 
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 0-line.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/0-line.py:21: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()                # Show the plot
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# 
+```
+
+![Plot of cubes](plots/0-line.png)
+
+
 
 ### 1. Scatter:
 Complete the following source code to plot `x ↦ y` as a scatter plot:

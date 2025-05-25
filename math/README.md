@@ -2,7 +2,7 @@
 This directory contains the Machine Learning math projects
 
 ## Projects
-### Linear Algebra
+### 0. Linear Algebra
 The project on linear algebra encompasses tasks covering the concepts listed below:
 - What is a vector?
 - What is a matrix?
@@ -19,7 +19,7 @@ The project on linear algebra encompasses tasks covering the concepts listed bel
 - What is parallelization and why is it important?
 - What is broadcasting?
 
-### Plotting:
+### 1. Plotting:
 - What is a plot?
 - What is a scatter plot? line graph? bar graph? histogram?
 - What is matplotlib?
