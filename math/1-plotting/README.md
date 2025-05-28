@@ -26,22 +26,49 @@ root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
 
 
 
-### 1. Scatter:
-Complete the following source code to plot `x ↦ y` as a scatter plot:
+### 1. Scatter
+Complete the source code to plot `x ↦ y` as a scatter plot:
 - The x-axis should be labeled `Height (in)`
 - The y-axis should be labeled `Weight (lbs)`
 - The title should be `Men's Height vs Weight`
 - The data should be plotted as magenta points
 
-### 2. Change of scale:
-Complete the following source code to plot `x ↦ y` as a line graph:
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 1-scatter.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/1-scatter.py:39: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()                          # Display the plot
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
+```
+
+![Scatter PLot](plots/1-scatter.png)
+
+
+### 2. Change of scale
+Complete the source code to plot `x ↦ y` as a line graph:
 - The x-axis should be labeled `Time (years)`
 - The y-axis should be labeled `Fraction Remaining`
 - The title should be `Exponential Decay of C-14`
 - The y-axis should be logarithmically scaled
 - The x-axis should range from 0 to 28650
 
-### 3. Two is bette:
+#### Execution
+
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 2-change_scale.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/2-change_scale.py:29: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# 
+```
+
+![Scatter PLot](plots/2-change_scale.png)
+
+
+### 3. Two is better than one
 Complete the following source code to plot `x ↦ y1` and `x ↦ y2` as line graphs:
 - The x-axis should be labeled `Time (years)`
 - The y-axis should be labeled `Fraction Remaining`
