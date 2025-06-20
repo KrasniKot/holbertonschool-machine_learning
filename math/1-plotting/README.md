@@ -65,11 +65,11 @@ Authorization required, but no authorization protocol specified
 root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# 
 ```
 
-![Scatter PLot](plots/2-change_scale.png)
+![change scale PLot](plots/2-change_scale.png)
 
 
 ### 3. Two is better than one
-Complete the following source code to plot `x ↦ y1` and `x ↦ y2` as line graphs:
+Complete the source code to plot `x ↦ y1` and `x ↦ y2` as line graphs:
 - The x-axis should be labeled `Time (years)`
 - The y-axis should be labeled `Fraction Remaining`
 - The title should be `Exponential Decay of Radioactive Elements`
@@ -79,22 +79,61 @@ Complete the following source code to plot `x ↦ y1` and `x ↦ y2` as line gra
 - `x ↦ y2` should be plotted with a solid green line
 - A legend labeling `x ↦ y1` as `C-14` and `x ↦ y2` as `Ra-226` should be placed in the upper right hand corner of the plot
 
-### 4. Frequency:
-Complete the following source code to plot a histogram of student scores for a project:
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 3-two.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/3-two.py:40: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
+```
+
+![two PLot](plots/3-twoplots.png)
+
+
+### 4. Frequency
+Complete following source code to plot a histogram of student scores for a project:
 - The x-axis should be labeled `Grades`
 - The y-axis should be labeled `Number of Students`
 - The x-axis should have bins every 10 units
 - The title should be `Project A`
 - The bars should be outlined in black
 
-### 5. All in One:
-Complete the following source code to plot all 5 previous graphs in one figure:
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 4-frequency.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/4-frequency.py:33: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
+```
+
+![frequency PLot](plots/4-frequency.png)
+
+
+### 5. All in One
+Complete following source code to plot all 5 previous graphs in one figure:
 - All axis labels and plot titles should have a font size of `x-small` (to fit nicely in one figure)
 - The plots should make a 3 x 2 grid
 - The last plot should take up two column widths (see below)
 - The title of the figure should be `All in One`
 
-### 6. Stacking Bars:
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 5-all_in_one.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/5-all_in_one.py:103: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
+```
+
+![fiveplots PLot](plots/5-fiveplots.png)
+
+
+### 6. Stacking Bars
 Complete the following source code to plot a stacked bar graph:
 * `fruit` is a matrix representing the number of fruit various people possess
  * The columns of `fruit` represent the number of fruit `Farrah`, `Fred`, and `Felicia` have, respectively
@@ -112,4 +151,16 @@ Complete the following source code to plot a stacked bar graph:
 * The y-axis should be labeled `Quantity of Fruit`
 * The y-axis should range from 0 to 80 with ticks every 10 units
 * The title should be `Number of Fruit per Person`
+
+#### Execution
+```
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting# python 6-bars.py 
+Authorization required, but no authorization protocol specified
+
+/root/holbertonschool-machine_learning/math/1-plotting/6-bars.py:35: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+root@6b792e227861:~/holbertonschool-machine_learning/math/1-plotting#
+```
+
+![stacked PLot](plots/6-stacked.png)
 
